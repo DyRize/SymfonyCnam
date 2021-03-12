@@ -12,7 +12,10 @@ Se mettre dans le répertoire souhaité, ouvrir un shell et lancer la commande :
 - Lancer l'application dans un navigateur avec la commande ``php bin/console server:run``
 
 # Compilation avec Docker
-``@Todo``
+- Compiler avec `docker-compose build`
+- Exécuter avec `docker-compose up`, ajouter ` -d` pour lancer en daemon
+- Se déplacer dans le container avec `docker-compose exec php bash` puis `cd SymfonyCnam/` afin de lancer les commandes Symfony dans celui-ci
+- Stopper avec `docker-compose down`
 
 # Gestion collaborative
 - Le Workflow utilisé est Gitflow : https://www.atlassian.com/fr/git/tutorials/comparing-workflows/gitflow-workflow

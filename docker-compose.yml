@@ -1,0 +1,40 @@
+# Pour lancer la stack:           docker-compose up -d
+# Pour accéder au serveur web:    http://localhost:80
+# Pour accéder à phpMyAdmin:      http://localhost:8080  (login: root, password: 1234)
+
+version: '3.1'
+
+volumes:
+  persistent:
+
+services:
+  php:
+    build: ./ops/config/php
+    image: php7.4-pdo-custom
+    container_name: symfonycnam_php
+    ports:
+      - 80:80
+    volumes:
+      - ./ops/config/php/vhosts:/etc/apache2/sites-enabled
+      - ./:/var/www
+  db:
+    image: mysql
+    container_name: symfonycnam_db
+    ports: 
+        - "3306:3306"
+    restart: always
+    environment:
+        - MYSQL_ROOT_HOST=%
+        - MYSQL_ROOT_PASSWORD=1234
+    volumes:
+        - persistent:/var/lib/mysql
+  phpadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: symfonycnam_phpmyadmin
+    ports: 
+        - "8080:80"
+    restart: always
+    depends_on:
+      - db
+    environment:
+        - PMA_HOST=db
