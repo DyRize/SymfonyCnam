@@ -15,6 +15,7 @@ Se mettre dans le répertoire souhaité, ouvrir un shell et lancer la commande :
 - Compiler avec `docker-compose build`
 - Exécuter avec `docker-compose up`, ajouter ` -d` pour lancer en daemon
 - Se déplacer dans le container avec `docker-compose exec php bash` puis `cd SymfonyCnam/` afin de lancer les commandes Symfony dans celui-ci
+- Lancer un `composer install`
 - Stopper avec `docker-compose down`
 
 # Gestion collaborative
@@ -39,7 +40,7 @@ Créer une base de données avec les paramètres du .env : ``php bin/console doc
 
 Créer une classe Entité qui représente une table : ``php bin/console make:entity``
 
-Créer une migration SQL à parti des entités présentes : ``php bin/console make:migration``
+Créer une migration SQL à partir des entités présentes : ``php bin/console make:migration``
 
 Lancer les scripts de migration afin de mettre à jour la table : ``php bin/console doctrine:migrations:migrate``
 
