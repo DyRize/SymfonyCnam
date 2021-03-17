@@ -9,7 +9,6 @@ Se mettre dans le répertoire souhaité, ouvrir un shell et lancer la commande :
 - Installer le plugin ``SonarLint`` directement dans PhpStorm pour assurer la qualité du code et une bonne maintenabilité de celui-ci.
 - Installer le plugin ``.env files support`` afin de pouvoir manipuler le .env ultérieurement.
 - Installer le plugin ``Symfony Support``.
-- Lancer l'application dans un navigateur avec la commande ``php bin/console server:run``
 
 # Compilation avec Docker
 - Compiler avec `docker-compose build`
