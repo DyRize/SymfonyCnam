@@ -1,6 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-	<h2>{{ user.name }}</h2>
+{% block title %}{{ user.name }} {{ user.firstName }}{% endblock %}
 
+{% block body %}
+	<div class="card border-dark mb-3 mt-5" style="max-width: 20rem;">
+		<div class="card-header">Utilisateur n°{{ user.id }}</div>
+		<div class="card-body">
+			<h4 class="card-title">{{ user.name }} {{ user.firstName }}</h4>
+			<p class="card-text"><i class="fas fa-calendar-alt"></i> Né le {{ user.birthDate | date('d/m/Y') }}</p>
+			<p class="card-text"><i class="fas fa-at"></i> {{ user.mail }}</p>
+			<p class="card-text"><i class="fas fa-phone"></i> {{ user.phoneNumber}}</p>
+		</div>
+	</div>
+
+	<a href="{{ path('user') }}" class="btn btn-secondary"><i class="fas fa-users"></i> Retourner à la liste des utilisateurs</a>
 {% endblock %}
