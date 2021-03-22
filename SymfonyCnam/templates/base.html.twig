@@ -25,16 +25,20 @@
 			<div class="collapse navbar-collapse" id="navbarColor03">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item">
-						<a class="nav-link" href="/user">Users</a>
+						<a class="nav-link" href="{{ path('user') }}">Users</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="/user/new">Create an user</a>
+						<a class="nav-link" href="{{ path('user') }}">Create an user</a>
 					</li>
 				</ul>
-				<button class="btn btn-secondary my-2 my-sm-0" type="button">Connexion</button>
+				{% if not app.user %}
+				<a href="{{ path('app_login') }}" type="button" class="btn btn-secondary my-2 my-sm-0">Login</a>
+				{% else %}
+				<a href="{{ path('app_logout') }}" type="button" class="btn btn-secondary my-2 my-sm-0">Logout</a>
+				{% endif %}
 			</div>
 		</nav>
-		<div class="container">
+		<div class="container-fluid">
         	{% block body %}{% endblock %}
 		</div>
     </body>
