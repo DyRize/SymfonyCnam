@@ -1,4 +1,8 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+    {{ form_row(form.firstName, {'label': 'Prénom', 'attr': {'placeholder': 'Inscrire le prénom'}})}}
+    {{ form_row(form.lastName, {'label': 'Nom', 'attr': {'placeholder': 'Inscrire le nom'}})}}
+    {{ form_row(form.email, {'label': 'Email', 'attr': {'placeholder': "Inscrire l'adresse mail"}})}}
+    {{ form_row(form.birthDate, {'label': 'Date de naissance'})}}
+    {{ form_row(form.phoneNumber, {'label': 'Numéro, de téléphone', 'attr': {'placeholder': "Inscrire le numéro de téléphone"}})}}
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
