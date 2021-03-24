@@ -30,8 +30,7 @@ class UserFixtures extends Fixture
             ->setBirthDate($faker->dateTime)
             ->setPhoneNumber($faker->phoneNumber)
             ->setCreatedAt(new DateTime())
-            ->setLastConnexionDate($ybacquet->getCreatedAt())
-            ->setRoles(['ROLE_ADMIN', 'ROLE_SPEAKER']);
+            ->setLastConnexionDate($ybacquet->getCreatedAt());
 
         $manager->persist($ybacquet);
 
@@ -43,8 +42,7 @@ class UserFixtures extends Fixture
             ->setBirthDate($faker->dateTime)
             ->setPhoneNumber($faker->phoneNumber)
             ->setCreatedAt(new DateTime())
-            ->setLastConnexionDate($opapini->getCreatedAt())
-            ->setRoles(['ROLE_SPEAKER']);
+            ->setLastConnexionDate($opapini->getCreatedAt());
 
         $manager->persist($opapini);
 
@@ -56,8 +54,7 @@ class UserFixtures extends Fixture
             ->setBirthDate(new DateTime('1999-10-25'))
             ->setPhoneNumber('0786423929')
             ->setCreatedAt(new DateTime())
-            ->setLastConnexionDate($dleflour->getCreatedAt())
-            ->setRoles(['ROLE_DELEGATE', 'ROLE_BDE', 'ROLE_STUDENT']);
+            ->setLastConnexionDate($dleflour->getCreatedAt());
 
         $manager->persist($dleflour);
 
@@ -69,8 +66,7 @@ class UserFixtures extends Fixture
             ->setBirthDate(new DateTime('1997-03-22'))
             ->setPhoneNumber('0626221481')
             ->setCreatedAt(new DateTime())
-            ->setLastConnexionDate($cmaugez->getCreatedAt())
-            ->setRoles(['ROLE_BDE', 'ROLE_STUDENT']);
+            ->setLastConnexionDate($cmaugez->getCreatedAt());
 
         $manager->persist($cmaugez);
 
@@ -82,8 +78,7 @@ class UserFixtures extends Fixture
             ->setBirthDate(new DateTime('1997-04-24'))
             ->setPhoneNumber('0651190268')
             ->setCreatedAt(new DateTime())
-            ->setLastConnexionDate($lgenevois->getCreatedAt())
-            ->setRoles(['ROLE_BDE', 'ROLE_STUDENT']);
+            ->setLastConnexionDate($lgenevois->getCreatedAt());
 
         $manager->persist($lgenevois);
 
