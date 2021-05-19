@@ -40,6 +40,12 @@ class Student
      */
     private $types;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Promotion::class, inversedBy="students")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $promotion;
+
     public function __construct()
     {
         $this->types = new ArrayCollection();
@@ -109,6 +115,18 @@ class Student
         if ($this->types->removeElement($type)) {
             $type->removeStudent($this);
         }
+
+        return $this;
+    }
+
+    public function getPromotion(): ?Promotion
+    {
+        return $this->promotion;
+    }
+
+    public function setPromotion(?Promotion $promotion): self
+    {
+        $this->promotion = $promotion;
 
         return $this;
     }

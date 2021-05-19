@@ -30,9 +30,15 @@ class Teacher
      */
     private $types;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Promotion::class, mappedBy="manager")
+     */
+    private $promotions;
+
     public function __construct()
     {
         $this->types = new ArrayCollection();
+        $this->promotions = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -74,6 +80,36 @@ class Teacher
     {
         if ($this->types->removeElement($type)) {
             $type->removeTeacher($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Promotion[]
+     */
+    public function getPromotions(): Collection
+    {
+        return $this->promotions;
+    }
+
+    public function addPromotion(Promotion $promotion): self
+    {
+        if (!$this->promotions->contains($promotion)) {
+            $this->promotions[] = $promotion;
+            $promotion->setManager($this);
+        }
+
+        return $this;
+    }
+
+    public function removePromotion(Promotion $promotion): self
+    {
+        if ($this->promotions->removeElement($promotion)) {
+            // set the owning side to null (unless already changed)
+            if ($promotion->getManager() === $this) {
+                $promotion->setManager(null);
+            }
         }
 
         return $this;
