@@ -46,9 +46,15 @@ class Student
      */
     private $promotion;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Grade::class, mappedBy="student")
+     */
+    private $grades;
+
     public function __construct()
     {
         $this->types = new ArrayCollection();
+        $this->grades = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -127,6 +133,36 @@ class Student
     public function setPromotion(?Promotion $promotion): self
     {
         $this->promotion = $promotion;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Grade[]
+     */
+    public function getGrades(): Collection
+    {
+        return $this->grades;
+    }
+
+    public function addGrade(Grade $grade): self
+    {
+        if (!$this->grades->contains($grade)) {
+            $this->grades[] = $grade;
+            $grade->setStudent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGrade(Grade $grade): self
+    {
+        if ($this->grades->removeElement($grade)) {
+            // set the owning side to null (unless already changed)
+            if ($grade->getStudent() === $this) {
+                $grade->setStudent(null);
+            }
+        }
 
         return $this;
     }
