@@ -56,11 +56,17 @@ class Student
      */
     private $subjects;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Project::class, mappedBy="students")
+     */
+    private $projects;
+
     public function __construct()
     {
         $this->types = new ArrayCollection();
         $this->grades = new ArrayCollection();
         $this->subjects = new ArrayCollection();
+        $this->projects = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -195,6 +201,33 @@ class Student
     {
         if ($this->subjects->removeElement($subject)) {
             $subject->removeStudent($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Project[]
+     */
+    public function getProjects(): Collection
+    {
+        return $this->projects;
+    }
+
+    public function addProject(Project $project): self
+    {
+        if (!$this->projects->contains($project)) {
+            $this->projects[] = $project;
+            $project->addStudent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProject(Project $project): self
+    {
+        if ($this->projects->removeElement($project)) {
+            $project->removeStudent($this);
         }
 
         return $this;
