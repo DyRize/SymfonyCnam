@@ -1,17 +1,62 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ user.name }} {{ user.firstName }}{% endblock %}
+{% block title %}User{% endblock %}
 
 {% block body %}
-	<div class="card border-dark mb-3 mt-5" style="max-width: 20rem;">
-		<div class="card-header">Utilisateur n°{{ user.id }}</div>
-		<div class="card-body">
-			<h4 class="card-title">{{ user.name }} {{ user.firstName }}</h4>
-			<p class="card-text"><i class="fas fa-calendar-alt"></i> Né le {{ user.birthDate | date('d/m/Y') }}</p>
-			<p class="card-text"><i class="fas fa-at"></i> {{ user.mail }}</p>
-			<p class="card-text"><i class="fas fa-phone"></i> {{ user.phoneNumber}}</p>
-		</div>
-	</div>
+    <h1>User</h1>
 
-	<a href="{{ path('user') }}" class="btn btn-secondary"><i class="fas fa-users"></i> Retourner à la liste des utilisateurs</a>
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ user.id }}</td>
+            </tr>
+            <tr>
+                <th>FirstName</th>
+                <td>{{ user.firstName }}</td>
+            </tr>
+            <tr>
+                <th>LastName</th>
+                <td>{{ user.lastName }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ user.email }}</td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td>{{ user.password }}</td>
+            </tr>
+            <tr>
+                <th>BirthDate</th>
+                <td>{{ user.birthDate ? user.birthDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>PhoneNumber</th>
+                <td>{{ user.phoneNumber }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ user.createdAt ? user.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>LastConnexionDate</th>
+                <td>{{ user.lastConnexionDate ? user.lastConnexionDate|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Roles</th>
+                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+            </tr>
+            <tr>
+                <th>IsVerified</th>
+                <td>{{ user.isVerified ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('user_index') }}">back to list</a>
+
+    <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
+
+    {{ include('user/_delete_form.html.twig') }}
 {% endblock %}
