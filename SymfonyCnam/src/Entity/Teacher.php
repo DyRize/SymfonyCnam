@@ -35,10 +35,16 @@ class Teacher
      */
     private $promotions;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Subject::class, mappedBy="teachers")
+     */
+    private $subjects;
+
     public function __construct()
     {
         $this->types = new ArrayCollection();
         $this->promotions = new ArrayCollection();
+        $this->subjects = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -110,6 +116,33 @@ class Teacher
             if ($promotion->getManager() === $this) {
                 $promotion->setManager(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Subject[]
+     */
+    public function getSubjects(): Collection
+    {
+        return $this->subjects;
+    }
+
+    public function addSubject(Subject $subject): self
+    {
+        if (!$this->subjects->contains($subject)) {
+            $this->subjects[] = $subject;
+            $subject->addTeacher($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSubject(Subject $subject): self
+    {
+        if ($this->subjects->removeElement($subject)) {
+            $subject->removeTeacher($this);
         }
 
         return $this;
