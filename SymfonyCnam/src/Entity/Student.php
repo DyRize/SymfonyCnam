@@ -51,10 +51,16 @@ class Student
      */
     private $grades;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Subject::class, mappedBy="students")
+     */
+    private $subjects;
+
     public function __construct()
     {
         $this->types = new ArrayCollection();
         $this->grades = new ArrayCollection();
+        $this->subjects = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -162,6 +168,33 @@ class Student
             if ($grade->getStudent() === $this) {
                 $grade->setStudent(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Subject[]
+     */
+    public function getSubjects(): Collection
+    {
+        return $this->subjects;
+    }
+
+    public function addSubject(Subject $subject): self
+    {
+        if (!$this->subjects->contains($subject)) {
+            $this->subjects[] = $subject;
+            $subject->addStudent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSubject(Subject $subject): self
+    {
+        if ($this->subjects->removeElement($subject)) {
+            $subject->removeStudent($this);
         }
 
         return $this;

@@ -39,10 +39,16 @@ class Subject
      */
     private $grades;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Student::class, inversedBy="subjects")
+     */
+    private $students;
+
     public function __construct()
     {
         $this->teachers = new ArrayCollection();
         $this->grades = new ArrayCollection();
+        $this->students = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -124,6 +130,30 @@ class Subject
                 $grade->setSubject(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Student[]
+     */
+    public function getStudents(): Collection
+    {
+        return $this->students;
+    }
+
+    public function addStudent(Student $student): self
+    {
+        if (!$this->students->contains($student)) {
+            $this->students[] = $student;
+        }
+
+        return $this;
+    }
+
+    public function removeStudent(Student $student): self
+    {
+        $this->students->removeElement($student);
 
         return $this;
     }
