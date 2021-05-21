@@ -18,4 +18,37 @@ class HomeController extends AbstractController
             'application_name' => 'SymfonyCnam',
         ]);
     }
+
+    /**
+     * @Route("/admin", name="home_admin")
+     */
+    public function admin(): Response
+    {
+        return $this->render('home/admin.html.twig', [
+            'controller_name' => 'HomeController',
+            'application_name' => 'SymfonyCnam',
+        ]);
+    }
+
+    /**
+     * @Route("/speaker", name="home_speaker")
+     */
+    public function speaker(): Response
+    {
+        return $this->render('home/speaker.html.twig', [
+            'controller_name' => 'HomeController',
+            'application_name' => 'SymfonyCnam',
+        ]);
+    }
+
+    /**
+     * @Route("/student", name="home_student")
+     */
+    public function student(): Response
+    {
+        return $this->render('home/student.html.twig', [
+            'controller_name' => 'HomeController',
+            'application_name' => 'SymfonyCnam',
+        ]);
+    }
 }
