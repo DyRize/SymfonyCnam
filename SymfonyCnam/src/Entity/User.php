@@ -229,6 +229,17 @@ class User implements UserInterface
         return array_unique($roles);
     }
 
+    /**
+     * Rôles possibles :
+     * ROLE_ADMIN : SuperAdmin, tous les droits
+     * ROLE_SPEAKER : Intervenant, (professeurs, administrateurs CNAM & UTV)
+     * ROLE_BDE : Administrateur BDE
+     * ROLE_DELEGATE : Délégué
+     * ROLE_STUDENT : Étudiant
+     * ROLE_USER : Tout le monde
+     * @param array $roles
+     * @return $this
+     */
     public function setRoles(array $roles): self
     {
         $this->roles = $roles;
