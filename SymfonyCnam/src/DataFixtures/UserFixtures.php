@@ -35,6 +35,7 @@ class UserFixtures extends Fixture
 
         $manager->persist($ybacquet);
 
+
         $opapini = new User();
         $opapini->setFirstName('Olivia')
             ->setLastName('PAPINI')
@@ -88,5 +89,6 @@ class UserFixtures extends Fixture
         $manager->persist($lgenevois);
 
         $manager->flush();
+
     }
 }
