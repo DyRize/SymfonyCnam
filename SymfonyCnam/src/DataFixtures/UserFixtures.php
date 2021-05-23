@@ -12,6 +12,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class UserFixtures extends Fixture
 {
     private $passwordEncoder;
+    public const YBACQUET = '';
 
     public function __construct(UserPasswordEncoderInterface $passwordEncoder)
     {
@@ -89,6 +90,8 @@ class UserFixtures extends Fixture
         $manager->persist($lgenevois);
 
         $manager->flush();
+
+        $this->addReference(self::YBACQUET, $ybacquet);
 
     }
 }
