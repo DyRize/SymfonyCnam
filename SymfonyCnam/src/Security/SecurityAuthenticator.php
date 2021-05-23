@@ -102,6 +102,8 @@ class SecurityAuthenticator extends AbstractFormLoginAuthenticator implements Pa
             return new RedirectResponse($this->urlGenerator->generate('home_admin'));
         } elseif (in_array('ROLE_SPEAKER', $user->getRoles())) {
             return new RedirectResponse($this->urlGenerator->generate('home_speaker'));
+        } elseif (in_array('ROLE_BDE', $user->getRoles())) {
+            return new RedirectResponse($this->urlGenerator->generate('home_bde'));
         }
         return new RedirectResponse($this->urlGenerator->generate('home_student'));
     }
