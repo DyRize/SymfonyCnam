@@ -150,6 +150,6 @@ class Teacher
 
     public function __toString()
     {
-        return $this->getRelatedUser()->getFirstName();
+        return $this->relatedUser->getFirstName() . ' ' . $this->relatedUser->getLastName();
     }
 }
