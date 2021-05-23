@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Article;
 use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,22 +29,25 @@ class ArticleController extends AbstractController
     /**
      * @Route("/new", name="article_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, UserRepository $repository): Response
     {
         $article = new Article();
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
 
+
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $userTab = $repository->findBy(['email' => $request->getSession()->get('_security.last_username')]);
+            $user = $repository->find($userTab[0]->getId());
+            $article->setCreatedAt(new \DateTime());
+            $article->setAuthor($user);
             $entityManager->persist($article);
             $entityManager->flush();
-
             return $this->redirectToRoute('article_index');
         }
 
         return $this->render('article/new.html.twig', [
-            'article' => $article,
             'form' => $form->createView(),
         ]);
     }
@@ -67,6 +71,7 @@ class ArticleController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $article->setUpdatedAt(new \DateTime());
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('article_index');
