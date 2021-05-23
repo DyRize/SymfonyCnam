@@ -12,7 +12,13 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class UserFixtures extends Fixture
 {
     private $passwordEncoder;
-    public const YBACQUET = '';
+    public const YBACQUET = 'ybacquet';
+    public const OPAPINI = 'opapini';
+    public const JMROBERT = 'jmrobert';
+    public const RMARXER = 'rmarxer';
+    public const DLEFLOUR = 'dleflour';
+    public const CMAUGEZ = 'cmaugez';
+    public const LGENEVOIS = 'lgenevois';
 
     public function __construct(UserPasswordEncoderInterface $passwordEncoder)
     {
@@ -49,6 +55,32 @@ class UserFixtures extends Fixture
             ->setRoles(['ROLE_SPEAKER']);
 
         $manager->persist($opapini);
+
+        $jmrobert = new User();
+        $jmrobert->setFirstName('Jean-Marc')
+            ->setLastName('ROBERT')
+            ->setEmail('jean-marc.robert@lecnam.net')
+            ->setPassword($this->passwordEncoder->encodePassword($jmrobert, 'oliviapapini'))
+            ->setBirthDate($faker->dateTime)
+            ->setPhoneNumber($faker->phoneNumber)
+            ->setCreatedAt(new DateTime())
+            ->setLastConnexionDate($jmrobert->getCreatedAt())
+            ->setRoles(['ROLE_SPEAKER']);
+
+        $manager->persist($jmrobert);
+
+        $rmarxer = new User();
+        $rmarxer->setFirstName('Ricard')
+            ->setLastName('MARXER')
+            ->setEmail('ricard.marxer@lecnam.net')
+            ->setPassword($this->passwordEncoder->encodePassword($rmarxer, 'oliviapapini'))
+            ->setBirthDate($faker->dateTime)
+            ->setPhoneNumber($faker->phoneNumber)
+            ->setCreatedAt(new DateTime())
+            ->setLastConnexionDate($rmarxer->getCreatedAt())
+            ->setRoles(['ROLE_SPEAKER']);
+
+        $manager->persist($rmarxer);
 
         $dleflour = new User();
         $dleflour->setFirstName('Dylan')
@@ -92,6 +124,12 @@ class UserFixtures extends Fixture
         $manager->flush();
 
         $this->addReference(self::YBACQUET, $ybacquet);
+        $this->addReference(self::OPAPINI, $opapini);
+        $this->addReference(self::JMROBERT, $jmrobert);
+        $this->addReference(self::RMARXER, $rmarxer);
+        $this->addReference(self::DLEFLOUR, $dleflour);
+        $this->addReference(self::CMAUGEZ, $cmaugez);
+        $this->addReference(self::LGENEVOIS, $lgenevois);
 
     }
 }

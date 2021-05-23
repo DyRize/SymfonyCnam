@@ -4,8 +4,6 @@
 namespace App\DataFixtures;
 
 use App\Entity\Article;
-use App\Entity\User;
-use App\Repository\UserRepository;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
@@ -18,17 +16,56 @@ class ArticleFixtures extends Fixture implements DependentFixtureInterface
     {
         $faker = Factory::create('fr_FR');
 
-        for($i = 0; $i < 5; $i++) {
-            $article = new Article();
-            $article->setTitle("Article ".($i+1))
+
+            $article1 = new Article();
+            $article1->setTitle("Article 1")
                 ->setAuthor($this->getReference(UserFixtures::YBACQUET))
                 ->setContent($faker->realText($maxNbChars = 200, $indexSize = 2))
-                ->setType($manager->find('App\Entity\ArticleType',($i % 4) + 1))
+                ->setType($this->getReference(ArticleTypeFixtures::INFO))
                 ->setCreatedAt($faker->dateTime)
-                ->setUpdatedAt($article->getCreatedAt());
+                ->setUpdatedAt($article1->getCreatedAt());
 
-            $manager->persist($article);
-        }
+            $manager->persist($article1);
+
+        $article2 = new Article();
+        $article2->setTitle("Article 2")
+            ->setAuthor($this->getReference(UserFixtures::OPAPINI))
+            ->setContent($faker->realText($maxNbChars = 200, $indexSize = 2))
+            ->setType($this->getReference(ArticleTypeFixtures::ADMN))
+            ->setCreatedAt($faker->dateTime)
+            ->setUpdatedAt($article1->getCreatedAt());
+
+        $manager->persist($article2);
+
+        $article3 = new Article();
+        $article3->setTitle("Article 3")
+            ->setAuthor($this->getReference(UserFixtures::DLEFLOUR))
+            ->setContent($faker->realText($maxNbChars = 200, $indexSize = 2))
+            ->setType($this->getReference(ArticleTypeFixtures::BDE))
+            ->setCreatedAt($faker->dateTime)
+            ->setUpdatedAt($article1->getCreatedAt());
+
+        $manager->persist($article3);
+
+        $article4 = new Article();
+        $article4->setTitle("Article 4")
+            ->setAuthor($this->getReference(UserFixtures::CMAUGEZ))
+            ->setContent($faker->realText($maxNbChars = 200, $indexSize = 2))
+            ->setType($this->getReference(ArticleTypeFixtures::EVENT))
+            ->setCreatedAt($faker->dateTime)
+            ->setUpdatedAt($article1->getCreatedAt());
+
+        $manager->persist($article4);
+
+        $article5 = new Article();
+        $article5->setTitle("Article 5")
+            ->setAuthor($this->getReference(UserFixtures::LGENEVOIS))
+            ->setContent($faker->realText($maxNbChars = 200, $indexSize = 2))
+            ->setType($this->getReference(ArticleTypeFixtures::BDE))
+            ->setCreatedAt($faker->dateTime)
+            ->setUpdatedAt($article1->getCreatedAt());
+
+        $manager->persist($article5);
 
         $manager->flush();
     }

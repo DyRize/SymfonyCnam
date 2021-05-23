@@ -11,6 +11,12 @@ use Faker\Factory;
 
 class ArticleTypeFixtures extends Fixture
 {
+    public const INFO = 'informations';
+    public const EVENT = 'evevement';
+    public const BDE = 'bde';
+    public const ADMN = 'administration';
+
+
     public function load(ObjectManager $manager)
     {
         $faker = Factory::create('fr_FR');
@@ -40,5 +46,10 @@ class ArticleTypeFixtures extends Fixture
         $manager->persist($articleType4);
 
         $manager->flush();
+
+        $this->addReference(self::INFO, $articleType1);
+        $this->addReference(self::EVENT, $articleType2);
+        $this->addReference(self::BDE, $articleType3);
+        $this->addReference(self::ADMN, $articleType4);
     }
 }
