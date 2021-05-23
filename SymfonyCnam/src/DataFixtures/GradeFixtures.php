@@ -22,7 +22,7 @@ class GradeFixtures extends Fixture implements DependentFixtureInterface
         $mathsDLFlour->setDate($faker->dateTime)
             ->setLabel("mathematiques pour l'informatique")
             ->setStudent($this->getReference(StudentFixtures::STD_DLEFLOUR))
-            ->setSubject("mathematiques pour l'informatique")
+            ->setSubject($this->getReference(SubjectFixtures::STMN01))
             ->setValue(15.0);
 
         $manager->persist($mathsDLFlour);
@@ -31,8 +31,8 @@ class GradeFixtures extends Fixture implements DependentFixtureInterface
         $mathsCMaugez->setDate($faker->dateTime)
             ->setLabel("mathematiques pour l'informatique")
             ->setStudent($this->getReference(StudentFixtures::STD_CMAUGEZ))
-            ->setSubject("mathematiques pour l'informatique")
-            ->setValue(10.0);
+            ->setSubject($this->getReference(SubjectFixtures::STMN01))
+            ->setValue(20.0);
 
         $manager->persist($mathsCMaugez);
 
@@ -40,7 +40,7 @@ class GradeFixtures extends Fixture implements DependentFixtureInterface
         $mathsLGenevois->setDate($faker->dateTime)
             ->setLabel("mathematiques pour l'informatique")
             ->setStudent($this->getReference(StudentFixtures::STD_LGENEVOIS))
-            ->setSubject("mathematiques pour l'informatique")
+            ->setSubject($this->getReference(SubjectFixtures::STMN01))
             ->setValue(8.0);
 
         $manager->persist($mathsLGenevois);
@@ -52,7 +52,8 @@ class GradeFixtures extends Fixture implements DependentFixtureInterface
     public function getDependencies(): array
     {
         return [
-            UserFixtures::class,
+            StudentFixtures::class,
+            SubjectFixtures::class,
         ];
     }
 }

@@ -58,7 +58,7 @@ class PromotionFixtures extends Fixture implements DependentFixtureInterface
     public function getDependencies(): array
     {
         return [
-            UserFixtures::class,
+            TeacherFixtures::class,
         ];
     }
 }

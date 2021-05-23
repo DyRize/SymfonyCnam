@@ -12,10 +12,10 @@ use Faker\Factory;
 class TeacherFixtures extends Fixture implements DependentFixtureInterface
 {
 
-    public const YBACQUET = 'ybacquet';
-    public const OPAPINI = 'opapini';
-    public const JMROBERT = 'jmrobert';
-    public const RMARXER = 'rmarxer';
+    public const YBACQUET = 'tchr_ybacquet';
+    public const OPAPINI = 'tchr_opapini';
+    public const JMROBERT = 'tchr_jmrobert';
+    public const RMARXER = 'tchr_rmarxer';
 
     public function load(ObjectManager $manager)
     {
@@ -23,30 +23,30 @@ class TeacherFixtures extends Fixture implements DependentFixtureInterface
 
         $teacher1 = new Teacher();
         $teacher1->setRelatedUser($this->getReference(UserFixtures::YBACQUET))
-            ->addType(TeacherTypeFixtures::INTERV)
-            ->addSubject(SubjectFixtures::STMN1A);
+            ->addType($this->getReference(TeacherTypeFixtures::INTERV))
+            ->addSubject($this->getReference(SubjectFixtures::STMN1A));
 
         $manager->persist($teacher1);
 
         $teacher2 = new Teacher();
         $teacher2->setRelatedUser($this->getReference(UserFixtures::OPAPINI))
-            ->addType(TeacherTypeFixtures::RESPO)
-            ->addSubject(SubjectFixtures::STMN18);
+            ->addType($this->getReference(TeacherTypeFixtures::RESPO))
+            ->addSubject($this->getReference(SubjectFixtures::STMN18));
 
         $manager->persist($teacher2);
 
         $teacher3 = new Teacher();
         $teacher3->setRelatedUser($this->getReference(UserFixtures::JMROBERT))
-            ->addType(TeacherTypeFixtures::RESPO)
-            ->addSubject(SubjectFixtures::STMN10)
-            ->addSubject(SubjectFixtures::STMN03);
+            ->addType($this->getReference(TeacherTypeFixtures::RESPO))
+            ->addSubject($this->getReference(SubjectFixtures::STMN10))
+            ->addSubject($this->getReference(SubjectFixtures::STMN03));
 
         $manager->persist($teacher3);
 
         $teacher4 = new Teacher();
         $teacher4->setRelatedUser($this->getReference(UserFixtures::RMARXER))
-            ->addType(TeacherTypeFixtures::RESPO)
-            ->addSubject(SubjectFixtures::STMN10);
+            ->addType($this->getReference(TeacherTypeFixtures::RESPO))
+            ->addSubject($this->getReference(SubjectFixtures::STMN10));
 
         $manager->persist($teacher4);
 
@@ -63,6 +63,8 @@ class TeacherFixtures extends Fixture implements DependentFixtureInterface
     {
         return [
             UserFixtures::class,
+            SubjectFixtures::class,
+            TeacherTypeFixtures::class,
         ];
     }
 }

@@ -9,7 +9,7 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 
-class SubjectFixtures extends Fixture implements DependentFixtureInterface
+class SubjectFixtures extends Fixture
 {
 
     public const STMN01 = 'maths';
@@ -31,7 +31,7 @@ class SubjectFixtures extends Fixture implements DependentFixtureInterface
     public const STMN12 = 'progOrienteeObjet';
     public const STMN13 = 'projetPluri1';
     public const STMN14 = 'communication2';
-    public const STMN15 = 'syntheseImageSon';
+    public const STMN15 = 'rapportR3';
     public const STMN18 = 'progMobile';
     public const STMN19 = 'programmationWeb';
     public const STMN1A = 'systemeInteraction';
@@ -229,12 +229,5 @@ class SubjectFixtures extends Fixture implements DependentFixtureInterface
         $this->addReference(self::STMN1C, $subject24);
         $this->addReference(self::STMN1D, $subject25);
         $this->addReference(self::STMN21, $subject26);
-    }
-
-    public function getDependencies(): array
-    {
-        return [
-            UserFixtures::class,
-        ];
     }
 }

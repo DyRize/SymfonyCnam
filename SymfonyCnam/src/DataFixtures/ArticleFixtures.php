@@ -74,6 +74,7 @@ class ArticleFixtures extends Fixture implements DependentFixtureInterface
     {
         return [
             UserFixtures::class,
+            ArticleTypeFixtures::class,
         ];
     }
 }

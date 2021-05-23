@@ -24,9 +24,9 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
             ->setCode("PQRL2021")
             ->setStartedAt($faker->dateTime)
             ->setEndedAt(null)
-            ->addStudent($this->getReference(StudentFixtures::DLEFLOUR))
-            ->addStudent($this->getReference(StudentFixtures::LGENEVOIS))
-            ->addStudent($this->getReference(StudentFixtures::CMAUGEZ))
+            ->addStudent($this->getReference(StudentFixtures::STD_DLEFLOUR))
+            ->addStudent($this->getReference(StudentFixtures::STD_LGENEVOIS))
+            ->addStudent($this->getReference(StudentFixtures::STD_CMAUGEZ))
             ->addSubject($this->getReference(SubjectFixtures::STMN1A))
             ->addSubject($this->getReference(SubjectFixtures::STMN21));
 
@@ -41,7 +41,8 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
     public function getDependencies(): array
     {
         return [
-            UserFixtures::class,
+            StudentFixtures::class,
+            SubjectFixtures::class,
         ];
     }
 }

@@ -9,7 +9,7 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 
-class TeacherTypeFixtures extends Fixture implements DependentFixtureInterface
+class TeacherTypeFixtures extends Fixture
 {
 
     public const INTERV = 'intervenant';
@@ -37,10 +37,4 @@ class TeacherTypeFixtures extends Fixture implements DependentFixtureInterface
         $this->addReference(self::RESPO, $teacherType2);
     }
 
-    public function getDependencies(): array
-    {
-        return [
-            UserFixtures::class,
-        ];
-    }
 }

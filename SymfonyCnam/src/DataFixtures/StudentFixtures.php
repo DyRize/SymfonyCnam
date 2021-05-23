@@ -4,6 +4,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Student;
+use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
@@ -12,9 +13,9 @@ use Faker\Factory;
 class StudentFixtures extends Fixture implements DependentFixtureInterface
 {
 
-    public const STD_DLEFLOUR = 'dleflour';
-    public const STD_CMAUGEZ = 'cmaugez';
-    public const STD_LGENEVOIS = 'lgenevois';
+    public const STD_DLEFLOUR = 'std_dleflour';
+    public const STD_CMAUGEZ = 'std_cmaugez';
+    public const STD_LGENEVOIS = 'std_lgenevois';
 
     public function load(ObjectManager $manager)
     {
@@ -27,7 +28,7 @@ class StudentFixtures extends Fixture implements DependentFixtureInterface
             ->setRelatedUser($this->getReference(UserFixtures::DLEFLOUR))
             ->addSubject($this->getReference(SubjectFixtures::STMN01))
             ->addSubject($this->getReference(SubjectFixtures::STMN18))
-            ->addSubject($this->getReference(SubjectFixtures::STMNOB))
+            ->addSubject($this->getReference(SubjectFixtures::STMN0B))
             ->addSubject($this->getReference(SubjectFixtures::STMN19))
             ->addSubject($this->getReference(SubjectFixtures::STMN1A))
             ->addSubject($this->getReference(SubjectFixtures::STMN1C))
@@ -43,7 +44,7 @@ class StudentFixtures extends Fixture implements DependentFixtureInterface
             ->setRelatedUser($this->getReference(UserFixtures::LGENEVOIS))
             ->addSubject($this->getReference(SubjectFixtures::STMN01))
             ->addSubject($this->getReference(SubjectFixtures::STMN18))
-            ->addSubject($this->getReference(SubjectFixtures::STMNOB))
+            ->addSubject($this->getReference(SubjectFixtures::STMN0B))
             ->addSubject($this->getReference(SubjectFixtures::STMN19))
             ->addSubject($this->getReference(SubjectFixtures::STMN1A))
             ->addSubject($this->getReference(SubjectFixtures::STMN1C))
@@ -59,7 +60,7 @@ class StudentFixtures extends Fixture implements DependentFixtureInterface
             ->setRelatedUser($this->getReference(UserFixtures::CMAUGEZ))
             ->addSubject($this->getReference(SubjectFixtures::STMN01))
             ->addSubject($this->getReference(SubjectFixtures::STMN18))
-            ->addSubject($this->getReference(SubjectFixtures::STMNOB))
+            ->addSubject($this->getReference(SubjectFixtures::STMN0B))
             ->addSubject($this->getReference(SubjectFixtures::STMN19))
             ->addSubject($this->getReference(SubjectFixtures::STMN1A))
             ->addSubject($this->getReference(SubjectFixtures::STMN1C))
@@ -80,6 +81,8 @@ class StudentFixtures extends Fixture implements DependentFixtureInterface
     {
         return [
             UserFixtures::class,
+            SubjectFixtures::class,
+            PromotionFixtures::class,
         ];
     }
 }
