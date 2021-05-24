@@ -7,10 +7,18 @@
 
     <table class="table">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ student.id }}</td>
-            </tr>
+		<tr>
+			<th>Id</th>
+			<td>{{ student.id }}</td>
+		</tr>
+		<tr>
+			<th>Name</th>
+			<td>{{ student.relatedUser }}</td>
+		</tr>
+		<tr>
+			<th>Promotion</th>
+			<td>{{ student.promotion }}</td>
+		</tr>
             <tr>
                 <th>ArrivedAt</th>
                 <td>{{ student.arrivedAt ? student.arrivedAt|date('Y-m-d H:i:s') : '' }}</td>
