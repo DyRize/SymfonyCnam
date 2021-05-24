@@ -1796,7 +1796,7 @@ body.pushmenu-push-toleft  nav.navbar.bootsnav.sticked, body.pushmenu-push-tolef
   -webkit-animation-duration:.7s;
   animation-duration:.7s;
 }
-.icon_box:hover i, .icon_box:nth-child(2n+1):hover i, .icon_box:hover p{
+.icon_box:hover i, .icon_box:nth-child(2n+1):hover i, .icon_box:hover p, .icon_box:hover h4{
 	color:#fff;
 }
 .icon_box:nth-child(2n+1) i{
