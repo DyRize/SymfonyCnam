@@ -33,7 +33,7 @@ class ArticleController extends AbstractController
             if(in_array('ROLE_ADMIN', $user[0]->getRoles())){
                 $articles = $articleRepository->findAll();
                 $role = 'ADMIN';
-            }elseif(in_array('ROLE_BDE', $user[0]->getRoles()) || in_array('ROLE_DELEGATE', $user[0]->getRoles())){
+            }elseif(in_array('ROLE_BDE', $user[0]->getRoles())){
                 foreach($articleTypes as $type){
                     if($type->getCode() == 'BDE' || $type->getCode() == 'INFO'){
                         $articleType = $articleTypeRepository->find($type->getId());
@@ -41,7 +41,16 @@ class ArticleController extends AbstractController
                         $index++;
                     }
                 }
-                $role = 'BDE_DELEGATE';
+                $role = 'BDE';
+            }else if(in_array('ROLE_DELEGATE', $user[0]->getRoles())){
+                foreach($articleTypes as $type){
+                    if($type->getCode() == 'INFO'){
+                        $articleType = $articleTypeRepository->find($type->getId());
+                        $articles[$index] = $articleRepository->findBy(['type' => $articleType]);
+                        $index++;
+                    }
+                }
+                $role = 'DELEGATE';
             }
             return $this->render('article/index.html.twig', [
                 'role' => $role,

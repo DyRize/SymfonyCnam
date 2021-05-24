@@ -18,7 +18,7 @@
         </thead>
         <tbody>
 
-		{% if role == 'BDE_DELEGATE' %}
+		{% if role == 'BDE' or role == 'DELEGATE' %}
 			{% for lst_article in articles %}
 				{% for article in lst_article %}
 					<tr>
