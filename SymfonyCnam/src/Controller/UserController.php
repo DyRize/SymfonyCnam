@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * @Route("/user")
@@ -26,15 +27,31 @@ class UserController extends AbstractController
     }
 
     /**
+     * TODO
+     * Ajouter la possibilité d'initialiser les roles d'un utilisateur à la création.
+     * Pour cela, il faut créer une entité Role et passé une liste des Roles.
+     * Actuellement ont passe un JSON et je n'ai pas su convertire le JSON en liste et inversement
+     * pour l'insertion des roles en BDD.
+     */
+    /**
      * @Route("/new", name="user_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request,  UserPasswordEncoderInterface $passwordEncoder): Response
     {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            dump($request);
+            $user->setCreatedAt(new \DateTime());
+            $user->setLastConnexionDate(new \DateTime());
+            $user->setPassword(
+                $passwordEncoder->encodePassword(
+                    $user,
+                    $user->getPassword()
+                )
+            );
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
@@ -59,17 +76,19 @@ class UserController extends AbstractController
     }
 
     /**
+     * TODO
+     * Ajouter la possibilité d'éditer les roles d'un utilisateur. cf. TO DO new_user
+     */
+    /**
      * @Route("/{id}/edit", name="user_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, User $user): Response
     {
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('user_index');
+            return $this->redirectToRoute('user_show', ['id' => $user->getId()]);
         }
 
         return $this->render('user/edit.html.twig', [
