@@ -180,6 +180,7 @@ h2,h3,h4,h5,h5,
 #rev_slider_full h1, #rev_slider_video h1,
 #parallax h1{
 	font-family: 'Raleway', sans-serif;
+    color:#000000;
 }
 .number-counters .counters-item strong,
 #rev_slider_full p,
@@ -353,7 +354,7 @@ p{
 .heading .divider-center{
 	height:4px;
 	width:70px;
-	background:#73AE20;
+	background: #C1002B;
 	display: block;
 }
 .heading .divider-left {
@@ -464,12 +465,12 @@ p{
 .btn-dark:hover,
 .white_border:hover::before,
 .white_border:focus::before{
-	background: #73AE20;
-	border-color: #73AE20;
+	background: #C1002B;
+	border-color: #C1002B;
 }
 .white_border:hover,
 .white_border:focus{
-	border:1px solid #73AE20;
+	border:1px solid #C1002B;
 }
 
 
@@ -489,7 +490,7 @@ p{
 }
 .readmore:hover, .readmore:focus,
 .commment li a:hover, .commment li a:focus{
-	color:#73ae20;
+	color:#C1002B;
 }
 
 
@@ -702,7 +703,7 @@ p.hours a{
 }
 .pager_nav .pagination > li > a:focus, .pager_nav .pagination > li > a:hover{
   background-color: transparent;
-  color:#73AE20;
+  color:#C1002B;
 }
 
 
@@ -732,7 +733,7 @@ p.hours a{
 .profile .p_pic img{ width:90px;}
 .profile_text{ vertical-align:top; padding-right:10px;}
 .profile_text h5{ margin-bottom:8px;}
-.profile_text strong{ color:#73AE20; font-size:14px;}
+.profile_text strong{ color:#C1002B; font-size:14px;}
 .profile_text span{ color:#5b5b5b; font-size:13px;}
 
 .reviews .review_left{
@@ -757,7 +758,7 @@ p.hours a{
   -webkit-box-shadow:none;
   box-shadow:none;
 }
-.rating_progress .progress-bar{ background:#73AE20;}
+.rating_progress .progress-bar{ background:#C1002B;}
 
 
 
@@ -799,8 +800,8 @@ p.hours a{
     margin-left: -45px;
 }
 #search .close{
-  background-color: #73AE20;
-  border-color: #73AE20;
+  background-color: #C1002B;
+  border-color: #C1002B;
   -webkit-border-radius: 3px;
   border-radius: 3px;
   color: #ffffff;
@@ -938,7 +939,7 @@ ul.comment li a > i{
 	height:42px;
 }
 .widget_search .input-group-addon {
-  background: #73AE20;
+  background: #C1002B;
   border: medium none;
   -webkit-border-radius: 0;
   border-radius: 0;
@@ -976,7 +977,7 @@ ul.comment li a > i{
   bottom:16px;
   right:40px;
   display:none;
-  background:#73AE20;
+  background:#C1002B;
 }
 .scrollToTop:hover{
 	background:#3e9fbe;
@@ -1033,8 +1034,8 @@ input,
   width: 36px;
 }
 .topbar ul.social_top li a:hover, .topbar ul.social_top li a:focus{
-	background:#73AE20;
-	border-color:#73AE20;
+	background:#C1002B;
+	border-color:#C1002B;
 	color:#fff;
 }
 .topbar span.info {
@@ -1146,7 +1147,7 @@ nav.navbar.bootsnav ul.nav > li > a:focus,
 nav.navbar.bootsnav ul.nav > li.active > a,
 nav.navbar.bootsnav ul.nav > li.dropdown > .dropdown-toggle:hover,
 nav.navbar.bootsnav ul.nav > li.dropdown.on > .dropdown-toggle{
-	color:#73AE20 !important;
+	color:#C1002B !important;
 }
 
 nav.navbar.bootsnav.bgbox ul.nav > li > a:hover,
@@ -1438,7 +1439,7 @@ nav.navbar.bootsnav .pushmenu .push_nav > li > a{
 	 text-transform:capitalize;
 }
 nav.navbar.bootsnav .pushmenu .push_nav > li > a > span{
-  color: #73AE20;
+  color: #C1002B;
   display: inline-block;
   font-size: 20px;
   vertical-align: middle;
@@ -1510,8 +1511,8 @@ body.pushmenu-push-toleft  nav.navbar.bootsnav.sticked, body.pushmenu-push-tolef
 #rev_slider_video .white_border:hover::before,
 #rev_slider_video .white_border:focus::before,
 #rev_slider_video .white_border:hover{
-	border-color:#73ae20;
-	background:#73ae20;
+	border-color:#C1002B;
+	background:#C1002B;
 }
 
 #rev_slider_video .rs-fullvideo-cover {
@@ -1524,7 +1525,7 @@ body.pushmenu-push-toleft  nav.navbar.bootsnav.sticked, body.pushmenu-push-tolef
 }
 /*arrows Slider*/
 .tparrows{
-  background:#73AE20 !important;
+  background:#C1002B !important;
   -webkit-border-radius:100%;
   border-radius:4px;
   -webkit-transform:none;
@@ -1594,8 +1595,8 @@ body.pushmenu-push-toleft  nav.navbar.bootsnav.sticked, body.pushmenu-push-tolef
 .owl-theme .owl-controls .owl-buttons div:hover,
 .owl-theme .owl-controls .owl-buttons div:focus,
 #expert_slider.owl-theme .owl-controls .owl-buttons div{
-	background:#73AE20;
-	border: 1px solid #73AE20;
+	background:#C1002B;
+	border: 1px solid #C1002B;
 	color:#fff;
 }
 #expert_slider.owl-theme .owl-controls .owl-buttons div:hover,
@@ -1643,7 +1644,7 @@ body.pushmenu-push-toleft  nav.navbar.bootsnav.sticked, body.pushmenu-push-tolef
 	left: 0;
 	-webkit-border-radius:4px;
 	border-radius:4px;
-	background: #73AE20;
+	background: #C1002B;
 	-webkit-transform: translateY(200%);
 	-ms-transform: translateY(200%);
 	-o-transform: translateY(200%);
@@ -1694,7 +1695,7 @@ body.pushmenu-push-toleft  nav.navbar.bootsnav.sticked, body.pushmenu-push-tolef
 	display:inline-block;
 }
 #review_slider h4{
-	color:#73AE20;
+	color:#C1002B;
 	font-weight:bold;
 }
 #review_slider p{
@@ -1772,7 +1773,7 @@ body.pushmenu-push-toleft  nav.navbar.bootsnav.sticked, body.pushmenu-push-tolef
 .icon_box i{
   display: inline-block;
   font-size:44px;
-  color:#73AE20;
+  color:#2D2D2D;
   position:relative;
 }
 .icon_box:hover i, .about-post:hover a > img{
@@ -1799,17 +1800,17 @@ body.pushmenu-push-toleft  nav.navbar.bootsnav.sticked, body.pushmenu-push-tolef
 	color:#fff;
 }
 .icon_box:nth-child(2n+1) i{
-	color:#3e9fbe;
+	color:#2D2D2D;
 }
 .icon_box:hover{
-	background:#73ae20;
+	background:#C1002B;
 	color:#fff;
 	cursor:pointer;
 	-webkit-border-radius:4px;
 	border-radius:4px;
 }
 .icon_box:nth-child(2n+1):hover{
-	background:#3e9fbe;
+	background:#C1002B;
 }
 
 .icon_box i,
@@ -1839,7 +1840,7 @@ body.pushmenu-push-toleft  nav.navbar.bootsnav.sticked, body.pushmenu-push-tolef
   line-height:50px;
 }
 .contact_address .address.second .icon{
-	background:#73AE20;
+	background:#C1002B;
 }
 #about .priorty .about-post h4, .contact_address .address h4{
   margin:10px 0 0 80px;
@@ -1859,7 +1860,7 @@ body.pushmenu-push-toleft  nav.navbar.bootsnav.sticked, body.pushmenu-push-tolef
 }
 #history .history_wrap p{ font-size:14px;}
 #history .history_wrap h3 > span{
-	color:#73AE20;
+	color:#C1002B;
 }
 #history .history_wrap .col-md-7{
 	padding-left:0;
@@ -1916,7 +1917,7 @@ body.pushmenu-push-toleft  nav.navbar.bootsnav.sticked, body.pushmenu-push-tolef
   margin-bottom: 0;
 }
 #counter .number-counters .counters-item i {
-  color: #73AE20;
+  color: #C1002B;
   display: block;
 }
 /* ----- Fun Facts ends ----- */
@@ -1925,11 +1926,11 @@ body.pushmenu-push-toleft  nav.navbar.bootsnav.sticked, body.pushmenu-push-tolef
 
 /* ----- Paralax  ----- */
 #parallax{
-	background:url(../images/parallax2.jpg) no-repeat;
+	background:url(../images/partenaires.png) no-repeat;
 	padding:10% 0;
 }
 #experts{
-	background:url(../images/parallax1.jpg) no-repeat;
+	background:url(../images/ggj2020.png) no-repeat;
 }
 .page_header{
 	background:url(../images/page-tittle.jpg) no-repeat;
@@ -1981,7 +1982,7 @@ body.pushmenu-push-toleft  nav.navbar.bootsnav.sticked, body.pushmenu-push-tolef
 	position: relative;
 	margin: 1rem;
 	padding: 2rem 1rem;
-	border-top: 3px solid #73ae20;
+	border-top: 3px solid #C1002B;
 	margin-top:0;
 	text-align:left;
 
@@ -2077,13 +2078,13 @@ body.pushmenu-push-toleft  nav.navbar.bootsnav.sticked, body.pushmenu-push-tolef
 	display: inline-block;
    margin-right:10px;
    vertical-align: middle;
-	color:#73AE20;
+	color:#C1002B;
 }
 .pricing_item a{
 	width:100%;
 }
 .pricing_item .btn_border{
-	border-color:#73ae20;
+	border-color:#C1002B;
 }
 /* ----- Pricings ends ----- */
 
@@ -2099,7 +2100,7 @@ body.pushmenu-push-toleft  nav.navbar.bootsnav.sticked, body.pushmenu-push-tolef
 	height:32px; width:32px;
 	-webkit-border-radius:50%;
 	border-radius:50%;
-	background:#73AE20;
+	background:#C1002B;
 	color:#fff;
 	display:inline-block;
 	float:left; line-height:32px;
@@ -2130,7 +2131,7 @@ body.pushmenu-push-toleft  nav.navbar.bootsnav.sticked, body.pushmenu-push-tolef
 .name{ font-size:0.813rem; display:block;}
 .widget .media .btn-primary, .widget .media form{ display:inline-block;}
 .logged{ color:#3e9fbe;}
-.logged:hover, .logged:focus{ color:#73AE20;
+.logged:hover, .logged:focus{ color:#C1002B;
 }
 #course_all .course h3{
 	font-size:1.4rem;
@@ -2317,8 +2318,8 @@ body.pushmenu-push-toleft  nav.navbar.bootsnav.sticked, body.pushmenu-push-tolef
   border-right:1px solid #d5d5d5;
 }
 .faq_content .items > li > a.expanded:after, .faq_content .items > li > a:hover::after{
-	background:#73AE20;
-	border-color:#73AE20;
+	background:#C1002B;
+	border-color:#C1002B;
 }
 .faq_content .sub-items {
   display: none;
@@ -2379,7 +2380,7 @@ faq_content .tab_drawer_heading:after{
   margin-top: 5px;
 }
 #blog .blog_newest .post_title:hover{
-	color:#73AE20;
+	color:#C1002B;
 }
 #blog .blog_newest .text{
 	display: table-cell;
@@ -2400,7 +2401,7 @@ faq_content .tab_drawer_heading:after{
 	color:#767676;
 }
 .blog-reply .reply{
-	color:#73AE20;
+	color:#C1002B;
 	font-size:0.813rem;
 }
 .media-left, .media > .pull-left {
@@ -2450,7 +2451,7 @@ form.findus textarea{
 	padding:15px;
 }
 .shopping_box .shop_content .price_product, .shop_info .price_product, .cart_table .price_product{
-	color:#73AE20;
+	color:#C1002B;
 }
 .shopping_box a.btn-cart{
 	position:absolute;
@@ -2462,7 +2463,7 @@ form.findus textarea{
 	opacity:1;
 }
 .shopping_box:hover a.title_link{
-	color:#73AE20;
+	color:#C1002B;
 }
 
 #shop .shop_info{}
@@ -2496,7 +2497,7 @@ form.findus textarea{
   font-size:14px;
 }
 .share ul > li a:hover, .share ul > li a:focus{
-	color:#73AE20;
+	color:#C1002B;
 }
 .shop_info .tag_cate{
 	font-size:14px;
@@ -2519,7 +2520,7 @@ form.findus textarea{
   padding: 20px;
 }
 .shop_tab .tabs li.active, .shop_tab .tabs li:hover, .shop_tab .tabs li:focus{
-	color:#73AE20;
+	color:#C1002B;
 	background:#fff;
 }
 .shop_tab .tab_content {
@@ -2630,7 +2631,7 @@ form.findus textarea{
   padding:17px 10px;
 }
 .totals .table-responsive tr > td.yellow_t{
-	color:#73AE20;
+	color:#C1002B;
 }
 /* ------------------ SHOP ------------------ */
 
@@ -2734,7 +2735,7 @@ form.findus textarea{
 
 #contact .contact_address{}
 .contact_address .address p > a:hover, .contact_address .address p > a:focus{
-	color:#73AE20;
+	color:#C1002B;
 
 }
 
@@ -2780,7 +2781,7 @@ footer .footer_panel p.address, .services p.address{
   margin-bottom:15px;
 }
 footer .footer_panel p.address a:hover{
-	color:#73AE20;
+	color:#C1002B;
 }
 footer .footer_panel p.address > i, .services p.address > i {
   display: inline-block;
