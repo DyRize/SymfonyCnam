@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Subject;
 use App\Entity\Teacher;
 use App\Form\TeacherType;
 use App\Repository\TeacherRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,6 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/teacher")
+ * @IsGranted("ROLE_ADMIN")
  */
 class TeacherController extends AbstractController
 {
@@ -37,6 +40,12 @@ class TeacherController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($teacher);
+
+            foreach ($form->get('subjects')->getData() as $subject) {
+                $updatedSubject = $entityManager->find(Subject::class, $subject->getId());
+                $updatedSubject->addTeacher($teacher);
+            }
+
             $entityManager->flush();
 
             return $this->redirectToRoute('teacher_index');
@@ -63,11 +72,22 @@ class TeacherController extends AbstractController
      */
     public function edit(Request $request, Teacher $teacher): Response
     {
+        $entityManager = $this->getDoctrine()->getManager();
+        $subjectRepository = $entityManager->getRepository(Subject::class);
+
         $form = $this->createForm(TeacherType::class, $teacher);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            foreach ($subjectRepository->findAll() as $subjectInDb) {
+                $subjectInDb->removeTeacher($teacher);
+            }
+            foreach ($form->get('subjects')->getData() as $subject) {
+                $updatedSubject = $entityManager->find(Subject::class, $subject->getId());
+                $updatedSubject->addTeacher($teacher);
+            }
+
+            $entityManager->flush();
 
             return $this->redirectToRoute('teacher_index');
         }

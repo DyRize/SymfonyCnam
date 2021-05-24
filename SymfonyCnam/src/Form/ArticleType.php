@@ -3,7 +3,9 @@
 namespace App\Form;
 
 use App\Entity\Article;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,10 +16,13 @@ class ArticleType extends AbstractType
         $builder
             ->add('title')
             ->add('content')
-            ->add('createdAt')
-            ->add('updatedAt')
-            ->add('author')
-            ->add('type')
+            ->add('type', EntityType::class, [
+                'class' => \App\Entity\ArticleType::class,
+                'choice_label' => function(\App\Entity\ArticleType $type){
+                    return sprintf('%s', $type->getLabel());
+                },
+                'placeholder' => 'Choose a type'
+            ])
         ;
     }
 

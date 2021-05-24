@@ -11,6 +11,18 @@
                 <th>Id</th>
                 <td>{{ teacher.id }}</td>
             </tr>
+			<tr>
+				<th>Name</th>
+				<td>{{ teacher.relatedUser }}</td>
+			</tr>
+			<tr>
+				<th>Name</th>
+				<td>{{ teacher.relatedUser }}</td>
+			</tr>
+			<tr>
+				<th>Subjects</th>
+				<td>{{ teacher.subjects | join(', ') }}</td>
+			</tr>
         </tbody>
     </table>
 
