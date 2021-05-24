@@ -19,33 +19,50 @@
 								<th>CreatedAt</th>
 								<th>UpdatedAt</th>
 								<th>Actions</th>
-								{% if app.user and is_granted("ROLE_BDE") %}
-									<th>Action</th>
-								{% endif %}
 							</tr>
 							</thead>
 							<tbody>
-							{% for article in articles %}
-								<tr>
-									<td>{{ article.id }}</td>
-									<td>{{ article.type.label }}</td>
-									<td>{{ article.title }}</td>
-									<td>{{ article.content }}</td>
-									<td>{{ article.author.firstName }} {{ article.author.lastName }}</td>
-									<td>{{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-									<td>{{ article.updatedAt ? article.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-									{% if app.user and is_granted("ROLE_BDE") %}
+							{% if role == 'BDE' or role == 'DELEGATE' %}
+								{% for lst_article in articles %}
+									{% for article in lst_article %}
+										<tr>
+											<td>{{ article.type.label }}</td>
+											<td>{{ article.title }}</td>
+											<td>{{ article.content }}</td>
+											<td>{{ article.author.firstName }} {{ article.author.lastName }}</td>
+											<td>{{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+											<td>{{ article.updatedAt ? article.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+											<td>
+												<a href="{{ path('article_show', {'id': article.id}) }}"><i class="fas fa-eye"></i></a>
+												<a href="{{ path('article_edit', {'id': article.id}) }}"><i class="fas fa-edit"></i></a>
+											</td>
+										</tr>
+									{% endfor %}
+								{% else %}
+									<tr>
+										<td colspan="6">Aucune donnée trouvée</td>
+									</tr>
+								{% endfor %}
+							{% else %}
+								{% for article in articles %}
+									<tr>
+										<td>{{ article.type.label }}</td>
+										<td>{{ article.title }}</td>
+										<td>{{ article.content }}</td>
+										<td>{{ article.author.firstName }} {{ article.author.lastName }}</td>
+										<td>{{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+										<td>{{ article.updatedAt ? article.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
 										<td>
 											<a href="{{ path('article_show', {'id': article.id}) }}"><i class="fas fa-eye"></i></a>
 											<a href="{{ path('article_edit', {'id': article.id}) }}"><i class="fas fa-edit"></i></a>
 										</td>
-									{% endif %}
-								</tr>
-							{% else %}
-								<tr>
-									<td colspan="6">Aucune donnée trouvée</td>
-								</tr>
-							{% endfor %}
+									</tr>
+								{% else %}
+									<tr>
+										<td colspan="6">no records found</td>
+									</tr>
+								{% endfor %}
+							{% endif %}
 							</tbody>
 						</table>
 					</div>
