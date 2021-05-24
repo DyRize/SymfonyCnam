@@ -3,18 +3,505 @@
 {% block title %}SymfonyCnam{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+	<h1>Formation <strong>Ingénieur Informatique</strong> et <strong>Multimédia</strong></h1>
+{% endblock %}
 
-<div class="example-wrapper">
-    <h1>Bienvenue sur l'application {{ application_name }}!</h1>
+{% block section %}
 
-    Cette application est en cours de développement
-    <ul>
-        <li>Vous pouvez <a href="/user">afficher la liste des utilisateurs</a></li>
-        <li>Ou bien <a href="/user/new">créer un utilisateur</a></li>
-    </ul>
-</div>
+	<!--ABout US-->
+	<section id="about" class="padding">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 text-center">
+					<h2 class="heading">
+						<span>Le CNAM</span> c'est quoi ?
+						<span class="divider-center"></span>
+					</h2>
+				</div>
+				<div class="icon_wrapclearfix">
+					<div class="col-sm-4 icon_box text-center margin_tophalf wow fadeInUp animated" data-wow-delay="300ms" style="visibility: visible; animation-delay: 300ms; animation-name: fadeInUp;">
+						<i class="fas fa-graduation-cap"></i>
+						<h4 class="text-capitalize bottom20 margin10">Un réseau d'écoles</h4>
+						<p class="no_bottom">CNAM a formé près de 20 000 Ingénieurs en France et dans le monde, 10 000 diplômés par an et 1000 000 d’anciens élèves.</p>
+					</div>
+					<div class="col-sm-4 icon_box text-center margin_tophalf wow fadeInUp animated" data-wow-delay="400ms" style="visibility: visible; animation-delay: 400ms; animation-name: fadeInUp;">
+						<i class="fas fa-landmark"></i>
+						<h4 class="text-capitalize bottom20 margin10">Une notoriété reconnue</h4>
+						<p class="no_bottom">Le CNAM est le plus ancien établissement public de France qui relève du ministère de l’Enseignement supérieur et de la Recherche. </p>
+					</div>
+					<div class="col-sm-4 icon_box text-center margin_tophalf wow fadeInUp animated" data-wow-delay="500ms" style="visibility: visible; animation-delay: 500ms; animation-name: fadeInUp;">
+						<i class="fas fa-star"></i>
+						<h4 class="text-capitalize bottom20 margin10">Une qualité d'enseignement</h4>
+						<p class="no_bottom">L’Ei CNAM fait partie de la conférence des grandes écoles.
+							Le cursus validés par la Commission des Titres d’Ingénieur.
+						</p>
+					</div>
+					<div class="col-sm-4 icon_box text-center margin_tophalf wow fadeInUp animated" data-wow-delay="500ms" style="visibility: visible; animation-delay: 500ms; animation-name: fadeInUp;">
+						<i class="fas fa-industry"></i>
+						<h4 class="text-capitalize bottom20 margin10">Une proximité avec les entreprises</h4>
+						<p class="no_bottom">Des formations construites en lien avec des clusters et des entreprises partenaire
+							pour répondre aux enjeux technologiques présents et futurs. </p>
+					</div>
+					<div class="col-sm-4 icon_box text-center margin_tophalf wow fadeInUp animated" data-wow-delay="400ms" style="visibility: visible; animation-delay: 400ms; animation-name: fadeInUp;">
+						<i class="fas fa-globe-europe"></i>
+						<h4 class="text-capitalize bottom20 margin10">Une implantation internationale</h4>
+						<p class="no_bottom">Le CNAM est présent dans plus de 150 centres d'enseignement en France et dans le monde au travers de 14 spécialités<br></p>
+					</div>
+					<div class="col-sm-4 icon_box text-center margin_tophalf wow fadeInUp animated" data-wow-delay="500ms" style="visibility: visible; animation-delay: 500ms; animation-name: fadeInUp;">
+						<i class="fas fa-award"></i>
+						<h4 class="text-capitalize bottom20 margin10">Des valeurs fortes</h4>
+						<p class="no_bottom">Renforcer l’excellence de la formation et de la recherche.
+							Favoriser la réussite de tous les talents.
+							Stimuler l’entreprenariat.
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--ABout US-->
+
+	<!--Paralax -->
+	<section id="parallax" class="parallax">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 text-center wow bounceIn">
+					<h1 class="bottom25 whitecolor"><strong>Nos partenaires</strong></h1>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--Paralax -->
+
+	<!-- Gallery -->
+	<section id="gallery" class="padding">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4">
+					<h2 class="heading heading_space"><span>Nos</span> projets<span class="divider-left"></span></h2>
+				</div>
+			</div>
+			<div id="projects" class="cbp">
+				<div class="cbp-item digital">
+					<img src="{{ asset('assets/images/gallery1.jpg')}}" alt="">
+					<div class="overlay">
+						<div class="centered text-center">
+							<a href="{{ asset('assets/images/gallery1.jpg') }}" class="cbp-lightbox opens"> <i class=" icon-expand"></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="cbp-item digital design">
+					<img src="{{ asset('assets/images/gallery2.jpg')}}" alt="">
+					<div class="overlay">
+						<div class="centered text-center">
+							<a href="{{ asset('assets/images/gallery2.jpg')}}" class="cbp-lightbox opens"> <i class=" icon-expand"></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="cbp-item digital">
+					<img src="{{ asset('assets/images/gallery3.jpg')}}" alt="">
+					<div class="overlay">
+						<div class="centered text-center">
+							<a href="{{ asset('assets/images/gallery3.jpg')}}" class="cbp-lightbox opens"> <i class=" icon-expand"></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="cbp-item graphics design">
+					<img src="{{ asset('assets/images/gallery4.jpg')}}" alt="">
+					<div class="overlay">
+						<div class="centered text-center">
+							<a href="{{ asset('assets/images/gallery4.jpg')}}" class="cbp-lightbox opens"> <i class=" icon-expand"></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="cbp-item brand graphics">
+					<img src="{{ asset('assets/images/gallery6.jpg')}}" alt="">
+					<div class="overlay">
+						<div class="centered text-center">
+							<a href="{{ asset('assets/images/gallery6.jpg')}}" class="cbp-lightbox opens"> <i class=" icon-expand"></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="cbp-item graphics">
+					<img src="{{ asset('assets/images/gallery8.jpg')}}" alt="">
+					<div class="overlay">
+						<div class="centered text-center">
+							<a href="{{ asset('assets/images/gallery8.jpg')}}" class="cbp-lightbox opens"> <i class=" icon-expand"></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="cbp-item brand">
+					<img src="{{ asset('assets/images/gallery5.jpg')}}" alt="">
+					<div class="overlay">
+						<div class="centered text-center">
+							<a href="{{ asset('assets/images/gallery5.jpg')}}" class="cbp-lightbox opens"> <i class=" icon-expand"></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="cbp-item brand">
+					<img src="{{ asset('assets/images/gallery7.jpg')}}" alt="">
+					<div class="overlay">
+						<div class="centered text-center">
+							<a href="{{ asset('assets/images/gallery7.jpg')}}" class="cbp-lightbox opens"> <i class=" icon-expand"></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="cbp-item digital brand">
+					<img src="{{ asset('assets/images/gallery10.jpg')}}" alt="">
+					<div class="overlay">
+						<div class="centered text-center">
+							<a href="{{ asset('assets/images/gallery10.jpg')}}" class="cbp-lightbox opens"> <i class=" icon-expand"></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="cbp-item design">
+					<img src="{{ asset('assets/images/gallery9.jpg')}}" alt="">
+					<div class="overlay">
+						<div class="centered text-center">
+							<a href="{{ asset('assets/images/gallery9.jpg')}}" class="cbp-lightbox opens"> <i class=" icon-expand"></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="cbp-item graphics">
+					<img src="{{ asset('assets/images/gallery13.jpg')}}" alt="">
+					<div class="overlay">
+						<div class="centered text-center">
+							<a href="{{ asset('assets/images/gallery13.jpg')}}" class="cbp-lightbox opens"> <i class=" icon-expand"></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="cbp-item brand digital">
+					<img src="{{ asset('assets/images/gallery12.jpg')}}" alt="">
+					<div class="overlay">
+						<div class="centered text-center">
+							<a href="{{ asset('assets/images/gallery12.jpg')}}" class="cbp-lightbox opens"> <i class=" icon-expand"></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="cbp-item design graphics">
+					<img src="{{ asset('assets/images/gallery11.jpg')}}" alt="">
+					<div class="overlay">
+						<div class="centered text-center">
+							<a href="{{ asset('assets/images/gallery11.jpg')}}" class="cbp-lightbox opens"> <i class=" icon-expand"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Gallery -->
+
+	<!-- experts -->
+	<section id="experts" class="padding parallax">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 wow fadeInDown">
+					<h2 class="heading heading_space"><span>Les </span> évènements<span class="divider-left"></span></h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="slider_wrapper">
+						<div id="expert_slider" class="owl-carousel">
+							<div class="item">
+								<div class="image bottom20">
+									<img src="{{ asset('assets/images/team1.jpg') }}" alt="experts" class="img-responsive border_radius">
+									<div class="overlay">
+										<div class="centered">
+											<ul class="social_icon">
+												<li><a href="#." class="facebook"><i class="fa fa-facebook"></i></a></li>
+												<li><a href="#." class="twitter"><i class="icon-twitter4"></i></a></li>
+												<li><a href="#." class="dribble"><i class="icon-dribbble5"></i></a></li>
+												<li><a href="#." class="instagram"><i class="icon-instagram"></i></a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<h3 class="bottom5">Cathy Winslet</h3>
+								<h5 class="color bottom15"><strong>Founder & CEO</strong></h5>
+								<p class="bottom15">We offer the most complete house renovating services... </p><p>in the country, from kitchen design to remodeling.</p>
+							</div>
+							<div class="item">
+								<div class="image bottom20">
+									<img src="{{ asset('assets/images/team2.jpg') }}" alt="experts" class="img-responsive border_radius">
+									<div class="overlay">
+										<div class="centered">
+											<ul class="social_icon">
+												<li><a href="#." class="facebook"><i class="fa fa-facebook"></i></a></li>
+												<li><a href="#." class="twitter"><i class="icon-twitter4"></i></a></li>
+												<li><a href="#." class="dribble"><i class="icon-dribbble5"></i></a></li>
+												<li><a href="#." class="instagram"><i class="icon-instagram"></i></a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<h3 class="bottom5">Warren Jhones</h3>
+								<h5 class="color bottom15"><strong>Founder & CEO</strong></h5>
+								<p class="bottom15">We offer the most complete house renovating services... </p><p>in the country, from kitchen design to remodeling.</p>
+							</div>
+							<div class="item">
+								<div class="image bottom20">
+									<img src="{{ asset('assets/images/team3.jpg') }}" alt="experts" class="img-responsive border_radius">
+									<div class="overlay">
+										<div class="centered">
+											<ul class="social_icon">
+												<li><a href="#." class="facebook"><i class="fa fa-facebook"></i></a></li>
+												<li><a href="#." class="twitter"><i class="icon-twitter4"></i></a></li>
+												<li><a href="#." class="dribble"><i class="icon-dribbble5"></i></a></li>
+												<li><a href="#." class="instagram"><i class="icon-instagram"></i></a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<h3 class="bottom5">Smith Clark</h3>
+								<h5 class="color bottom15"><strong>Founder & CEO</strong></h5>
+								<p class="bottom15">We offer the most complete house renovating services... </p><p>in the country, from kitchen design to remodeling.</p>
+							</div>
+							<div class="item">
+								<div class="image bottom20">
+									<img src="{{ asset('assets/images/team4.jpg') }}" alt="experts" class="img-responsive border_radius">
+									<div class="overlay">
+										<div class="centered">
+											<ul class="social_icon">
+												<li><a href="#." class="facebook"><i class="fa fa-facebook"></i></a></li>
+												<li><a href="#." class="twitter"><i class="icon-twitter4"></i></a></li>
+												<li><a href="#." class="dribble"><i class="icon-dribbble5"></i></a></li>
+												<li><a href="#." class="instagram"><i class="icon-instagram"></i></a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<h3 class="bottom5">Kate Marine</h3>
+								<h5 class="color bottom15"><strong>Founder & CEO</strong></h5>
+								<p class="bottom15">We offer the most complete house renovating services... </p><p>in the country, from kitchen design to remodeling.</p>
+							</div>
+							<div class="item">
+								<div class="image bottom20">
+									<img src="{{ asset('assets/images/team1.jpg') }}" alt="experts" class="img-responsive border_radius">
+									<div class="overlay">
+										<div class="centered">
+											<ul class="social_icon">
+												<li><a href="#." class="facebook"><i class="fa fa-facebook"></i></a></li>
+												<li><a href="#." class="twitter"><i class="icon-twitter4"></i></a></li>
+												<li><a href="#." class="dribble"><i class="icon-dribbble5"></i></a></li>
+												<li><a href="#." class="instagram"><i class="icon-instagram"></i></a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<h3 class="bottom5">Sara Loren</h3>
+								<h5 class="color bottom15"><strong>Founder & CEO</strong></h5>
+								<p class="bottom15">We offer the most complete house renovating services... </p><p>in the country, from kitchen design to remodeling.</p>
+							</div>
+							<div class="item">
+								<div class="image bottom20">
+									<img src="{{ asset('assets/images/team2.jpg') }}" alt="experts" class="img-responsive border_radius">
+									<div class="overlay">
+										<div class="centered">
+											<ul class="social_icon">
+												<li><a href="#." class="facebook"><i class="fa fa-facebook"></i></a></li>
+												<li><a href="#." class="twitter"><i class="icon-twitter4"></i></a></li>
+												<li><a href="#." class="dribble"><i class="icon-dribbble5"></i></a></li>
+												<li><a href="#." class="instagram"><i class="icon-instagram"></i></a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<h3 class="bottom5">Robert Wishter</h3>
+								<h5 class="color bottom15"><strong>Founder & CEO</strong></h5>
+								<p class="bottom15">We offer the most complete house renovating services... </p><p>in the country, from kitchen design to remodeling.</p>
+							</div>
+							<div class="item">
+								<div class="image bottom20">
+									<img src="{{ asset('assets/images/team3.jpg') }}" alt="experts" class="img-responsive border_radius">
+									<div class="overlay">
+										<div class="centered">
+											<ul class="social_icon">
+												<li><a href="#." class="facebook"><i class="fa fa-facebook"></i></a></li>
+												<li><a href="#." class="twitter"><i class="icon-twitter4"></i></a></li>
+												<li><a href="#." class="dribble"><i class="icon-dribbble5"></i></a></li>
+												<li><a href="#." class="instagram"><i class="icon-instagram"></i></a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<h3 class="bottom5">Kate Marine</h3>
+								<h5 class="color bottom15"><strong>Founder & CEO</strong></h5>
+								<p class="bottom15">We offer the most complete house renovating services... </p><p>in the country, from kitchen design to remodeling.</p>
+							</div>
+							<div class="item">
+								<div class="image bottom20">
+									<img src="{{ asset('assets/images/team4.jpg') }}" alt="experts" class="img-responsive border_radius">
+									<div class="overlay">
+										<div class="centered">
+											<ul class="social_icon">
+												<li><a href="#." class="facebook"><i class="fa fa-facebook"></i></a></li>
+												<li><a href="#." class="twitter"><i class="icon-twitter4"></i></a></li>
+												<li><a href="#." class="dribble"><i class="icon-dribbble5"></i></a></li>
+												<li><a href="#." class="instagram"><i class="icon-instagram"></i></a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<h3 class="bottom5">Kate Marine</h3>
+								<h5 class="color bottom15"><strong>Founder & CEO</strong></h5>
+								<p class="bottom15">We offer the most complete house renovating services... </p><p>in the country, from kitchen design to remodeling.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- experts -->
+
+	<!--Customers Review-->
+	<section id="reviews" class="padding bg_light">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 text-center wow fadeInDown">
+					<h2 class="heading heading_space"><span>Nos élèves</span> Témoignent <span class="divider-center"></span></h2>
+					<div id="review_slider" class="owl-carousel text-center">
+						<div class="item">
+							<img src="{{ asset('assets/images/customer1.png')}}" class="client_pic border_radius" alt="costomer">
+							<p class="review_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+								Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+							<h4>John Smith</h4>
+							<p>Ditector Shangha</p>
+						</div>
+						<div class="item">
+							<img src="{{ asset('assets/images/customer1.png')}}" class="client_pic border_radius" alt="costomer">
+							<p class="review_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+								Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+							<h4>kate Winslet</h4>
+							<p>Ditector Shangha</p>
+						</div>
+						<div class="item">
+							<img src="{{ asset('assets/images/customer1.png')}}" class="client_pic border_radius" alt="costomer">
+							<p class="review_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+								Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+							<h4>Robert Jhon</h4>
+							<p>Ditector Shangha</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--Customers Review-->
+
+	<!-- News-->
+	<section id="news" class="padding">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 wow fadeInDown">
+					<h2 class="heading heading_space"><span>Dernières</span> actualités <span class="divider-left"></span></h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="slider_wrapper">
+						<div id="news_slider" class="owl-carousel">
+							<div class="item">
+								<div class="content_wrap">
+									<div class="image">
+										<img src="{{ asset('assets/images/news1.jpg')}}" alt="Xwin" class="img-responsive border_radius">
+									</div>
+									<div class="news_box border_radius">
+										<h4><a href="blog_detail.html">4 Springtime Color Schemes to Try at Home</a></h4>
+										<ul class="commment">
+											<li><a href="#."><i class="icon-icons20"></i>June 6, 2017</a></li>
+											<li><a href="#."><i class="icon-comment"></i> 02</a></li>
+										</ul>
+										<p>We offer the most complete house Services in the country...</p>
+										<a href="blog_detail.html" class="readmore">Read More</a>
+									</div>
+								</div>
+							</div>
+							<div class="item">
+								<div class="content_wrap">
+									<div class="image">
+										<img src="{{ asset('assets/images/news2.jpg')}}" alt="Xwin" class="img-responsive border_radius">
+									</div>
+									<div class="news_box border_radius">
+										<h4><a href="blog_detail.html"> Springtime Color Schemes to Try at Home</a></h4>
+										<ul class="commment">
+											<li><a href="#."><i class="icon-icons20"></i>June 6, 2017</a></li>
+											<li><a href="#."><i class="icon-comment"></i> 02</a></li>
+										</ul>
+										<p>We offer the most complete house Services in the country...</p>
+										<a href="blog_detail.html" class="readmore">Read More</a>
+									</div>
+								</div>
+							</div>
+							<div class="item">
+								<div class="content_wrap">
+									<div class="image">
+										<img src="{{ asset('assets/images/news3.jpg')}}" alt="Xwin" class="img-responsive border_radius">
+									</div>
+									<div class="news_box border_radius">
+										<h4><a href="blog_detail.html">4 Springtime Color Schemes to Try at Home</a></h4>
+										<ul class="commment">
+											<li><a href="#."><i class="icon-icons20"></i>June 6, 2017</a></li>
+											<li><a href="#."><i class="icon-comment"></i> 02</a></li>
+										</ul>
+										<p>We offer the most complete house Services in the country...</p>
+										<a href="blog_detail.html" class="readmore">Read More</a>
+									</div>
+								</div>
+							</div>
+							<div class="item">
+								<div class="content_wrap">
+									<div class="image">
+										<img src="{{ asset('assets/images/news1.jpg')}}" alt="Xwin" class="img-responsive border_radius">
+									</div>
+									<div class="news_box border_radius">
+										<h4><a href="blog_detail.html">4 Springtime Color Schemes to Try at Home</a></h4>
+										<ul class="commment">
+											<li><a href="#."><i class="icon-icons20"></i>June 6, 2017</a></li>
+											<li><a href="#."><i class="icon-comment"></i> 02</a></li>
+										</ul>
+										<p>We offer the most complete house Services in the country...</p>
+										<a href="blog_detail.html" class="readmore">Read More</a>
+									</div>
+								</div>
+							</div>
+							<div class="item">
+								<div class="content_wrap">
+									<div class="image">
+										<img src="{{ asset('assets/images/news2.jpg')}}" alt="Xwin" class="img-responsive border_radius">
+									</div>
+									<div class="news_box border_radius">
+										<h4><a href="blog_detail.html">4 Springtime Color Schemes to Try at Home</a></h4>
+										<ul class="commment">
+											<li><a href="#."><i class="icon-icons20"></i>June 6, 2017</a></li>
+											<li><a href="#."><i class="icon-comment"></i> 02</a></li>
+										</ul>
+										<p>We offer the most complete house Services in the country...</p>
+										<a href="blog_detail.html" class="readmore">Read More</a>
+									</div>
+								</div>
+							</div>
+							<div class="item">
+								<div class="content_wrap">
+									<div class="image">
+										<img src="{{ asset('assets/s/news3.jpg')}}" alt="Xwin" class="img-responsive border_radius">
+									</div>
+									<div class="news_box border_radius">
+										<h4><a href="blog_detail.html">4 Springtime Color Schemes to Try at Home</a></h4>
+										<ul class="commment">
+											<li><a href="#."><i class="icon-icons20"></i>June 6, 2017</a></li>
+											<li><a href="#."><i class="icon-comment"></i> 02</a></li>
+										</ul>
+										<p>We offer the most complete house Services in the country...</p>
+										<a href="blog_detail.html" class="readmore">Read More</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 {% endblock %}
