@@ -3,14 +3,10 @@
 {% block title %}User{% endblock %}
 
 {% block body %}
-    <h1>User</h1>
+    <h1>{{ user.firstName }} {{ user.lastName }}</h1>
 
     <table class="table">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ user.id }}</td>
-            </tr>
             <tr>
                 <th>FirstName</th>
                 <td>{{ user.firstName }}</td>
@@ -24,39 +20,20 @@
                 <td>{{ user.email }}</td>
             </tr>
             <tr>
-                <th>Password</th>
-                <td>{{ user.password }}</td>
-            </tr>
-            <tr>
                 <th>BirthDate</th>
-                <td>{{ user.birthDate ? user.birthDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ user.birthDate ? user.birthDate|date('d/m/Y') : '' }}</td>
             </tr>
             <tr>
                 <th>PhoneNumber</th>
                 <td>{{ user.phoneNumber }}</td>
             </tr>
-            <tr>
-                <th>CreatedAt</th>
-                <td>{{ user.createdAt ? user.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>LastConnexionDate</th>
-                <td>{{ user.lastConnexionDate ? user.lastConnexionDate|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Roles</th>
-                <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-            </tr>
-            <tr>
-                <th>IsVerified</th>
-                <td>{{ user.isVerified ? 'Yes' : 'No' }}</td>
-            </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('user_index') }}">back to list</a>
+	<a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
 
-    <a href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
-
-    {{ include('user/_delete_form.html.twig') }}
+	{% if is_granted('ROLE_ADMIN') %}
+		<a href="{{ path('user_index') }}">back to list</a>
+    	{{ include('user/_delete_form.html.twig') }}
+	{% endif %}
 {% endblock %}
