@@ -17,23 +17,49 @@
             </tr>
         </thead>
         <tbody>
-        {% for article in articles %}
-            <tr>
-                <td>{{ article.title }}</td>
-                <td>{{ article.content }}</td>
-                <td>{{ article.author.firstName }} {{ article.author.lastName }}</td>
-                <td>{{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ article.updatedAt ? article.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('article_show', {'id': article.id}) }}">show</a>
-                    <a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
-        {% endfor %}
+
+		{% if role == 'BDE_DELEGATE' %}
+			{% for lst_article in articles %}
+				{% for article in lst_article %}
+					<tr>
+						<td>{{ article.type.label }}</td>
+						<td>{{ article.title }}</td>
+						<td>{{ article.content }}</td>
+						<td>{{ article.author.firstName }} {{ article.author.lastName }}</td>
+						<td>{{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+						<td>{{ article.updatedAt ? article.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+						<td>
+							<a href="{{ path('article_show', {'id': article.id}) }}">show</a>
+							<a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>
+						</td>
+					</tr>
+				{% endfor %}
+			{% else %}
+				<tr>
+					<td colspan="6">no records found</td>
+				</tr>
+			{% endfor %}
+		{% else %}
+			{% for article in articles %}
+					<tr>
+						<td>{{ article.type.label }}</td>
+						<td>{{ article.title }}</td>
+						<td>{{ article.content }}</td>
+						<td>{{ article.author.firstName }} {{ article.author.lastName }}</td>
+						<td>{{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+						<td>{{ article.updatedAt ? article.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+						<td>
+							<a href="{{ path('article_show', {'id': article.id}) }}">show</a>
+							<a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>
+						</td>
+					</tr>
+			{% else %}
+				<tr>
+					<td colspan="6">no records found</td>
+				</tr>
+			{% endfor %}
+		{% endif %}
+
         </tbody>
     </table>
 
