@@ -15,7 +15,6 @@ class StudentType extends AbstractType
             ->add('arrivedAt')
             ->add('graduatedAt')
             ->add('relatedUser')
-            ->add('types')
             ->add('promotion')
             ->add('subjects')
             ->add('projects')
