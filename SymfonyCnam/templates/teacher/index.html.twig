@@ -1,35 +1,48 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Teacher index{% endblock %}
+{% block title %}Liste des intervenants{% endblock %}
 
 {% block body %}
-    <h1>Teacher index</h1>
+	<div class="row">
+		<div class="col-sm-12">
+			<div class="card">
+				<div class="card-body">
+					<h5 class="card-title">Liste des intervenants</h5>
+					<div class="table-responsive">
+						<table class="table table-hover table-striped text-left">
+							<thead class="bg-danger text-white">
+							<tr>
+								<th>#</th>
+								<th>Nom</th>
+								<th>Responsable de</th>
+								<th>Action</th>
+							</tr>
+							</thead>
+							<tbody>
+							{% for teacher in teachers %}
+								<tr>
+									<td>{{ teacher.id }}</td>
+									<td>{{ teacher.relatedUser }}</td>
+									<td>{{ teacher.promotions | join(', ') }}</td>
+									<td>
+										<a href="{{ path('teacher_show', {'id': teacher.id}) }}"><i class="fas fa-eye"></i></a>
+										<a href="{{ path('teacher_edit', {'id': teacher.id}) }}"><i class="fas fa-edit"></i></a>
+									</td>
+								</tr>
+							{% else %}
+								<tr>
+									<td colspan="6">Aucune donnée trouvée</td>
+								</tr>
+							{% endfor %}
+							</tbody>
+						</table>
+					</div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for teacher in teachers %}
-            <tr>
-                <td>{{ teacher.id }}</td>
-                <td>{{ teacher.relatedUser }}</td>
-                <td>
-                    <a href="{{ path('teacher_show', {'id': teacher.id}) }}">show</a>
-                    <a href="{{ path('teacher_edit', {'id': teacher.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="2">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('teacher_new') }}">Create new</a>
+					<a href="{{ path('teacher_new') }}" class="btn btn-danger margin10">
+						Créer un nouvel intervenant
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
 {% endblock %}
