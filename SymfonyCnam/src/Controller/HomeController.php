@@ -56,7 +56,7 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route("/bde", name="home_bde")
+     * @Route("home/bde", name="home_bde")
      */
     public function bde(): Response
     {
