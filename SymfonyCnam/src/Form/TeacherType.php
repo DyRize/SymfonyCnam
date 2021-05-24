@@ -13,7 +13,6 @@ class TeacherType extends AbstractType
     {
         $builder
             ->add('relatedUser')
-            ->add('types')
             ->add('subjects')
         ;
     }
