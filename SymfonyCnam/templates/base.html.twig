@@ -42,18 +42,52 @@
 						</li>
 
 						<li class="nav-item">
-							<a class="nav-link" href="{{ path('home') }}">Modifier le contenu</a>
+							<a class="nav-link" href="#">Modifier le contenu</a>
 						</li>
 					{% elseif is_granted("ROLE_SPEAKER") %}
+						<li class="nav-item">
+							<a class="nav-link" href="#">Gérer les événements du planning</a>
+						</li>
 
-					{% elseif is_granted("ROLE_BDE") %}
-
-					{% elseif is_granted("ROLE_DELEGATE") %}
-
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('project_index') }}">Gérer les projets</a>
+						</li>
 					{% elseif is_granted("ROLE_STUDENT") %}
+						{% if is_granted("ROLE_DELEGATE") %}
+							<li class="nav-item">
+								<a class="nav-link" href="#">Gérer les événements du planning</a>
+							</li>
 
+							<li class="nav-item">
+								<a class="nav-link" href="#">Rédiger des informations</a>
+							</li>
+						{% endif %}
+
+						{% if is_granted("ROLE_BDE") %}
+							<li class="nav-item">
+								<a class="nav-link" href="{{ path('article_index') }}">Gérer les articles</a>
+							</li>
+						{% endif %}
+
+						<li class="nav-item">
+							<a class="nav-link" href="#">Gérer son compte</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="#">Proposer un projet</a>
+						</li>
 					{% else %}
+						<li class="nav-item">
+							<a class="nav-link" href="#">Présentation de la formation</a>
+						</li>
 
+						<li class="nav-item">
+							<a class="nav-link" href="#">Voir les CV</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('project_index') }}">Voir les projets</a>
+						</li>
 					{% endif %}
 
 				</ul>

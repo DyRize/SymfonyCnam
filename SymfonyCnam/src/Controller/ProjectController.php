@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Project;
 use App\Form\ProjectType;
 use App\Repository\ProjectRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -27,6 +28,7 @@ class ProjectController extends AbstractController
 
     /**
      * @Route("/new", name="project_new", methods={"GET","POST"})
+     * @IsGranted("ROLE_SPEAKER")
      */
     public function new(Request $request): Response
     {
@@ -50,6 +52,7 @@ class ProjectController extends AbstractController
 
     /**
      * @Route("/{id}", name="project_show", methods={"GET"})
+     * @IsGranted("ROLE_SPEAKER")
      */
     public function show(Project $project): Response
     {
@@ -80,6 +83,7 @@ class ProjectController extends AbstractController
 
     /**
      * @Route("/{id}", name="project_delete", methods={"POST"})
+     * @IsGranted("ROLE_SPEAKER")
      */
     public function delete(Request $request, Project $project): Response
     {
