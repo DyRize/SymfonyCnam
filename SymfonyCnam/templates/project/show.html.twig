@@ -27,6 +27,14 @@
                 <th>EndedAt</th>
                 <td>{{ project.endedAt ? project.endedAt|date('Y-m-d H:i:s') : '' }}</td>
             </tr>
+			<tr>
+				<th>Students</th>
+				<td>{{ project.students|join(', ') }}</td>
+			</tr>
+			<tr>
+				<th>Subjects</th>
+				<td>{{ project.subjects|join(', ') }}</td>
+			</tr>
         </tbody>
     </table>
 

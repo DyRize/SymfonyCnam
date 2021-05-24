@@ -13,6 +13,7 @@
                 <th>Label</th>
                 <th>StartedAt</th>
                 <th>EndedAt</th>
+                <th>Subjects</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -24,6 +25,7 @@
                 <td>{{ project.label }}</td>
                 <td>{{ project.startedAt ? project.startedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ project.endedAt ? project.endedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ project.subjects|join(', ') }}</td>
                 <td>
                     <a href="{{ path('project_show', {'id': project.id}) }}">show</a>
                     <a href="{{ path('project_edit', {'id': project.id}) }}">edit</a>
