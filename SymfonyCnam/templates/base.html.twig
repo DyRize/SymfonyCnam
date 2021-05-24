@@ -2,44 +2,820 @@
 <html>
     <head>
         <meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
         <title>{% block title %}Welcome!{% endblock %}</title>
         {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
 		<link rel="stylesheet" href="https://bootswatch.com/4/litera/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/animate.min.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootsnav.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/cubeportfolio.min.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/font-awesome.min.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/loader.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/owl.carousel.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/owl.transitions.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/settings.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
+		<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/Xwin-icons.css') }}">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+
+		<link rel="icon" href="{{ asset('assets/images/favicon.png') }}">
 		{% block stylesheets %}
             {#{{ encore_entry_link_tags('app') }}#}
         {% endblock %}
 
+		<script src="{{ asset('assets/js/jquery-2.2.3.js') }}"></script>
+		<script src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
+		<script src="{{ asset('assets/js/bootsnav.js') }}"></script>
+		<script src="{{ asset('assets/js/jquery.appear.js') }}"></script>
+		<script src="{{ asset('assets/js/jquery-countTo.js') }}"></script>
+		<script src="{{ asset('assets/js/jquery.parallax-1.1.3.js') }}"></script>
+		<script src="{{ asset('assets/js/owl.carousel.min.js') }}"></script>
+		<script src="{{ asset('assets/js/jquery.cubeportfolio.min.js') }}"></script>
+		<script src="{{ asset('assets/js/jquery.matchHeight-min.js') }}"></script>
+		<script src="{{ asset('assets/js/jquery.themepunch.tools.min.js') }}"></script>
+		<script src="{{ asset('assets/js/jquery.themepunch.revolution.min.js') }}"></script>
+		<script src="{{ asset('assets/js/revolution.extension.layeranimation.min.js') }}"></script>
+		<script src="{{ asset('assets/js/revolution.extension.navigation.min.js') }}"></script>
+		<script src="{{ asset('assets/js/revolution.extension.parallax.min.js') }}"></script>
+		<script src="{{ asset('assets/js/revolution.extension.slideanims.min.js') }}"></script>
+		<script src="{{ asset('assets/js/revolution.extension.video.min.js') }}"></script>
+		<script src="{{ asset('assets/js/wow.min.js') }}"></script>
+		<script src="{{ asset('assets/js/functions.js') }}"></script>
         {% block javascripts %}
             {#{{ encore_entry_script_tags('app') }}#}
         {% endblock %}
     </head>
-    <body>
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<a class="navbar-brand" href="/">SymfonyCnam</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
+	<body>
+	<a href="#" class="scrollToTop"><i class="fa fa-angle-up"></i></a>
 
-			<div class="collapse navbar-collapse" id="navbarColor03">
-				<ul class="navbar-nav mr-auto">
-					<li class="nav-item">
-						<a class="nav-link" href="/user">Users</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" href="/user/new">Create an user</a>
-					</li>
-				</ul>
-				{% if not app.user %}
-					<a href="{{ path('app_login') }}" type="button" class="btn btn-secondary my-2 my-sm-0">Login</a>
-				{% else %}
-					<a href="{{ path('app_logout') }}" type="button" class="btn btn-secondary my-2 my-sm-0">Logout</a>
-				{% endif %}
+	<!--Loader-->
+	<div class="loader">
+		<div class="spinner centered">
+			<div class="spinner-container container1">
+				<div class="circle1"></div>
+				<div class="circle2"></div>
+				<div class="circle3"></div>
+				<div class="circle4"></div>
+			</div>
+			<div class="spinner-container container2">
+				<div class="circle1"></div>
+				<div class="circle2"></div>
+				<div class="circle3"></div>
+				<div class="circle4"></div>
+			</div>
+		</div>
+	</div>
+
+	<!--Header-->
+	<header>
+		<nav class="navbar navbar-default navbar-fixed white no-background bootsnav pushy">
+			<div class="container">
+				<div id="menu_bars" class="right">
+					<span class="t1"></span>
+					<span class="t2"></span>
+					<span class="t3"></span>
+				</div>
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+						<i class="fa fa-bars"></i>
+					</button>
+					<a class="navbar-brand" href="index.html"><img src="{{ asset('assets/images/logo-white.png') }}" alt="logo" class="logo logo-display">
+						<img src="{{ asset('assets/images/logo.png') }}" class="logo logo-scrolled" alt="">
+					</a>
+				</div>
+				<div class="collapse navbar-collapse" id="navbar-menu">
+					<ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOut">
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" >Home</a>
+							<ul class="dropdown-menu">
+								<li><a href="index.html">Home 01</a></li>
+							</ul>
+						</li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" >Services</a>
+							<ul class="dropdown-menu">
+								<li><a href="services.html">Services</a></li>
+								<li><a href="services_detail.html">Services Detail</a></li>
+							</ul>
+						</li>
+						<li class="dropdown megamenu-fw">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages</a>
+							<ul class="dropdown-menu megamenu-content" role="menu">
+								<li>
+									<div class="row">
+										<div class="col-menu col-md-3">
+											<h6 class="title">Pages</h6>
+											<div class="content">
+												<ul class="menu-col">
+													<li><a href="about.html">About</a></li>
+													<li><a href="testinomial.html">Testinomial</a></li>
+													<li><a href="team.html">Team</a></li>
+													<li><a href="pricing.html">Pricings</a></li>
+												</ul>
+											</div>
+										</div>
+										<div class="col-menu col-md-3">
+											<h6 class="title">Blog</h6>
+											<div class="content">
+												<ul class="menu-col">
+													<li><a href="blog.html">Blog 01</a></li>
+													<li><a href="blog2.html">Blog 02</a></li>
+													<li><a href="blog3.html">Blog 03</a></li>
+													<li><a href="blog_detail.html">Blog Detail</a></li>
+												</ul>
+											</div>
+										</div>
+										<div class="col-menu col-md-3">
+											<h6 class="title">Shop</h6>
+											<div class="content">
+												<ul class="menu-col">
+													<li><a href="shop.html">Shop</a></li>
+													<li><a href="shop_detail.html">Shop Detail</a></li>
+													<li><a href="shop_cart.html">Cart</a></li>
+												</ul>
+											</div>
+										</div>
+										<div class="col-menu col-md-3">
+											<h6 class="title">Others</h6>
+											<div class="content">
+												<ul class="menu-col">
+													<li><a href="gallery.html">Gallery</a></li>
+													<li><a href="faq.html">Faq</a></li>
+													<li><a href="404.html">404</a></li>
+												</ul>
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</li>
+						<li><a href="blog.html">Blog</a></li>
+						<li><a href="contact.html">Contact Us</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="sidebar_menu">
+				<nav class="pushmenu pushmenu-right">
+					<a class="push-logo" href="index.html"><img src="{{ asset('assets/images/logo.png') }}" alt="logo"></a>
+					<ul class="push_nav centered">
+						<li class="dropdown clearfix">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" ><span>01.</span>Home</a>
+							<ul class="dropdown-menu">
+								<li><a href="index.html">Home 01</a></li>
+							</ul>
+						</li>
+						<li class="dropdown clearfix">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"> <span>02.</span> Services</a>
+							<ul class="dropdown-menu">
+								<li><a href="services.html">Services</a></li>
+								<li><a href="services_detail.html">Services Detail</a></li>
+							</ul>
+						</li>
+						<li class="dropdown clearfix">
+							<a href="#." class="dropdown-toggle" data-toggle="dropdown"> <span>04.</span> Pages</a>
+							<ul class="dropdown-menu clearfix">
+								<li><a href="shop.html">Shop</a></li>
+								<li><a href="shop_detail.html">Shop Detail</a></li>
+								<li><a href="shop_cart.html">Cart</a></li>
+								<li><a href="about.html">About</a></li>
+								<li><a href="testinomial.html">Testinomial</a></li>
+								<li><a href="teachers.html">Teachers</a></li>
+								<li><a href="pricing.html">Pricings</a></li>
+								<li><a href="gallery.html">Gallery</a></li>
+								<li><a href="faq.html">Faq</a></li>
+								<li><a href="404.html">404</a></li>
+							</ul>
+						</li>
+						<li class="dropdown clearfix">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"> <span>05.</span> Blog</a>
+							<ul class="dropdown-menu">
+								<li><a href="blog.html">Blog 01</a></li>
+								<li><a href="blog2.html">Blog 02</a></li>
+								<li><a href="blog3.html">Blog 03</a></li>
+								<li><a href="blog_detail.html">Blog Detail</a></li>
+							</ul>
+						</li>
+						<li><a href="contact.html"> <span>06.</span> Contact Us</a></li>
+					</ul>
+					<div class="clearfix"></div>
+					<ul class="social_icon black top25 bottom20">
+						<li><a href="#." class="facebook"><i class="fa fa-facebook"></i></a></li>
+						<li><a href="#." class="twitter"><i class="icon-twitter4"></i></a></li>
+						<li><a href="#." class="instagram"><i class="icon-instagram"></i></a></li>
+					</ul>
+				</nav>
 			</div>
 		</nav>
+	</header>
+
+
+	<!--Search-->
+	<div id="search">
+		<button type="button" class="close">×</button>
+		<form>
+			<input type="search" value="" placeholder="Search here...."  required/>
+			<button type="submit" class="btn btn_common yellow">Search</button>
+		</form>
+	</div>
+
+	<!--Slider-->
+	<section class="rev_slider_wrapper text-center">
+		<!-- START REVOLUTION SLIDER 5.0 auto mode -->
+		<div id="rev_slider_video" class="rev_slider"  data-version="5.0">
+			<ul>
+				<!-- SLIDE  -->
+				<li data-transition="fade">
+					<!-- MAIN IMAGE -->
+					<img src="{{ asset('assets/images/campus1.jpg') }}" alt="" data-bgposition="center center" data-bgfit="cover" data-bgparallax="10" class="rev-slidebg">
+
+					<div class="rs-background-video-layer"
+						 data-volume="mute"
+						 data-videowidth="100%"
+						 data-videoheight="100%"
+						 data-videomp4="video/video.mp4"
+						 data-videopreload="preload"
+						 data-videoloop="loop"
+						 data-forceCover="1"
+						 data-aspectratio="16:9"
+						 data-autoplay="true"
+						 data-autoplayonlyfirsttime="true"
+						 data-nextslideatend="true" ></div>
+
+					<div class="tp-caption tp-resizeme"
+						 data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
+						 data-y="['220','150','160','110']" data-voffset="['0','0','0','0']"
+						 data-responsive_offset="on"
+						 data-auto_responsive="on"
+						 data-fontsize="['48','38','28','18']"
+						 data-textAlign="['center','center','center','center']"
+						 data-type="text"
+						 data-visibility="['on','on','on','on']"
+						 data-transform_idle="o:1;"
+						 data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;s:1500;e:Power3.easeInOut;"
+						 data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
+						 data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
+						 data-start="800"><h1>Formation <strong>Ingénieur Informatique</strong> et <strong>Multimédia</strong></h1>
+					</div>
+				</li>
+			</ul>
+		</div><!-- END REVOLUTION SLIDER -->
+	</section>
+
+
+	<!--ABout US-->
+	<section id="about" class="padding">
 		<div class="container">
-        	{% block body %}{% endblock %}
+			<div class="row">
+				<div class="col-sm-12 text-center">
+					<h2 class="heading"><span>Le CNAM</span> c'est quoi ?<span class="divider-center"></span></h2>
+				</div>
+				<div class="icon_wrapclearfix">
+					<div class="col-sm-4 icon_box text-center margin_tophalf wow fadeInUp" data-wow-delay="300ms">
+						<i class="icon-bars"></i>
+						<h4 class="text-capitalize bottom20 margin10">Unique experience</h4>
+						<p class="no_bottom">Keep away from people who try to belittle your ambitions. Small people always do that but the really great.</p>
+					</div>
+					<div class="col-sm-4 icon_box text-center margin_tophalf wow fadeInUp" data-wow-delay="400ms">
+						<i class="icon-target"></i>
+						<h4 class="text-capitalize bottom20 margin10">Strategic Planning</h4>
+						<p class="no_bottom">Keep away from people who try to belittle your ambitions. Small people always do that but the really great.</p>
+					</div>
+					<div class="col-sm-4 icon_box text-center margin_tophalf wow fadeInUp" data-wow-delay="500ms">
+						<i class="icon-global"></i>
+						<h4 class="text-capitalize bottom20 margin10">Global Solutions</h4>
+						<p class="no_bottom">Keep away from people who try to belittle your ambitions. Small people always do that but the really great.</p>
+					</div>
+					<div class="col-sm-4 icon_box text-center margin_tophalf wow fadeInUp" data-wow-delay="500ms">
+						<i class="icon-globe"></i>
+						<h4 class="text-capitalize bottom20 margin10">Unlimited Features</h4>
+						<p class="no_bottom">Keep away from people who try to belittle your ambitions. Small people always do that but the really great.</p>
+					</div>
+					<div class="col-sm-4 icon_box text-center margin_tophalf wow fadeInUp" data-wow-delay="400ms">
+						<i class="icon-layers"></i>
+						<h4 class="text-capitalize bottom20 margin10">Unlimited Features</h4>
+						<p class="no_bottom">Keep away from people who try to belittle your ambitions. Small people always do that but the really great.</p>
+					</div>
+					<div class="col-sm-4 icon_box text-center margin_tophalf wow fadeInUp" data-wow-delay="500ms">
+						<i class="icon-laptop"></i>
+						<h4 class="text-capitalize bottom20 margin10">Unlimited Features</h4>
+						<p class="no_bottom">Keep away from people who try to belittle your ambitions. Small people always do that but the really great.</p>
+					</div>
+				</div>
+			</div>
 		</div>
-    </body>
+	</section>
+	<!--ABout US-->
+
+
+	<!--Paralax -->
+	<section id="parallax" class="parallax">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 text-center wow bounceIn">
+					<p class="bottom25 whitecolor">Unleash your creative potential with Xwin</p>
+					<h1 class="bottom25 whitecolor">Looking For Exclusive Digital Services?</h1>
+					<a href="#." class="border_radius btn_common white_border">Get a Quote</a>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--Paralax -->
+
+
+	<!-- Gallery -->
+	<section id="gallery" class="padding">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4">
+					<h2 class="heading heading_space"><span>Nos</span> projets<span class="divider-left"></span></h2>
+				</div>
+				<div class="col-sm-8">
+					<div id="project-filter" class="cbp-l-filters">
+						<div data-filter="*" class="cbp-filter-item-active cbp-filter-item">ALL IMAGES</div>
+						<div data-filter=".digital" class="cbp-filter-item">Digital </div>
+						<div data-filter=".design" class="cbp-filter-item">Design</div>
+						<div data-filter=".brand" class="cbp-filter-item">Brand</div>
+						<div data-filter=".graphics" class="cbp-filter-item">Graphics</div>
+					</div>
+				</div>
+			</div>
+			<div id="projects" class="cbp">
+				<div class="cbp-item digital">
+					<img src="{{ asset('assets/images/gallery1.jpg')}}" alt="">
+					<div class="overlay">
+						<div class="centered text-center">
+							<a href="{{ asset('assets/images/gallery1.jpg') }}" class="cbp-lightbox opens"> <i class=" icon-expand"></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="cbp-item digital design">
+					<img src="{{ asset('assets/images/gallery2.jpg')}}" alt="">
+					<div class="overlay">
+						<div class="centered text-center">
+							<a href="{{ asset('assets/images/gallery2.jpg')}}" class="cbp-lightbox opens"> <i class=" icon-expand"></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="cbp-item digital">
+					<img src="{{ asset('assets/images/gallery3.jpg')}}" alt="">
+					<div class="overlay">
+						<div class="centered text-center">
+							<a href="{{ asset('assets/images/gallery3.jpg')}}" class="cbp-lightbox opens"> <i class=" icon-expand"></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="cbp-item graphics design">
+					<img src="{{ asset('assets/images/gallery4.jpg')}}" alt="">
+					<div class="overlay">
+						<div class="centered text-center">
+							<a href="{{ asset('assets/images/gallery4.jpg')}}" class="cbp-lightbox opens"> <i class=" icon-expand"></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="cbp-item brand graphics">
+					<img src="{{ asset('assets/images/gallery6.jpg')}}" alt="">
+					<div class="overlay">
+						<div class="centered text-center">
+							<a href="{{ asset('assets/images/gallery6.jpg')}}" class="cbp-lightbox opens"> <i class=" icon-expand"></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="cbp-item graphics">
+					<img src="{{ asset('assets/images/gallery8.jpg')}}" alt="">
+					<div class="overlay">
+						<div class="centered text-center">
+							<a href="{{ asset('assets/images/gallery8.jpg')}}" class="cbp-lightbox opens"> <i class=" icon-expand"></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="cbp-item brand">
+					<img src="{{ asset('assets/images/gallery5.jpg')}}" alt="">
+					<div class="overlay">
+						<div class="centered text-center">
+							<a href="{{ asset('assets/images/gallery5.jpg')}}" class="cbp-lightbox opens"> <i class=" icon-expand"></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="cbp-item brand">
+					<img src="{{ asset('assets/images/gallery7.jpg')}}" alt="">
+					<div class="overlay">
+						<div class="centered text-center">
+							<a href="{{ asset('assets/images/gallery7.jpg')}}" class="cbp-lightbox opens"> <i class=" icon-expand"></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="cbp-item digital brand">
+					<img src="{{ asset('assets/images/gallery10.jpg')}}" alt="">
+					<div class="overlay">
+						<div class="centered text-center">
+							<a href="{{ asset('assets/images/gallery10.jpg')}}" class="cbp-lightbox opens"> <i class=" icon-expand"></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="cbp-item design">
+					<img src="{{ asset('assets/images/gallery9.jpg')}}" alt="">
+					<div class="overlay">
+						<div class="centered text-center">
+							<a href="{{ asset('assets/images/gallery9.jpg')}}" class="cbp-lightbox opens"> <i class=" icon-expand"></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="cbp-item graphics">
+					<img src="{{ asset('assets/images/gallery13.jpg')}}" alt="">
+					<div class="overlay">
+						<div class="centered text-center">
+							<a href="{{ asset('assets/images/gallery13.jpg')}}" class="cbp-lightbox opens"> <i class=" icon-expand"></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="cbp-item brand digital">
+					<img src="{{ asset('assets/images/gallery12.jpg')}}" alt="">
+					<div class="overlay">
+						<div class="centered text-center">
+							<a href="{{ asset('assets/images/gallery12.jpg')}}" class="cbp-lightbox opens"> <i class=" icon-expand"></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="cbp-item design graphics">
+					<img src="{{ asset('assets/images/gallery11.jpg')}}" alt="">
+					<div class="overlay">
+						<div class="centered text-center">
+							<a href="{{ asset('assets/images/gallery11.jpg')}}" class="cbp-lightbox opens"> <i class=" icon-expand"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Gallery -->
+
+
+	<!-- experts -->
+	<section id="experts" class="padding parallax">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 wow fadeInDown">
+					<h2 class="heading heading_space"><span>Les </span> évènements<span class="divider-left"></span></h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="slider_wrapper">
+						<div id="expert_slider" class="owl-carousel">
+							<div class="item">
+								<div class="image bottom20">
+									<img src="images/team1.jpg" alt="experts" class="img-responsive border_radius">
+									<div class="overlay">
+										<div class="centered">
+											<ul class="social_icon">
+												<li><a href="#." class="facebook"><i class="fa fa-facebook"></i></a></li>
+												<li><a href="#." class="twitter"><i class="icon-twitter4"></i></a></li>
+												<li><a href="#." class="dribble"><i class="icon-dribbble5"></i></a></li>
+												<li><a href="#." class="instagram"><i class="icon-instagram"></i></a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<h3 class="bottom5">Cathy Winslet</h3>
+								<h5 class="color bottom15"><strong>Founder & CEO</strong></h5>
+								<p class="bottom15">We offer the most complete house renovating services... </p><p>in the country, from kitchen design to remodeling.</p>
+							</div>
+							<div class="item">
+								<div class="image bottom20">
+									<img src="images/team2.jpg" alt="experts" class="img-responsive border_radius">
+									<div class="overlay">
+										<div class="centered">
+											<ul class="social_icon">
+												<li><a href="#." class="facebook"><i class="fa fa-facebook"></i></a></li>
+												<li><a href="#." class="twitter"><i class="icon-twitter4"></i></a></li>
+												<li><a href="#." class="dribble"><i class="icon-dribbble5"></i></a></li>
+												<li><a href="#." class="instagram"><i class="icon-instagram"></i></a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<h3 class="bottom5">Warren Jhones</h3>
+								<h5 class="color bottom15"><strong>Founder & CEO</strong></h5>
+								<p class="bottom15">We offer the most complete house renovating services... </p><p>in the country, from kitchen design to remodeling.</p>
+							</div>
+							<div class="item">
+								<div class="image bottom20">
+									<img src="images/team3.jpg" alt="experts" class="img-responsive border_radius">
+									<div class="overlay">
+										<div class="centered">
+											<ul class="social_icon">
+												<li><a href="#." class="facebook"><i class="fa fa-facebook"></i></a></li>
+												<li><a href="#." class="twitter"><i class="icon-twitter4"></i></a></li>
+												<li><a href="#." class="dribble"><i class="icon-dribbble5"></i></a></li>
+												<li><a href="#." class="instagram"><i class="icon-instagram"></i></a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<h3 class="bottom5">Smith Clark</h3>
+								<h5 class="color bottom15"><strong>Founder & CEO</strong></h5>
+								<p class="bottom15">We offer the most complete house renovating services... </p><p>in the country, from kitchen design to remodeling.</p>
+							</div>
+							<div class="item">
+								<div class="image bottom20">
+									<img src="images/team4.jpg" alt="experts" class="img-responsive border_radius">
+									<div class="overlay">
+										<div class="centered">
+											<ul class="social_icon">
+												<li><a href="#." class="facebook"><i class="fa fa-facebook"></i></a></li>
+												<li><a href="#." class="twitter"><i class="icon-twitter4"></i></a></li>
+												<li><a href="#." class="dribble"><i class="icon-dribbble5"></i></a></li>
+												<li><a href="#." class="instagram"><i class="icon-instagram"></i></a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<h3 class="bottom5">Kate Marine</h3>
+								<h5 class="color bottom15"><strong>Founder & CEO</strong></h5>
+								<p class="bottom15">We offer the most complete house renovating services... </p><p>in the country, from kitchen design to remodeling.</p>
+							</div>
+							<div class="item">
+								<div class="image bottom20">
+									<img src="images/team1.jpg" alt="experts" class="img-responsive border_radius">
+									<div class="overlay">
+										<div class="centered">
+											<ul class="social_icon">
+												<li><a href="#." class="facebook"><i class="fa fa-facebook"></i></a></li>
+												<li><a href="#." class="twitter"><i class="icon-twitter4"></i></a></li>
+												<li><a href="#." class="dribble"><i class="icon-dribbble5"></i></a></li>
+												<li><a href="#." class="instagram"><i class="icon-instagram"></i></a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<h3 class="bottom5">Sara Loren</h3>
+								<h5 class="color bottom15"><strong>Founder & CEO</strong></h5>
+								<p class="bottom15">We offer the most complete house renovating services... </p><p>in the country, from kitchen design to remodeling.</p>
+							</div>
+							<div class="item">
+								<div class="image bottom20">
+									<img src="images/team2.jpg" alt="experts" class="img-responsive border_radius">
+									<div class="overlay">
+										<div class="centered">
+											<ul class="social_icon">
+												<li><a href="#." class="facebook"><i class="fa fa-facebook"></i></a></li>
+												<li><a href="#." class="twitter"><i class="icon-twitter4"></i></a></li>
+												<li><a href="#." class="dribble"><i class="icon-dribbble5"></i></a></li>
+												<li><a href="#." class="instagram"><i class="icon-instagram"></i></a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<h3 class="bottom5">Robert Wishter</h3>
+								<h5 class="color bottom15"><strong>Founder & CEO</strong></h5>
+								<p class="bottom15">We offer the most complete house renovating services... </p><p>in the country, from kitchen design to remodeling.</p>
+							</div>
+							<div class="item">
+								<div class="image bottom20">
+									<img src="images/team3.jpg" alt="experts" class="img-responsive border_radius">
+									<div class="overlay">
+										<div class="centered">
+											<ul class="social_icon">
+												<li><a href="#." class="facebook"><i class="fa fa-facebook"></i></a></li>
+												<li><a href="#." class="twitter"><i class="icon-twitter4"></i></a></li>
+												<li><a href="#." class="dribble"><i class="icon-dribbble5"></i></a></li>
+												<li><a href="#." class="instagram"><i class="icon-instagram"></i></a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<h3 class="bottom5">Kate Marine</h3>
+								<h5 class="color bottom15"><strong>Founder & CEO</strong></h5>
+								<p class="bottom15">We offer the most complete house renovating services... </p><p>in the country, from kitchen design to remodeling.</p>
+							</div>
+							<div class="item">
+								<div class="image bottom20">
+									<img src="images/team4.jpg" alt="experts" class="img-responsive border_radius">
+									<div class="overlay">
+										<div class="centered">
+											<ul class="social_icon">
+												<li><a href="#." class="facebook"><i class="fa fa-facebook"></i></a></li>
+												<li><a href="#." class="twitter"><i class="icon-twitter4"></i></a></li>
+												<li><a href="#." class="dribble"><i class="icon-dribbble5"></i></a></li>
+												<li><a href="#." class="instagram"><i class="icon-instagram"></i></a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<h3 class="bottom5">Kate Marine</h3>
+								<h5 class="color bottom15"><strong>Founder & CEO</strong></h5>
+								<p class="bottom15">We offer the most complete house renovating services... </p><p>in the country, from kitchen design to remodeling.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- experts -->
+
+	<!--Customers Review-->
+	<section id="reviews" class="padding bg_light">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 text-center wow fadeInDown">
+					<h2 class="heading heading_space"><span>Nos élèves</span> Témoignent <span class="divider-center"></span></h2>
+					<div id="review_slider" class="owl-carousel text-center">
+						<div class="item">
+							<img src="{{ asset('assets/images/customer1.png')}}" class="client_pic border_radius" alt="costomer">
+							<p class="review_text">I've been happy with the services provided by Xwin LLC. Scooter Libby has been wonderful! He has returned my calls quickly, and he answered all my questions. This is required when, for example, the final text is not yet available. We are here to help you from the initial phase to the final Xwin phase.</p>
+							<h4>John Smith</h4>
+							<p>Ditector Shangha</p>
+						</div>
+						<div class="item">
+							<img src="{{ asset('assets/images/customer1.png')}}" class="client_pic border_radius" alt="costomer">
+							<p class="review_text">I've been happy with the services provided by Xwin LLC. Scooter Libby has been wonderful! He has returned my calls quickly, and he answered all my questions. This is required when, for example, the final text is not yet available. We are here to help you from the initial phase to the final Xwin phase.</p>
+							<h4>kate Winslet</h4>
+							<p>Ditector Shangha</p>
+						</div>
+						<div class="item">
+							<img src="{{ asset('assets/images/customer1.png')}}" class="client_pic border_radius" alt="costomer">
+							<p class="review_text">I've been happy with the services provided by Xwin LLC. We are here to help you from the initial phase to the final Xwin phase. Scooter Libby has been wonderful! He has returned my calls quickly, and he answered all my questions. This is required when, for example, the final text is not yet available. </p>
+							<h4>Robert Jhon</h4>
+							<p>Ditector Shangha</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--Customers Review-->
+
+	<!-- News-->
+	<section id="news" class="padding">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 wow fadeInDown">
+					<h2 class="heading heading_space"><span>Dernières</span> actualités <span class="divider-left"></span></h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="slider_wrapper">
+						<div id="news_slider" class="owl-carousel">
+							<div class="item">
+								<div class="content_wrap">
+									<div class="image">
+										<img src="{{ asset('assets/images/news1.jpg')}}" alt="Xwin" class="img-responsive border_radius">
+									</div>
+									<div class="news_box border_radius">
+										<h4><a href="blog_detail.html">4 Springtime Color Schemes to Try at Home</a></h4>
+										<ul class="commment">
+											<li><a href="#."><i class="icon-icons20"></i>June 6, 2017</a></li>
+											<li><a href="#."><i class="icon-comment"></i> 02</a></li>
+										</ul>
+										<p>We offer the most complete house Services in the country...</p>
+										<a href="blog_detail.html" class="readmore">Read More</a>
+									</div>
+								</div>
+							</div>
+							<div class="item">
+								<div class="content_wrap">
+									<div class="image">
+										<img src="{{ asset('assets/images/news2.jpg')}}" alt="Xwin" class="img-responsive border_radius">
+									</div>
+									<div class="news_box border_radius">
+										<h4><a href="blog_detail.html"> Springtime Color Schemes to Try at Home</a></h4>
+										<ul class="commment">
+											<li><a href="#."><i class="icon-icons20"></i>June 6, 2017</a></li>
+											<li><a href="#."><i class="icon-comment"></i> 02</a></li>
+										</ul>
+										<p>We offer the most complete house Services in the country...</p>
+										<a href="blog_detail.html" class="readmore">Read More</a>
+									</div>
+								</div>
+							</div>
+							<div class="item">
+								<div class="content_wrap">
+									<div class="image">
+										<img src="{{ asset('assets/images/news3.jpg')}}" alt="Xwin" class="img-responsive border_radius">
+									</div>
+									<div class="news_box border_radius">
+										<h4><a href="blog_detail.html">4 Springtime Color Schemes to Try at Home</a></h4>
+										<ul class="commment">
+											<li><a href="#."><i class="icon-icons20"></i>June 6, 2017</a></li>
+											<li><a href="#."><i class="icon-comment"></i> 02</a></li>
+										</ul>
+										<p>We offer the most complete house Services in the country...</p>
+										<a href="blog_detail.html" class="readmore">Read More</a>
+									</div>
+								</div>
+							</div>
+							<div class="item">
+								<div class="content_wrap">
+									<div class="image">
+										<img src="{{ asset('assets/images/news1.jpg')}}" alt="Xwin" class="img-responsive border_radius">
+									</div>
+									<div class="news_box border_radius">
+										<h4><a href="blog_detail.html">4 Springtime Color Schemes to Try at Home</a></h4>
+										<ul class="commment">
+											<li><a href="#."><i class="icon-icons20"></i>June 6, 2017</a></li>
+											<li><a href="#."><i class="icon-comment"></i> 02</a></li>
+										</ul>
+										<p>We offer the most complete house Services in the country...</p>
+										<a href="blog_detail.html" class="readmore">Read More</a>
+									</div>
+								</div>
+							</div>
+							<div class="item">
+								<div class="content_wrap">
+									<div class="image">
+										<img src="{{ asset('assets/images/news2.jpg')}}" alt="Xwin" class="img-responsive border_radius">
+									</div>
+									<div class="news_box border_radius">
+										<h4><a href="blog_detail.html">4 Springtime Color Schemes to Try at Home</a></h4>
+										<ul class="commment">
+											<li><a href="#."><i class="icon-icons20"></i>June 6, 2017</a></li>
+											<li><a href="#."><i class="icon-comment"></i> 02</a></li>
+										</ul>
+										<p>We offer the most complete house Services in the country...</p>
+										<a href="blog_detail.html" class="readmore">Read More</a>
+									</div>
+								</div>
+							</div>
+							<div class="item">
+								<div class="content_wrap">
+									<div class="image">
+										<img src="{{ asset('assets/s/news3.jpg')}}" alt="Xwin" class="img-responsive border_radius">
+									</div>
+									<div class="news_box border_radius">
+										<h4><a href="blog_detail.html">4 Springtime Color Schemes to Try at Home</a></h4>
+										<ul class="commment">
+											<li><a href="#."><i class="icon-icons20"></i>June 6, 2017</a></li>
+											<li><a href="#."><i class="icon-comment"></i> 02</a></li>
+										</ul>
+										<p>We offer the most complete house Services in the country...</p>
+										<a href="blog_detail.html" class="readmore">Read More</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+
+	<!--FOOTER-->
+	<footer class="padding-top">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 col-sm-4 footer_panel bottom25">
+					<h3 class="heading bottom25">About Us<span class="divider-left"></span></h3>
+					<a href="index.html" class="footer_logo bottom25"><img src="{{ asset('assets/images/logo-white.png')}}" alt="Xwin"></a>
+					<p>We offer the most complete house renovating services in the country, from kitchen design to bathroom remodeling.</p>
+					<ul class="social_icon top25">
+						<li><a href="#." class="facebook"><i class="fa fa-facebook"></i></a></li>
+						<li><a href="#." class="twitter"><i class="icon-twitter4"></i></a></li>
+						<li><a href="#." class="dribble"><i class="icon-dribbble5"></i></a></li>
+						<li><a href="#." class="instagram"><i class="icon-instagram"></i></a></li>
+						<li><a href="#." class="vimo"><i class="icon-vimeo4"></i></a></li>
+					</ul>
+				</div>
+				<div class="col-md-4 col-sm-4 footer_panel bottom25">
+					<h3 class="heading bottom25">Quick Links<span class="divider-left"></span></h3>
+					<ul class="links">
+						<li><a href="#."><i class="icon-chevron-small-right"></i>Home</a></li>
+						<li><a href="#."><i class="icon-chevron-small-right"></i>Company</a></li>
+						<li><a href="#."><i class="icon-chevron-small-right"></i>Services</a></li>
+						<li><a href="#."><i class="icon-chevron-small-right"></i>Our Team</a></li>
+						<li><a href="#."><i class="icon-chevron-small-right"></i>Company History</a></li>
+						<li><a href="#."><i class="icon-chevron-small-right"></i>Certifications</a></li>
+						<li><a href="#."><i class="icon-chevron-small-right"></i>Blog</a></li>
+						<li><a href="#."><i class="icon-chevron-small-right"></i>Shop</a></li>
+						<li><a href="#."><i class="icon-chevron-small-right"></i>Privacy Policy</a></li>
+						<li><a href="#."><i class="icon-chevron-small-right"></i>Contact Us</a></li>
+					</ul>
+				</div>
+				<div class="col-md-4 col-sm-4 footer_panel bottom25">
+					<h3 class="heading bottom25">Keep in Touch <span class="divider-left"></span></h3>
+					<p class=" address"><i class="icon-map-pin"></i>198 West 21th Street Victoria 8007, Australia</p>
+					<p class=" address"><i class="icon-phone"></i>(654) 332-112-222</p>
+					<p class=" address"><i class="icon-envelope"></i><a href="mailto:Xwin@info.com">Xwin@info.com</a></p>
+					<img src="{{ asset('assets/images/footer-map.png')}}" alt="we are here" class="img-responsive">
+				</div>
+			</div>
+		</div>
+	</footer>
+	<div class="copyright">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<p>Copyright &copy; 2017 <a href="#.">Xwin</a>. all rights reserved.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--FOOTER ends-->
+	</body>
 </html>
