@@ -44,11 +44,9 @@
 					</table>
 				</div>
 
-				{% if app.user and is_granted("ROLE_SPEAKER") %}
-					<a href="{{ path('promotion_new') }}" class="btn btn-danger margin10">
+				<a href="{{ path('promotion_new') }}" class="btn btn-danger margin10">
 						Créer une nouvelle promotion
-					</a>
-				{% endif %}
+				</a>
 			</div>
 		</div>
 	</div>
