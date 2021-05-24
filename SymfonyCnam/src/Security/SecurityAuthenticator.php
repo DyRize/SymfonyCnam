@@ -96,16 +96,7 @@ class SecurityAuthenticator extends AbstractFormLoginAuthenticator implements Pa
         }
 
         // Return to route after valid connexion
-        $user = $token->getUser();
-
-        if (in_array('ROLE_ADMIN', $user->getRoles())) {
-            return new RedirectResponse($this->urlGenerator->generate('home_admin'));
-        } elseif (in_array('ROLE_SPEAKER', $user->getRoles())) {
-            return new RedirectResponse($this->urlGenerator->generate('home_speaker'));
-        } elseif (in_array('ROLE_BDE', $user->getRoles())) {
-            return new RedirectResponse($this->urlGenerator->generate('home_bde'));
-        }
-        return new RedirectResponse($this->urlGenerator->generate('home_student'));
+        return new RedirectResponse($this->urlGenerator->generate('home'));
     }
 
     protected function getLoginUrl(): string
