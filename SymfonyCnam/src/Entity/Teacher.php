@@ -26,11 +26,6 @@ class Teacher
     private $relatedUser;
 
     /**
-     * @ORM\ManyToMany(targetEntity=TeacherType::class, mappedBy="teachers")
-     */
-    private $types;
-
-    /**
      * @ORM\OneToMany(targetEntity=Promotion::class, mappedBy="manager")
      */
     private $promotions;
@@ -60,33 +55,6 @@ class Teacher
     public function setRelatedUser(User $relatedUser): self
     {
         $this->relatedUser = $relatedUser;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|TeacherType[]
-     */
-    public function getTypes(): Collection
-    {
-        return $this->types;
-    }
-
-    public function addType(TeacherType $type): self
-    {
-        if (!$this->types->contains($type)) {
-            $this->types[] = $type;
-            $type->addTeacher($this);
-        }
-
-        return $this;
-    }
-
-    public function removeType(TeacherType $type): self
-    {
-        if ($this->types->removeElement($type)) {
-            $type->removeTeacher($this);
-        }
 
         return $this;
     }
@@ -150,6 +118,6 @@ class Teacher
 
     public function __toString()
     {
-        return $this->getRelatedUser()->getFirstName();
+        return $this->relatedUser->getFirstName() . ' ' . $this->relatedUser->getLastName();
     }
 }

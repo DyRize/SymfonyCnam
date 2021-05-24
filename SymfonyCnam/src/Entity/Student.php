@@ -36,11 +36,6 @@ class Student
     private $relatedUser;
 
     /**
-     * @ORM\ManyToMany(targetEntity=StudentType::class, mappedBy="students")
-     */
-    private $types;
-
-    /**
      * @ORM\ManyToOne(targetEntity=Promotion::class, inversedBy="students")
      * @ORM\JoinColumn(nullable=false)
      */
@@ -106,33 +101,6 @@ class Student
     public function setRelatedUser(User $relatedUser): self
     {
         $this->relatedUser = $relatedUser;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|StudentType[]
-     */
-    public function getTypes(): Collection
-    {
-        return $this->types;
-    }
-
-    public function addType(StudentType $type): self
-    {
-        if (!$this->types->contains($type)) {
-            $this->types[] = $type;
-            $type->addStudent($this);
-        }
-
-        return $this;
-    }
-
-    public function removeType(StudentType $type): self
-    {
-        if ($this->types->removeElement($type)) {
-            $type->removeStudent($this);
-        }
 
         return $this;
     }
@@ -235,6 +203,6 @@ class Student
 
     public function __toString()
     {
-        return $this->getRelatedUser()->getFirstName();
+        return $this->relatedUser->getFirstName() . ' ' . $this->relatedUser->getLastName();
     }
 }
