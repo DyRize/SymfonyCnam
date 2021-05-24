@@ -23,7 +23,7 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route("/admin", name="home_admin")
+     * @Route("/home/admin", name="home_admin")
      */
     public function admin(): Response
     {
@@ -34,7 +34,7 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route("/speaker", name="home_speaker")
+     * @Route("/home/speaker", name="home_speaker")
      */
     public function speaker(): Response
     {
@@ -45,7 +45,7 @@ class HomeController extends AbstractController
     }
 
     /**
-     * @Route("/student", name="home_student")
+     * @Route("/home/student", name="home_student")
      */
     public function student(): Response
     {

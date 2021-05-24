@@ -23,21 +23,18 @@ class TeacherFixtures extends Fixture implements DependentFixtureInterface
 
         $teacher1 = new Teacher();
         $teacher1->setRelatedUser($this->getReference(UserFixtures::YBACQUET))
-            ->addType($this->getReference(TeacherTypeFixtures::INTERV))
             ->addSubject($this->getReference(SubjectFixtures::STMN1A));
 
         $manager->persist($teacher1);
 
         $teacher2 = new Teacher();
         $teacher2->setRelatedUser($this->getReference(UserFixtures::OPAPINI))
-            ->addType($this->getReference(TeacherTypeFixtures::RESPO))
             ->addSubject($this->getReference(SubjectFixtures::STMN18));
 
         $manager->persist($teacher2);
 
         $teacher3 = new Teacher();
         $teacher3->setRelatedUser($this->getReference(UserFixtures::JMROBERT))
-            ->addType($this->getReference(TeacherTypeFixtures::RESPO))
             ->addSubject($this->getReference(SubjectFixtures::STMN10))
             ->addSubject($this->getReference(SubjectFixtures::STMN03));
 
@@ -45,7 +42,6 @@ class TeacherFixtures extends Fixture implements DependentFixtureInterface
 
         $teacher4 = new Teacher();
         $teacher4->setRelatedUser($this->getReference(UserFixtures::RMARXER))
-            ->addType($this->getReference(TeacherTypeFixtures::RESPO))
             ->addSubject($this->getReference(SubjectFixtures::STMN10));
 
         $manager->persist($teacher4);
@@ -64,7 +60,6 @@ class TeacherFixtures extends Fixture implements DependentFixtureInterface
         return [
             UserFixtures::class,
             SubjectFixtures::class,
-            TeacherTypeFixtures::class,
         ];
     }
 }
