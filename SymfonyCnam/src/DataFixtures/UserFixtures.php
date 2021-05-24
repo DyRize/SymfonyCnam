@@ -121,6 +121,20 @@ class UserFixtures extends Fixture
 
         $manager->persist($lgenevois);
 
+        for ($i = 0; $i < 30; $i++) {
+            $user = new User();
+            $user->setFirstName($faker->firstName)
+                ->setLastName($faker->lastName)
+                ->setEmail($faker->email)
+                ->setPassword($this->passwordEncoder->encodePassword($user, $faker->password))
+                ->setBirthDate($faker->dateTime())
+                ->setPhoneNumber($faker->phoneNumber)
+                ->setCreatedAt(new DateTime())
+                ->setLastConnexionDate($user->getCreatedAt());
+
+            $manager->persist($user);
+        }
+
         $manager->flush();
 
         $this->addReference(self::YBACQUET, $ybacquet);
