@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Project;
 use App\Entity\Student;
+use App\Entity\Subject;
 use App\Form\StudentType;
 use App\Repository\StudentRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -39,6 +41,16 @@ class StudentController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($student);
+
+            foreach ($form->get('subjects')->getData() as $subject) {
+                $updatedSubject = $entityManager->find(Subject::class, $subject->getId());
+                $updatedSubject->addStudent($student);
+            }
+            foreach ($form->get('projects')->getData() as $project) {
+                $updatedProject = $entityManager->find(Project::class, $project->getId());
+                $updatedProject->addStudent($student);
+            }
+
             $entityManager->flush();
 
             return $this->redirectToRoute('student_index');
@@ -65,11 +77,31 @@ class StudentController extends AbstractController
      */
     public function edit(Request $request, Student $student): Response
     {
+        $entityManager = $this->getDoctrine()->getManager();
+        $subjectRepository = $entityManager->getRepository(Subject::class);
+        $projectRepository = $entityManager->getRepository(Project::class);
+
         $form = $this->createForm(StudentType::class, $student);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            foreach ($subjectRepository->findAll() as $subjectInDb) {
+                $subjectInDb->removeStudent($student);
+            }
+            foreach ($form->get('subjects')->getData() as $subject) {
+                $updatedSubject = $entityManager->find(Subject::class, $subject->getId());
+                $updatedSubject->addStudent($student);
+            }
+
+            foreach ($projectRepository->findAll() as $projectInDb) {
+                $projectInDb->removeStudent($student);
+            }
+            foreach ($form->get('projects')->getData() as $project) {
+                $updatedProject = $entityManager->find(Project::class, $project->getId());
+                $updatedProject->addStudent($student);
+            }
+
+            $entityManager->flush();
 
             return $this->redirectToRoute('student_index');
         }

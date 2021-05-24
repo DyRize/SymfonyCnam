@@ -19,14 +19,22 @@
 			<th>Promotion</th>
 			<td>{{ student.promotion }}</td>
 		</tr>
-            <tr>
-                <th>ArrivedAt</th>
-                <td>{{ student.arrivedAt ? student.arrivedAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>GraduatedAt</th>
-                <td>{{ student.graduatedAt ? student.graduatedAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
+		<tr>
+			<th>Subjects</th>
+			<td>{{ student.subjects | join(', ') }}</td>
+		</tr>
+		<tr>
+			<th>Projects</th>
+			<td>{{ student.projects | join(', ') }}</td>
+		</tr>
+		<tr>
+			<th>ArrivedAt</th>
+			<td>{{ student.arrivedAt ? student.arrivedAt|date('Y-m-d H:i:s') : '' }}</td>
+		</tr>
+		<tr>
+			<th>GraduatedAt</th>
+			<td>{{ student.graduatedAt ? student.graduatedAt|date('Y-m-d H:i:s') : '' }}</td>
+		</tr>
         </tbody>
     </table>
 
