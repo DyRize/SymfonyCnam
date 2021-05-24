@@ -3,6 +3,9 @@
 namespace App\Form;
 
 use App\Entity\Project;
+use App\Entity\Student;
+use App\Entity\Subject;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -16,8 +19,18 @@ class ProjectType extends AbstractType
             ->add('label')
             ->add('startedAt')
             ->add('endedAt')
-            ->add('students')
-            ->add('subjects')
+            ->add('students', EntityType::class, [
+                'class' => Student::class,
+                'choice_label' => 'relatedUser',
+                'expanded' => true,
+                'multiple' => true
+            ])
+            ->add('subjects', EntityType::class, [
+                'class' => Subject::class,
+                'choice_label' => 'label',
+                'expanded' => true,
+                'multiple' => true
+            ])
         ;
     }
 
