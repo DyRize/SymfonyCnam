@@ -17,6 +17,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class UserRepository extends ServiceEntityRepository implements PasswordUpgraderInterface
 {
+    private $lst_Roles = ["STUDENT" => "ROLE_STUDENT", "DELEGATE" => "ROLE_DELEGATE", "BDE" => "ROLE_BDE", "SPEAKER" => "ROLE_SPEAKER", "ADMIN" => "ROLE_ADMIN"];
+
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, User::class);
@@ -34,6 +36,10 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $user->setPassword($newEncodedPassword);
         $this->_em->persist($user);
         $this->_em->flush();
+    }
+
+    public function getAllRoles(){
+        return $this->lst_Roles;
     }
 
     // /**
