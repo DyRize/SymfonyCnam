@@ -27,13 +27,6 @@ class UserController extends AbstractController
     }
 
     /**
-     * TODO
-     * Ajouter la possibilité d'initialiser les roles d'un utilisateur à la création.
-     * Pour cela, il faut créer une entité Role et passé une liste des Roles.
-     * Actuellement ont passe un JSON et je n'ai pas su convertire le JSON en liste et inversement
-     * pour l'insertion des roles en BDD.
-     */
-    /**
      * @Route("/new", name="user_new", methods={"GET","POST"})
      */
     public function new(Request $request,  UserPasswordEncoderInterface $passwordEncoder): Response
@@ -75,10 +68,6 @@ class UserController extends AbstractController
         ]);
     }
 
-    /**
-     * TODO
-     * Ajouter la possibilité d'éditer les roles d'un utilisateur. cf. TO DO new_user
-     */
     /**
      * @Route("/{id}/edit", name="user_edit", methods={"GET","POST"})
      */
