@@ -1,0 +1,18 @@
+<article class="blog_item heading_space wow fadeInLeft" data-wow-delay="300ms">
+	<div class="row">
+		<div class="col-md-5 col-sm-5 heading_space">
+			<div class="image"><img src="{{ asset('assets/images/blog1.jpg') }}" alt="blog" class="border_radius"></div>
+		</div>
+		<div class="col-md-7 col-sm-7 heading_space">
+			<h3>{{ project.label }}</h3>
+			<ul class="comment margin10">
+				<li><a href="#.">{{ project.startedAt ? article.createdAt|date('d-m-Y') : '' }}</a></li>
+				<li><a href="#.">{{ project.code }}</a></li>
+			</ul>
+			<p class="margin10">
+				{{ article.content|u.truncate(500, ' [...]', false) }}
+			</p>
+			<a class=" btn_common btn_border margin10 border_radius" href="{{ path('article_show',{"id": article.id }) }}">Ouvrir</a>
+		</div>
+	</div>
+</article>
