@@ -5,7 +5,9 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
+use Doctrine\DBAL\Types\TextType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -98,5 +100,52 @@ class UserController extends AbstractController
         }
 
         return $this->redirectToRoute('user_index');
+    }
+
+    /**
+     * @Route("/{id}/password", name="user_password", methods={"GET", "POST"})
+     */
+    public function resetPassword(Request $request, User $user, UserPasswordEncoderInterface $passwordEncoder): Response
+    {
+        $form = $this->createFormBuilder($user)
+            ->getForm();
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            dump($request->request->get('previous_password'));
+            dump($user->getPassword());
+            dump($passwordEncoder->encodePassword($user, $request->request->get('previous_password')));
+            /*
+             * $userOldPass = $request->request->get('previous_password');
+            $hashedOldPass = $passwordEncoder->encodePassword($user, $userOldPass);
+            $hashedNewPass = $passwordEncoder->encodePassword($user, $request->request->get('new_password'));
+
+            if($userOldPass === $hashedOldPass){
+                if($hashedOldPass !== $hashedNewPass) {
+                    $user->setPassword($hashedNewPass);
+                } else{
+                    return $this->render('user/_reset_password.html.twig', [
+                        'error' => "L'ancien mot de passe et le nouveau ne sont pas différents, mise à jour non effectuée.",
+                        'user' => $user,
+                        'form' => $form->createView(),
+                    ]);
+                }
+            }else{
+                return $this->render('user/_reset_password.html.twig', [
+                    'error' => "Erreur sur l'ancien mot de passe",
+                    'user' => $user,
+                    'form' => $form->createView(),
+                ]);
+            }
+            $this->getDoctrine()->getManager()->flush();
+            return $this->redirectToRoute('user_show', ['id' => $user->getId()]);
+            */
+        }
+
+        return $this->render('user/_reset_password.html.twig', [
+            'error' => null,
+            'user' => $user,
+            'form' => $form->createView(),
+        ]);
     }
 }
