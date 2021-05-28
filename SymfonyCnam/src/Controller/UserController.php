@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @Route("/user")
@@ -105,31 +106,15 @@ class UserController extends AbstractController
     /**
      * @Route("/{id}/password", name="user_password", methods={"GET", "POST"})
      */
-    public function resetPassword(Request $request, User $user, UserPasswordEncoderInterface $passwordEncoder): Response
+    public function resetPassword(Request $request, User $user, UserPasswordEncoderInterface $passwordEncoder, UserInterface $userInterface): Response
     {
         $form = $this->createFormBuilder($user)
             ->getForm();
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            dump($request->request->get('previous_password'));
-            dump($user->getPassword());
-            dump($passwordEncoder->encodePassword($user, $request->request->get('previous_password')));
-            /*
-             * $userOldPass = $request->request->get('previous_password');
-            $hashedOldPass = $passwordEncoder->encodePassword($user, $userOldPass);
-            $hashedNewPass = $passwordEncoder->encodePassword($user, $request->request->get('new_password'));
-
-            if($userOldPass === $hashedOldPass){
-                if($hashedOldPass !== $hashedNewPass) {
-                    $user->setPassword($hashedNewPass);
-                } else{
-                    return $this->render('user/_reset_password.html.twig', [
-                        'error' => "L'ancien mot de passe et le nouveau ne sont pas différents, mise à jour non effectuée.",
-                        'user' => $user,
-                        'form' => $form->createView(),
-                    ]);
-                }
+            if($passwordEncoder->isPasswordValid($userInterface, $request->request->get('previous_password'))){
+                $user->setPassword($passwordEncoder->encodePassword($user, $request->request->get('new_password')));
             }else{
                 return $this->render('user/_reset_password.html.twig', [
                     'error' => "Erreur sur l'ancien mot de passe",
@@ -139,7 +124,6 @@ class UserController extends AbstractController
             }
             $this->getDoctrine()->getManager()->flush();
             return $this->redirectToRoute('user_show', ['id' => $user->getId()]);
-            */
         }
 
         return $this->render('user/_reset_password.html.twig', [
