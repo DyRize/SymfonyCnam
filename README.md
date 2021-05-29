@@ -36,6 +36,9 @@ Le schéma relationnel & les spécifications sont dans le dossier `conception` d
 # Récupération du projet
 Se mettre dans le répertoire souhaité, ouvrir un shell et lancer la commande : `git clone git@github.com:DyRize/SymfonyCnam.git`
 
+# Comptes de tests
+Les accès et via compte de tests se trouvent dans le dossier `access` de ce projet.
+
 # Lancement du projet
 - Ouvrir le projet avec PhpStorm (ou VSCode).
 - Installer le plugin ``SonarLint`` directement dans PhpStorm pour assurer la qualité du code et une bonne maintenabilité de celui-ci.
