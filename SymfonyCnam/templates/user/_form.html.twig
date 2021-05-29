@@ -1,17 +1,17 @@
 {% if is_granted("ROLE_ADMIN") == false %}
-	{%  set display = 'hidden' %}
+	{%  set display = 'none' %}
 {% endif %}
 {{ form_start(form) }}
 	{{ form_row(form.email) }}
 	{{ form_row(form.phoneNumber) }}
-	<div style="visibility: {{ display }}">
+	<div style="display: {{ display }}">
 		{{ form_row(form.firstName) }}
 		{{ form_row(form.lastName) }}
 		{{ form_row(form.birthDate) }}
 		{{ form_row(form.roles) }}
 		{{ form_row(form.isVerified) }}
 	</div>
-	<div style="visibility: hidden">
+	<div style="display: none">
 		{{ form_row(form.password) }}
 	</div>
 	<button class="btn">{{ button_label|default('Save') }}</button>
