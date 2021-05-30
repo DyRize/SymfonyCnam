@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Calendrier{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div id="calendrier"></div>
+	</div>
+{% endblock %}
+{% block javascripts %}
+	<script>
+		window.onload = () => {
+			let calendarElt = document.querySelector("#calendrier");
+			let xhr = new XMLHttpRequest();
+
+			let calendar = new FullCalendar.Calendar(calendarElt, {
+				themeSystem: 'bootstrap',
+				initialView: 'dayGridMonth',
+				locale: 'fr',
+				timeZone : 'Europe/Paris',
+				headerToolbar: {
+					start: 'prev,next today',
+					center: 'title',
+					end: 'dayGridMonth,timeGridWeek'
+				},
+				events: {{ data|raw }},
+				{% if is_granted('ROLE_DELEGATE') or  is_granted('ROLE_SPEAKER') %}
+					editable: true,
+					eventResizableFromStart: true,
+					eventDurationEditable: true,
+				{% endif %}
+
+			});
+
+			calendar.on('eventChange', (e) => {
+				let url = `event/${e.event.id}/edit`
+				let data = {
+					"title": e.event.title,
+					"description": e.event.extendedProps.description,
+					"start": e.event.start,
+					"end": e.event.end,
+					"allDay": e.event.allDay,
+					"backgroundColor": e.event.extendedProps.background_color,
+					"borderColor": e.event.extendedProps.border_color,
+					"textColor": e.event.extendedProps.text_color,
+				}
+
+				xhr.open("PUT", url);
+				xhr.send(JSON.stringify(data));
+
+			});
+
+			calendar.on('eventClick', (e) => {
+				let url;
+				{% if is_granted('ROLE_DELEGATE') or  is_granted('ROLE_SPEAKER') %}
+					url = `${e.event.id}/edit`;
+				{% else %}
+					url = `${e.event.id}`
+				{% endif %}
+
+				window.location.href = url;
+			});
+
+			calendar.render();
+		}
+	</script>
+{% endblock %}
