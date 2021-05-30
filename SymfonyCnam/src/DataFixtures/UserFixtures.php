@@ -110,7 +110,7 @@ class UserFixtures extends Fixture
 
         $lgenevois = new User();
         $lgenevois->setFirstName('Ludovic')
-            ->setLastName('GENEVOIS')
+            ->setLastName('Genevois')
             ->setEmail('ludovic.genevois@hotmail.fr')
             ->setPassword($this->passwordEncoder->encodePassword($lgenevois, 'lgenevois'))
             ->setBirthDate(new DateTime('1997-04-24'))
