@@ -2,23 +2,19 @@
 
 {% block title %}Edition de l'étudiant {{ student.relatedUser }}{% endblock %}
 
+
 {% block body %}
-	<h1>Edition de la l'étudiant <strong>{{ student.relatedUser }}</strong></h1>
-	<a href="#student" class="btn btn-danger">Allons y !</a>
-{% endblock %}
-
-{% block section %}
-	<section id="student">
-		<div class="row">
-			<div class="col-sm-12">
-				<div class="card">
-					<div class="card-body">
-						<div class="row">
-							{{ include('student/_form.html.twig', {'button_label': 'Update'}) }}
-
-							<a href="{{ path('student_index') }}">back to list</a>
-
-							{{ include('student/_delete_form.html.twig') }}
+	<section id="faq" class="padding">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h2 class="heading heading_space wow fadeInDown"><span>Éditer</span> l'étudiant {{ student.relatedUser }}<span class="divider-left"></span></h2>
+					<div class="faq_content wow fadeIn" data-wow-delay="400ms">
+						<div class="form group">
+							<div class="item">{{ include('student/_form.html.twig', {'button_label': 'Save'}) }}</div>
+							<div class="item">
+								<a class=" btn_common btn_border margin10 border_radius" href="{{ path('promotion_index')}}">back to list</a>
+							</div>
 						</div>
 					</div>
 				</div>

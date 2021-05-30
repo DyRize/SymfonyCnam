@@ -3,58 +3,38 @@
 {% block title %}Liste des projets{% endblock %}
 
 {% block body %}
-	<div class="row">
-		<div class="col-sm-12">
-			<div class="card">
-				<div class="card-body">
-					<h5 class="card-title">Liste des projets</h5>
-					<div class="table-responsive">
-						<table class="table table-hover table-striped text-left">
-							<thead class="bg-danger text-white">
-							<tr>
-								<th>#</th>
-								<th>Code</th>
-								<th>Libellé</th>
-								<th>Date de début</th>
-								<th>Date de fin</th>
-								<th>Matières concernées</th>
-								{% if app.user and is_granted("ROLE_SPEAKER") %}
-									<th>Action</th>
-								{% endif %}
-							</tr>
-							</thead>
-							<tbody>
-							{% for project in projects %}
-								<tr>
-									<td>{{ project.id }}</td>
-									<td>{{ project.code }}</td>
-									<td>{{ project.label }}</td>
-									<td>{{ project.startedAt ? project.startedAt|date('Y-m-d H:i:s') : '' }}</td>
-									<td>{{ project.endedAt ? project.endedAt|date('Y-m-d H:i:s') : '' }}</td>
-									<td>{{ project.subjects|join(', ') }}</td>
-									{% if app.user and is_granted("ROLE_SPEAKER") %}
-										<td>
-											<a href="{{ path('project_show', {'id': project.id}) }}"><i class="fas fa-eye"></i></a>
-											<a href="{{ path('project_edit', {'id': project.id}) }}"><i class="fas fa-edit"></i></a>
-										</td>
-									{% endif %}
-								</tr>
-							{% else %}
-								<tr>
-									<td colspan="6">Aucune donnée trouvée</td>
-								</tr>
-							{% endfor %}
-							</tbody>
-						</table>
-					</div>
-
+	<!--Page Header-->
+	<section class="page_header padding-top">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 page-content">
+					<h1>Projets</h1>
+					<p>Vous trouvrez ici les projets réalisés par les élèves de la formation</p>
+					<br>
 					{% if app.user and is_granted("ROLE_SPEAKER") %}
-						<a href="{{ path('project_new') }}" class="btn btn-danger margin10">
-							Créer un nouveau projet
+					<div class="page_nav">
+						<a class="btn_common btn_border margin10 border_radius" href="{{ path('project_new') }}">
+							Créer un projet
 						</a>
+					</div>
 					{% endif %}
 				</div>
 			</div>
 		</div>
-	</div>
+	</section>
+
+	<!--ARTICLE INDEX-->
+	<section id="blog" class="padding">
+		<div class="container">
+			<h2 class="hidden">Our Blog</h2>
+			<div class="row">
+				<div class="col-md-9">
+						{% for project in projects %}
+								{% include 'project/minimal_view.html.twig'	%}
+						{% endfor %}
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--ARTCILE INDEX-->
 {% endblock %}

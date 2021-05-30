@@ -1,0 +1,25 @@
+<article class="blog_item heading_space wow fadeInLeft" data-wow-delay="300ms">
+	<div class="row">
+		<div class="col-md-5 col-sm-5 heading_space">
+			<div class="image"><img src="{{ asset('assets/images/blog1.jpg') }}" alt="blog" class="border_radius"></div>
+		</div>
+		<div class="col-md-7 col-sm-7 heading_space">
+			<h3>{{ project.label }}</h3>
+			<ul class="comment margin10">
+				<li><a href="#.">{{ project.startedAt ? project.startedAt|date('d-m-Y') : '' }}</a></li>
+				<li><a href="#.">{{ project.code }}</a></li>
+			</ul>
+			<p class="margin10">
+				{{ project.description|u.truncate(500, ' [...]', false) }}
+			</p>
+			<a class="btn_common btn_border margin10 border_radius" href="{{ path('project_show',{"id": project.id }) }}">
+				Détails
+			</a>
+			{% if app.user and is_granted("ROLE_SPEAKER") %}
+				<a class="btn_common btn_border margin10 border_radius" href="{{ path('project_edit',{"id": project.id }) }}">
+					Éditer le projet
+				</a>
+			{% endif %}
+		</div>
+	</div>
+</article>

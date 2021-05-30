@@ -4,9 +4,9 @@
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-	<title>{% block title %}Welcome!{% endblock %}</title>
-	{# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
+
+	<title>{% block title %}{% endblock %}</title>
+
 	<link rel="stylesheet" href="https://bootswatch.com/4/litera/bootstrap.min.css">
 	<link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/animate.min.css') }}">
@@ -72,11 +72,17 @@
 
 <!--Header-->
 <header>
+	{%  if app.request.attributes.get('_route') == 'home' %}
 	<nav class="navbar navbar-default navbar-fixed white no-background bootsnav pushy">
+	{% else %}
+	<nav class="navbar navbar-default navbar-sticky bootsnav">
+	{% endif %}
 		<div class="container">
 			<div class="navbar-header">
 				<a class="navbar-brand" href="/">
+					{%  if app.request.attributes.get('_route') == 'home' %}
 					<img src="{{ asset('assets/images/logo-white.png') }}" alt="logo" class="logo logo-display">
+					{%  endif %}
 					<img src="{{ asset('assets/images/logo.png') }}" alt="logo" class="logo logo-scrolled">
 				</a>
 			</div>
@@ -132,7 +138,7 @@
 						</li>
 
 						<li class="nav-item">
-							<a class="nav-link" href="#">Projets</a>
+							<a class="nav-link" href="{{ path('project_index') }}">Projets</a>
 						</li>
 					{% else %}
 						<li class="nav-item">
@@ -165,63 +171,8 @@
 </header>
 
 
-<!--Search-->
-<div id="search">
-	<button type="button" class="close">×</button>
-	<form>
-		<input type="search" value="" placeholder="Search here...."  required/>
-		<button type="submit" class="btn btn_common yellow">Search</button>
-	</form>
-</div>
 
-<!--Slider-->
-<section class="rev_slider_wrapper text-center">
-	<!-- START REVOLUTION SLIDER 5.0 auto mode -->
-	<div id="rev_slider_video" class="rev_slider"  data-version="5.0">
-		<ul>
-			<!-- SLIDE  -->
-			<li data-transition="fade">
-				<!-- MAIN IMAGE -->
-				<img src="{{ asset('assets/images/campus1.jpg') }}" alt="" data-bgposition="center center" data-bgfit="cover" data-bgparallax="10" class="rev-slidebg">
-
-				<div class="rs-background-video-layer"
-					 data-volume="mute"
-					 data-videowidth="100%"
-					 data-videoheight="100%"
-					 data-videomp4="video/video.mp4"
-					 data-videopreload="preload"
-					 data-videoloop="loop"
-					 data-forceCover="1"
-					 data-aspectratio="16:9"
-					 data-autoplay="true"
-					 data-autoplayonlyfirsttime="true"
-					 data-nextslideatend="true" ></div>
-
-				<div class="tp-caption tp-resizeme"
-					 data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
-					 data-y="['220','150','160','110']" data-voffset="['0','0','0','0']"
-					 data-responsive_offset="on"
-					 data-auto_responsive="on"
-					 data-fontsize="['48','38','28','18']"
-					 data-textAlign="['center','center','center','center']"
-					 data-type="text"
-					 data-visibility="['on','on','on','on']"
-					 data-transform_idle="o:1;"
-					 data-transform_in="z:0;rX:0;rY:0;rZ:0;sX:0.9;sY:0.9;skX:0;skY:0;opacity:0;s:1500;e:Power3.easeInOut;"
-					 data-transform_out="y:[100%];s:1000;e:Power2.easeInOut;s:1000;e:Power2.easeInOut;"
-					 data-mask_out="x:inherit;y:inherit;s:inherit;e:inherit;"
-					 data-start="800">
-					{#						<h1>Formation <strong>Ingénieur Informatique</strong> et <strong>Multimédia</strong></h1>#}
-					<div class="container">
-						{% block body %}{% endblock %}
-					</div>
-				</div>
-			</li>
-		</ul>
-	</div><!-- END REVOLUTION SLIDER -->
-</section>
-
-{% block section %}{% endblock %}
+{% block body %}{% endblock %}
 
 <!--FOOTER-->
 <footer class="padding-top">

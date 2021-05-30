@@ -13,17 +13,18 @@ use Faker\Factory;
 class ProjectFixtures extends Fixture implements DependentFixtureInterface
 {
 
-    public const PQRL2020 = 'porquerolles2020';
+    public const PQRL2020 = 'porquerolles2021';
 
     public function load(ObjectManager $manager)
     {
         $faker = Factory::create('fr_FR');
 
         $project1 = new Project();
-        $project1->setLabel("Projet Porquerolles")
+        $project1->setLabel("Porquerolles")
             ->setCode("PQRL2021")
             ->setStartedAt($faker->dateTime)
             ->setEndedAt(null)
+            ->setDescription($faker->realText(200))
             ->addStudent($this->getReference(StudentFixtures::STD_DLEFLOUR))
             ->addStudent($this->getReference(StudentFixtures::STD_LGENEVOIS))
             ->addStudent($this->getReference(StudentFixtures::STD_CMAUGEZ))
@@ -31,7 +32,6 @@ class ProjectFixtures extends Fixture implements DependentFixtureInterface
             ->addSubject($this->getReference(SubjectFixtures::STMN21));
 
         $manager->persist($project1);
-
 
         $manager->flush();
 

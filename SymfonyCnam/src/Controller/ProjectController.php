@@ -65,7 +65,6 @@ class ProjectController extends AbstractController
 
     /**
      * @Route("/{id}", name="project_show", methods={"GET"})
-     * @IsGranted("ROLE_SPEAKER")
      */
     public function show(Project $project): Response
     {
@@ -76,6 +75,7 @@ class ProjectController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="project_edit", methods={"GET","POST"})
+     * @IsGranted("ROLE_SPEAKER")
      */
     public function edit(Request $request, Project $project): Response
     {

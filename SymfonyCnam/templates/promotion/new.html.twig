@@ -3,21 +3,19 @@
 {% block title %}Nouvelle promotion{% endblock %}
 
 {% block body %}
-	<h1>Insertion d'une nouvelle <strong>promotion</strong></h1>
-	<a href="#promotion" class="btn btn-danger">Allons y !</a>
-{% endblock %}
 
-{% block section %}
-	<section id="promotion">
-		<div class="row">
-			<div class="col-sm-12">
-				<div class="card">
-					<div class="card-body">
-						<div class="row">
-
-							{{ include('promotion/_form.html.twig') }}
-
-							<a href="{{ path('promotion_index') }}">back to list</a>
+	<!--SERVICE SECTION-->
+	<section id="faq" class="padding">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h2 class="heading heading_space wow fadeInDown"><span>Créer</span> une nouvelle promotion<span class="divider-left"></span></h2>
+					<div class="faq_content wow fadeIn" data-wow-delay="400ms">
+						<div class="form group">
+							<div class="item">{{ include('promotion/_form.html.twig', {'button_label': 'Save'}) }}</div>
+							<div class="item">
+								<a class=" btn_common btn_border margin10 border_radius" href="{{ path('promotion_index') }}">back to list</a>
+							</div>
 						</div>
 					</div>
 				</div>
