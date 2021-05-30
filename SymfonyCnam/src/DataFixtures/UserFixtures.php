@@ -31,23 +31,23 @@ class UserFixtures extends Fixture
 
         $ybacquet = new User();
         $ybacquet->setFirstName('Yannick')
-            ->setLastName('BACQUET')
+            ->setLastName('Bacquet')
             ->setEmail('yannick.bacquet@univ-tln.fr')
-            ->setPassword($this->passwordEncoder->encodePassword($ybacquet, 'yannickbacquet'))
+            ->setPassword($this->passwordEncoder->encodePassword($ybacquet, 'ybacquet'))
             ->setBirthDate($faker->dateTime)
             ->setPhoneNumber($faker->phoneNumber)
             ->setCreatedAt(new DateTime())
             ->setLastConnexionDate($ybacquet->getCreatedAt())
-            ->setRoles(['ROLE_ADMIN', 'ROLE_SPEAKER']);
+            ->setRoles(['ROLE_ADMIN']);
 
         $manager->persist($ybacquet);
 
 
         $opapini = new User();
         $opapini->setFirstName('Olivia')
-            ->setLastName('PAPINI')
+            ->setLastName('Papini')
             ->setEmail('olivia.papini@gmail.com')
-            ->setPassword($this->passwordEncoder->encodePassword($opapini, 'oliviapapini'))
+            ->setPassword($this->passwordEncoder->encodePassword($opapini, 'opapini'))
             ->setBirthDate($faker->dateTime)
             ->setPhoneNumber($faker->phoneNumber)
             ->setCreatedAt(new DateTime())
@@ -58,9 +58,9 @@ class UserFixtures extends Fixture
 
         $jmrobert = new User();
         $jmrobert->setFirstName('Jean-Marc')
-            ->setLastName('ROBERT')
+            ->setLastName('Robert')
             ->setEmail('jean-marc.robert@lecnam.net')
-            ->setPassword($this->passwordEncoder->encodePassword($jmrobert, 'oliviapapini'))
+            ->setPassword($this->passwordEncoder->encodePassword($jmrobert, 'jmrobert'))
             ->setBirthDate($faker->dateTime)
             ->setPhoneNumber($faker->phoneNumber)
             ->setCreatedAt(new DateTime())
@@ -71,9 +71,9 @@ class UserFixtures extends Fixture
 
         $rmarxer = new User();
         $rmarxer->setFirstName('Ricard')
-            ->setLastName('MARXER')
+            ->setLastName('Marxer')
             ->setEmail('ricard.marxer@lecnam.net')
-            ->setPassword($this->passwordEncoder->encodePassword($rmarxer, 'oliviapapini'))
+            ->setPassword($this->passwordEncoder->encodePassword($rmarxer, 'rmarxer'))
             ->setBirthDate($faker->dateTime)
             ->setPhoneNumber($faker->phoneNumber)
             ->setCreatedAt(new DateTime())
@@ -84,9 +84,9 @@ class UserFixtures extends Fixture
 
         $dleflour = new User();
         $dleflour->setFirstName('Dylan')
-            ->setLastName('LE FLOUR')
+            ->setLastName('Le Flour')
             ->setEmail('dylan.leflour25@gmail.com')
-            ->setPassword($this->passwordEncoder->encodePassword($dleflour, 'dydouledoudou'))
+            ->setPassword($this->passwordEncoder->encodePassword($dleflour, 'dleflour'))
             ->setBirthDate(new DateTime('1999-10-25'))
             ->setPhoneNumber('0786423929')
             ->setCreatedAt(new DateTime())
@@ -97,9 +97,9 @@ class UserFixtures extends Fixture
 
         $cmaugez = new User();
         $cmaugez->setFirstName('Corentin')
-            ->setLastName('MAUGEZ')
+            ->setLastName('Maugez')
             ->setEmail('corentin.mgz@gmail.com')
-            ->setPassword($this->passwordEncoder->encodePassword($cmaugez, 'cocolasticot'))
+            ->setPassword($this->passwordEncoder->encodePassword($cmaugez, 'cmaugez'))
             ->setBirthDate(new DateTime('1997-03-22'))
             ->setPhoneNumber('0626221481')
             ->setCreatedAt(new DateTime())
@@ -112,12 +112,12 @@ class UserFixtures extends Fixture
         $lgenevois->setFirstName('Ludovic')
             ->setLastName('GENEVOIS')
             ->setEmail('ludovic.genevois@hotmail.fr')
-            ->setPassword($this->passwordEncoder->encodePassword($lgenevois, 'louloulepoux'))
+            ->setPassword($this->passwordEncoder->encodePassword($lgenevois, 'lgenevois'))
             ->setBirthDate(new DateTime('1997-04-24'))
             ->setPhoneNumber('0651190268')
             ->setCreatedAt(new DateTime())
             ->setLastConnexionDate($lgenevois->getCreatedAt())
-            ->setRoles(['ROLE_BDE', 'ROLE_STUDENT']);
+            ->setRoles(['ROLE_STUDENT']);
 
         $manager->persist($lgenevois);
 
