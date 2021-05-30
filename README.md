@@ -132,3 +132,6 @@ Grâce aux méthodes Symfony, il est possible d'accéder aux fichiers de ce rép
 
 # Template
 Le template utilisé pour ce projet est le suivant : http://preview.themeforest.net/item/xwin-multipupose-html5-template/full_screen_preview/19669954
+
+# Mise en production
+Effectuer un merge de la branche `master` sur la branche `production` et suivre la manipulation de mise en prod
