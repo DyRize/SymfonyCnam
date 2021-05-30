@@ -1,0 +1,13 @@
+<div class="col-sm-6 col-md-4 equalheight">
+	<div class="course margin_top wow fadeIn" data-wow-delay="400ms">
+		<div class="bottom5">
+			<h2 class="heading heading_space" style="margin-bottom: 10px"><span>Promotion</span> {{ promotion.label }}<span class="divider-left"></span></h2>
+		</div>
+		<h3 class="bottom10">Responsable de promotion : {{ promotion.manager }}</h3>
+				<div class = "row" style="column-gap: 10px">
+			<a class="btn_common btn_border margin10 border_radius" href="{{ path('promotion_show', {'id': promotion.id}) }}">Détails</a>
+			<a class="btn_common btn_border margin10 border_radius" href="{{ path('promotion_edit', {'id': promotion.id}) }}"><i class="fas fa-edit"></i></a>
+			<div class="item">{{ include('promotion/_delete_form.html.twig') }}</div>
+		</div>
+	</div>
+</div>

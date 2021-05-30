@@ -53,7 +53,7 @@ class StudentController extends AbstractController
 
             $entityManager->flush();
 
-            return $this->redirectToRoute('student_index');
+            return $this->redirectToRoute('promotion_show', ['id' => $student->getPromotion()->getId()]);
         }
 
         return $this->render('student/new.html.twig', [
@@ -103,7 +103,7 @@ class StudentController extends AbstractController
 
             $entityManager->flush();
 
-            return $this->redirectToRoute('student_index');
+            return $this->redirectToRoute('promotion_show', ['id' => $student->getPromotion()->getId()]);
         }
 
         return $this->render('student/edit.html.twig', [
@@ -123,6 +123,6 @@ class StudentController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('student_index');
+        return $this->redirectToRoute('promotion_show', ['id' => $student->getPromotion()->getId()]);
     }
 }

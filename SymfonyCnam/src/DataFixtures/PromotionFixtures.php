@@ -23,7 +23,7 @@ class PromotionFixtures extends Fixture implements DependentFixtureInterface
         $promo1 = new Promotion();
         $promo1->setStartedAt($faker->dateTime)
             ->setEndedAt(null)
-            ->setLabel('Promotion 2018')
+            ->setLabel('2018-2021')
             ->setCode('prm_2018')
             ->setManager($this->getReference(TeacherFixtures::JMROBERT));
 
@@ -32,7 +32,7 @@ class PromotionFixtures extends Fixture implements DependentFixtureInterface
         $promo2 = new Promotion();
         $promo2->setStartedAt($faker->dateTime)
             ->setEndedAt(null)
-            ->setLabel('Promotion 2019')
+            ->setLabel('2019-2022')
             ->setCode('prm_2019')
             ->setManager($this->getReference(TeacherFixtures::RMARXER));
 
@@ -41,7 +41,7 @@ class PromotionFixtures extends Fixture implements DependentFixtureInterface
         $promo3 = new Promotion();
         $promo3->setStartedAt($faker->dateTime)
             ->setEndedAt(null)
-            ->setLabel('Promotion 2020')
+            ->setLabel('2020-2023')
             ->setCode('prm_2020')
             ->setManager($this->getReference(TeacherFixtures::OPAPINI));
 

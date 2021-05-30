@@ -1,4 +1,8 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+	{{ form_row(form.code) }}
+	{{ form_row(form.label) }}
+	{{ form_row(form.startedAt) }}
+	{{ form_row(form.endedAt) }}
+	{{ form_row(form.manager) }}
+    <button class="btn_common btn_border margin10 border_radius">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
