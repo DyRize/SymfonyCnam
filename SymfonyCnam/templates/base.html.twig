@@ -94,10 +94,6 @@
 						</li>
 
 						<li class="nav-item">
-							<a class="nav-link" href="{{ path('student_index') }}">Étudiants</a>
-						</li>
-
-						<li class="nav-item">
 							<a class="nav-link" href="{{ path('teacher_index') }}">Intervenants</a>
 						</li>
 
@@ -134,7 +130,7 @@
 						{% endif %}
 
 						<li class="nav-item">
-							<a class="nav-link" href="#">Compte</a>
+							<a class="nav-link" href="{{ path('user_show', {'id': app.user.id}) }}">Compte</a>
 						</li>
 
 						<li class="nav-item">
