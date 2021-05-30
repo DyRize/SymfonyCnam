@@ -226,7 +226,6 @@ textarea:-ms-input-placeholder{
 	opacity:1;
 }
 textarea{
-	resize:none;
 	-webkit-box-shadow:0 0;
 	box-shadow:0 0;
 }
@@ -657,8 +656,8 @@ ul.social_icon li a.vimo:after{
   background:#fff;
 }
 .widget .tags > li a:hover, .widget .tags > li a:focus{
-	background:#3e9fbe;
-	border-color:#3e9fbe;
+	background:#9E9E9E;
+	border-color:#9E9E9E;
 	color: #fff;
 }
 p.hours{
@@ -3036,6 +3035,8 @@ html{
         width: 100% !important;
     }
 }
+
+.form-check label.form-check-label { margin-left: 1.5em }
 /*.navbar-fixed.white.no-background{ top:auto;}
 .navbar-fixed.white{ top:0;}*/
 

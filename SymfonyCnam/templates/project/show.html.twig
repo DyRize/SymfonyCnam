@@ -3,57 +3,39 @@
 {% block title %}Project {{ project.code }}{% endblock %}
 
 {% block body %}
-<div class="row">
-	<div class="col-sm-6 col-md-offset-3">
-		<div class="card">
-			<div class="card-body">
-				<h5 class="card-title">Project {{ project.code }}</h5>
-				<div class="table-responsive">
-					<table class="table table-hover table-striped text-left">
-						<tbody>
-						<tr>
-							<th>Id</th>
-							<td>{{ project.id }}</td>
-						</tr>
-						<tr>
-							<th>Code</th>
-							<td>{{ project.code }}</td>
-						</tr>
-						<tr>
-							<th>Label</th>
-							<td>{{ project.label }}</td>
-						</tr>
-						<tr>
-							<th>StartedAt</th>
-							<td>{{ project.startedAt ? project.startedAt|date('Y-m-d H:i:s') : '' }}</td>
-						</tr>
-						<tr>
-							<th>EndedAt</th>
-							<td>{{ project.endedAt ? project.endedAt|date('Y-m-d H:i:s') : '' }}</td>
-						</tr>
-						<tr>
-							<th>Students</th>
-							<td>{{ project.students|join(', ') }}</td>
-						</tr>
-						<tr>
-							<th>Subjects</th>
-							<td>{{ project.subjects|join(', ') }}</td>
-						</tr>
-						</tbody>
-					</table>
+	<section id="about" class="padding">
+		<div class="container aboutus">
+			<div class="row">
+				<div class="col-md-7 wow fadeInLeft" data-wow-delay="300ms">
+					<h2 class="heading heading_space"><span>Projet </span>{{ project.label}} <span class="divider-left"></span></h2>
+					<h4 class="bottom25">Ce projet a débuté le {{ project.startedAt ? project.startedAt|date('d-m-Y') : '' }} {% if project.endedAt != null %} et a été clôturé le {{ project.endedAt ? project.endendAt('d-m-Y') : '' }}{% endif %}</h4>
+					<p class="bottom25">{{ project.description }}</p>
+					</div>
+				<div class="col-md-5 wow fadeInRight" data-wow-delay="300ms">
+					<div class="image">
+						<img src="{{ asset('assets/images/about-us.jpg') }}" alt="Xwin">
+					</div>
 				</div>
-
-				<a href="{{ path('project_index') }}" class="btn btn-danger margin10">
-					<i class="fas fa-undo"></i>
-				</a>
-
-				<a href="{{ path('project_edit', {'id': project.id}) }}" class="btn btn-danger margin10">
-					<i class="fas fa-edit"></i>
-				</a>
-
-				{{ include('project/_delete_form.html.twig') }}
+				<div class="margin10">
+					<div class="widget heading_space">
+						<h3 class="bottom15">Participants</h3>
+						<ul class="tags">
+							{% for student in project.students %}
+								<li><a>{{ student }}</a></li>
+							{% endfor %}
+						</ul>
+					</div>
+					<div class="widget heading_space">
+						<h3 class="bottom15">Matières concernées</h3>
+						<ul class="tags">
+							{% for subject in project.subjects %}
+								<li><a>{{ subject }}</a></li>
+							{% endfor %}
+						</ul>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
-</div>
+	</section>
+
 {% endblock %}

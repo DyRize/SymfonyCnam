@@ -2,23 +2,22 @@
 
 {% block title %}Edition du projet {{ project.code }}{% endblock %}
 
+
 {% block body %}
-	<h1>Edition du projet <strong>{{ project.code }}</strong></h1>
-	<a href="#project" class="btn btn-danger">Allons y !</a>
-{% endblock %}
 
-{% block section %}
-	<section id="project">
-		<div class="row">
-			<div class="col-sm-12">
-				<div class="card">
-					<div class="card-body">
-						<div class="row">
-							{{ include('project/_form.html.twig', {'button_label': 'Update'}) }}
-
-							<a href="{{ path('project_index') }}">back to list</a>
-
-							{{ include('project/_delete_form.html.twig') }}
+	<!--SERVICE SECTION-->
+	<section id="faq" class="padding">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h2 class="heading heading_space wow fadeInDown"><span>Éditer</span> le projet {{ project.code }}<span class="divider-left"></span></h2>
+					<div class="faq_content wow fadeIn" data-wow-delay="400ms">
+						<div class="form group">
+							<div class="item">{{ include('project/_form.html.twig', {'button_label': 'Save'}) }}</div>
+							<div class="item">{{ include('project/_delete_form.html.twig') }}</div>
+							<div class="item">
+								<a class=" btn_common btn_border margin10 border_radius" href="{{ path('project_index') }}">back to list</a>
+							</div>
 						</div>
 					</div>
 				</div>

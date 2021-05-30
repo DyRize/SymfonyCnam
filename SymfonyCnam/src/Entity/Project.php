@@ -49,6 +49,11 @@ class Project
      */
     private $subjects;
 
+    /**
+     * @ORM\Column(type="string", length=10000)
+     */
+    private $description;
+
     public function __construct()
     {
         $this->students = new ArrayCollection();
@@ -159,5 +164,17 @@ class Project
     public function __toString()
     {
         return $this->getLabel();
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
     }
 }
