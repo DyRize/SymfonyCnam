@@ -1,13 +1,19 @@
-{{ form_row(form.firstName) }}
-{{ form_row(form.lastName) }}
-{{ form_row(form.email) }}
-{{ form_row(form.password) }}
-{{ form_row(form.birthDate) }}
-{{ form_row(form.phoneNumber) }}
-
-{% if is_granted('ROLE_ADMIN') %}
-	<label>Roles</label>
-	<input value="{{ user.roles|json_encode() }}"/>
-	{{ form_row(form.isVerified) }}
+{% if is_granted("ROLE_ADMIN") == false %}
+	{%  set display = 'none' %}
 {% endif %}
-<button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_start(form) }}
+	{{ form_row(form.email) }}
+	{{ form_row(form.phoneNumber) }}
+	<div style="display: {{ display }}">
+		{{ form_row(form.firstName) }}
+		{{ form_row(form.lastName) }}
+		{{ form_row(form.birthDate) }}
+		{{ form_row(form.roles) }}
+		{{ form_row(form.isVerified) }}
+	</div>
+	<div style="display: none">
+		{{ form_row(form.password) }}
+	</div>
+	<button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
+

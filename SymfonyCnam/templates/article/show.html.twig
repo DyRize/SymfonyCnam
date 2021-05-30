@@ -3,36 +3,79 @@
 {% block title %}Article{% endblock %}
 
 {% block body %}
-    <h1>Article</h1>
+	<!--Page Header-->
+	<section class="page_header padding-top">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 page-content">
+					<div class="page_nav">
+						<a class="btn_common btn_border margin10 border_radius" href="{{ path('article_edit',{"id": article.id }) }}">
+							Éditer l'article
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Title</th>
-                <td>{{ article.title }}</td>
-            </tr>
-            <tr>
-                <th>Content</th>
-                <td>{{ article.content }}</td>
-            </tr>
-			<tr>
-				<th>Author</th>
-				<td>{{ article.author.firstName }} {{ article.author.lastName }}</td>
-			</tr>
-            <tr>
-                <th>CreatedAt</th>
-                <td>{{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>UpdatedAt</th>
-                <td>{{ article.updatedAt ? article.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
 
-    <a href="{{ path('article_index') }}">back to list</a>
 
-    <a href="{{ path('article_edit', {'id': article.id}) }}">edit</a>
+	<!--BLOG SECTION-->
+	<section id="blog" class="padding-bottom-half padding-top">
+		<h3 class="hidden">hidden</h3>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-9 col-sm-8 wow fadeIn" data-wow-delay="400ms">
+					<article class="blog_item padding-bottom-half heading_space">
+						<div class="image bottom25">
+							<img src="{{ asset('assets/images/blogfull1.jpg') }}" alt="blog">
+						</div>
+						<h3>{{ article.title }}</h3>
+						<ul class="comment margin10">
+							<li><a href="#.">{{ article.createdAt ? article.createdAt|date('d-m-Y') : '' }}</a></li>
+						</ul>
+						<p class="margin10">{{ article.content }}</p>
+					</article>
+					<div class="row">
+						<div class="col-md-6">
+							<article class="blog_newest text-left heading_space border_radius">
+								<h2 class="hidden">Share This Article:</h2>
+								<div class="text">
+									<i class="link">Previous Post</i>
+									<a href="#." class="post_title">Article title</a>
+								</div>
+							</article>
+						</div>
+						<div class="col-md-6">
+							<article class="blog_newest text-right heading_space border_radius">
+								<h2 class="hidden">Share This Article:</h2>
+								<div class="text">
+									<i class="link">Next Post</i>
+									<a href="#." class="post_title">Article title</a>
+								</div>
+							</article>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-3 col-sm-4 wow fadeIn" data-wow-delay="400ms">
+					<aside class="sidebar bg_grey border-radius">
+						<div class="widget heading_space">
+							<h3 class="bottom20">Rédacteurs</h3>
+							<div class="item">
+								<div class="image bottom20">
+									<img src="{{ asset('assets/images/team1.jpg') }}" alt="experts" class="img-responsive border_radius">
+								</div>
+								<h4 class="bottom15">{{ article.author.firstName }} {{ article.author.lastName }}</h4>
 
-    {{ include('article/_delete_form.html.twig') }}
+								<h5 class="color bottom15"><strong>{{ article.author.email }}</strong></h5>
+							</div>
+						</div>
+						<div class="widget heading_space">
+							<h4 class="bottom">Modifié le {{ article.updatedAt ? article.updatedAt|date('d-m-Y H:i') : '' }}</h4>
+						</div>
+					</aside>
+				</div>
+			</div>
+		</div>
+	</section>
 {% endblock %}

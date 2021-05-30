@@ -20,7 +20,7 @@ class ArticleFixtures extends Fixture implements DependentFixtureInterface
             $article1 = new Article();
             $article1->setTitle("Article 1")
                 ->setAuthor($this->getReference(UserFixtures::YBACQUET))
-                ->setContent($faker->realText($maxNbChars = 200, $indexSize = 2))
+                ->setContent($faker->realText($maxNbChars = 1000, $indexSize = 2))
                 ->setType($this->getReference(ArticleTypeFixtures::INFO))
                 ->setCreatedAt($faker->dateTime)
                 ->setUpdatedAt($article1->getCreatedAt());
@@ -30,7 +30,7 @@ class ArticleFixtures extends Fixture implements DependentFixtureInterface
         $article2 = new Article();
         $article2->setTitle("Article 2")
             ->setAuthor($this->getReference(UserFixtures::OPAPINI))
-            ->setContent($faker->realText($maxNbChars = 200, $indexSize = 2))
+            ->setContent($faker->realText($maxNbChars = 1000, $indexSize = 2))
             ->setType($this->getReference(ArticleTypeFixtures::ADMN))
             ->setCreatedAt($faker->dateTime)
             ->setUpdatedAt($article1->getCreatedAt());
@@ -40,7 +40,7 @@ class ArticleFixtures extends Fixture implements DependentFixtureInterface
         $article3 = new Article();
         $article3->setTitle("Article 3")
             ->setAuthor($this->getReference(UserFixtures::DLEFLOUR))
-            ->setContent($faker->realText($maxNbChars = 200, $indexSize = 2))
+            ->setContent($faker->realText($maxNbChars = 1000, $indexSize = 2))
             ->setType($this->getReference(ArticleTypeFixtures::BDE))
             ->setCreatedAt($faker->dateTime)
             ->setUpdatedAt($article1->getCreatedAt());
@@ -50,7 +50,7 @@ class ArticleFixtures extends Fixture implements DependentFixtureInterface
         $article4 = new Article();
         $article4->setTitle("Article 4")
             ->setAuthor($this->getReference(UserFixtures::CMAUGEZ))
-            ->setContent($faker->realText($maxNbChars = 200, $indexSize = 2))
+            ->setContent($faker->realText($maxNbChars = 1000, $indexSize = 2))
             ->setType($this->getReference(ArticleTypeFixtures::EVENT))
             ->setCreatedAt($faker->dateTime)
             ->setUpdatedAt($article1->getCreatedAt());
@@ -60,7 +60,7 @@ class ArticleFixtures extends Fixture implements DependentFixtureInterface
         $article5 = new Article();
         $article5->setTitle("Article 5")
             ->setAuthor($this->getReference(UserFixtures::LGENEVOIS))
-            ->setContent($faker->realText($maxNbChars = 200, $indexSize = 2))
+            ->setContent($faker->realText($maxNbChars = 1000, $indexSize = 2))
             ->setType($this->getReference(ArticleTypeFixtures::BDE))
             ->setCreatedAt($faker->dateTime)
             ->setUpdatedAt($article1->getCreatedAt());
