@@ -2,8 +2,13 @@
 
 namespace App\Form;
 
+use App\Entity\Project;
+use App\Entity\Student;
 use App\Entity\Subject;
+use App\Entity\Teacher;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -13,10 +18,21 @@ class SubjectType extends AbstractType
     {
         $builder
             ->add('code')
-            ->add('label')
-            ->add('teachers')
-            ->add('students')
-            ->add('projects')
+            ->add('label', TextType::class, [
+                'label' => 'Libellé'
+            ])
+            ->add('teachers', EntityType::class, [
+                'class' => Teacher::class,
+                'label' => 'Enseignants'
+            ])
+            ->add('students', EntityType::class, [
+                'class' => Student::class,
+                'label' => 'Étudiants'
+            ])
+            ->add('projects', EntityType::class, [
+                'class' => Project::class,
+                'label' => 'Projets associés'
+            ])
         ;
     }
 
