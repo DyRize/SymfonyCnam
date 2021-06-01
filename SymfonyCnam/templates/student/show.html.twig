@@ -3,5 +3,55 @@
 {% block title %}{{ student.relatedUser }}{% endblock %}
 
 {% block body %}
-
+	<section id="about" class="padding">
+		<div class="container aboutus">
+			<div class="row">
+				<div class="col-md-7 wow fadeInLeft" data-wow-delay="300ms">
+					<h2 class="heading heading_space"><span>{{ student.relatedUser.firstName}} </span>{{ student.relatedUser.lastName}} <span class="divider-left"></span></h2>
+					<h4 class="bottom25">Promotion : {{ student.promotion }}</h4>
+					<h5 class="bottom25">Ce étudiant est entré dans la formation le {{ student.arrivedAt ? student.arrivedAt|date('d-m-Y') : '' }} {% if student.graduatedAt != null %} et a été diplômé le {{ student.graduatedAt ? student.graduatedAt('d-m-Y') : '' }}{% endif %}</h5>
+				</div>
+				<div class="col-md-5 wow fadeInRight" data-wow-delay="300ms">
+					<div class="image">
+						<img src="{{ asset('assets/images/about-us.jpg') }}" alt="Xwin">
+					</div>
+				</div>
+				<div class="margin10">
+					<div class="widget heading_space">
+						<h3 class="bottom15">Projets suivis</h3>
+						<ul class="tags">
+							{% for project in student.projects %}
+								<li><a>{{ project }}</a></li>
+							{% endfor %}
+						</ul>
+					</div>
+				</div>
+				<div class="table-responsive">
+					<table class="table table-hover table-striped" width="100%">
+						<thead>
+						<th>Code</th>
+						<th>Unité d'enseignement</th>
+						<th align="right">Note</th>
+						</thead>
+						<tbody>
+						{% for subject in student.subjects %}
+							<tr>
+								<td>{{ subject.code  }}</td>
+								<td>{{ subject.label }}</td>
+								{% for grade in subject.grades %}
+									{% if student == grade.student %}
+										<td>{{ grade.value }}</td>
+									{% endif %}
+								{% endfor %}
+							</tr>
+						{% endfor %}
+						</tbody>
+					</table>
+				</div>
+				<a class="btn_common btn_border margin10 border_radius" href="{{ path('promotion_show', {'id':student.promotion.id}) }}">
+					Retour
+				</a>
+			</div>
+		</div>
+	</section>
 {% endblock %}

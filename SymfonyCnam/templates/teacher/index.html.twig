@@ -3,46 +3,48 @@
 {% block title %}Liste des intervenants{% endblock %}
 
 {% block body %}
-	<div class="row">
-		<div class="col-sm-12">
-			<div class="card">
-				<div class="card-body">
-					<h5 class="card-title">Liste des intervenants</h5>
-					<div class="table-responsive">
-						<table class="table table-hover table-striped text-left">
-							<thead class="bg-danger text-white">
+	<section id="about" class="padding">
+		<div class="container aboutus">
+			<div class="row">
+				<div class="col-md-7 wow fadeInLeft" data-wow-delay="300ms">
+					<h2 class="heading heading_space"><span>Liste des </span>intervenants <span class="divider-left"></span></h2>
+				</div>
+			</div>
+			<div class="margin10">
+				<div class="widget heading_space">
+					<table class="table table-hover table-striped text-left">
+						<thead>
+						<tr>
+							<th>Id</th>
+							<th>Nom</th>
+						</tr>
+						</thead>
+						<tbody>
+						{% for teacher in teachers %}
 							<tr>
-								<th>#</th>
-								<th>Nom</th>
-								<th>Responsable de</th>
-								<th>Action</th>
+								<td>{{ teacher.id }}</td>
+								<td>{{ teacher.relatedUser }}</td>
+								<td class="text-right" width="1em"><a href="{{ path('teacher_show', {'id': teacher.id}) }}"><i class="fas fa-eye"></i></a></td>
+								<td class="text-right" width="1em"><a href="{{ path('teacher_edit', {'id': teacher.id}) }}"><i class="fas fa-edit"></i></a></td>
+								<td class="text-right" width="1em">{{ include('teacher/_delete_form.html.twig') }}</td>
 							</tr>
-							</thead>
-							<tbody>
-							{% for teacher in teachers %}
-								<tr>
-									<td>{{ teacher.id }}</td>
-									<td>{{ teacher.relatedUser }}</td>
-									<td>{{ teacher.promotions | join(', ') }}</td>
-									<td>
-										<a href="{{ path('teacher_show', {'id': teacher.id}) }}"><i class="fas fa-eye"></i></a>
-										<a href="{{ path('teacher_edit', {'id': teacher.id}) }}"><i class="fas fa-edit"></i></a>
-									</td>
-								</tr>
-							{% else %}
-								<tr>
-									<td colspan="6">Aucune donnée trouvée</td>
-								</tr>
-							{% endfor %}
-							</tbody>
-						</table>
+						{% else %}
+							<tr>
+								<td colspan="12">no records found</td>
+							</tr>
+						{% endfor %}
+						</tbody>
+					</table>
+					<div class="row" style="column-gap: 10px">
+						<a class="btn_common btn_border margin10 border_radius" href="{{ path('teacher_new') }}">
+							Ajouter une UE
+						</a>
+						<a class="btn_common btn_border margin10 border_radius" href="{{ path('home') }}">
+							Retour
+						</a>
 					</div>
-
-					<a href="{{ path('teacher_new') }}" class="btn btn-danger margin10">
-						Créer un nouvel intervenant
-					</a>
 				</div>
 			</div>
 		</div>
-	</div>
+	</section>
 {% endblock %}

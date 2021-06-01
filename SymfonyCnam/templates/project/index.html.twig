@@ -9,7 +9,7 @@
 			<div class="row">
 				<div class="col-md-12 page-content">
 					<h1>Projets</h1>
-					<p>Vous trouvrez ici les projets réalisés par les élèves de la formation</p>
+					<p>Vous trouverez ici les projets réalisés par les étudiants de la formation</p>
 					<br>
 					{% if app.user and is_granted("ROLE_SPEAKER") %}
 					<div class="page_nav">
@@ -26,7 +26,7 @@
 	<!--ARTICLE INDEX-->
 	<section id="blog" class="padding">
 		<div class="container">
-			<h2 class="hidden">Our Blog</h2>
+			<h2 class="hidden">Notre blog</h2>
 			<div class="row">
 				<div class="col-md-9">
 						{% for project in projects %}

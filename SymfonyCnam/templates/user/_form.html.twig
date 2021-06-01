@@ -1,10 +1,7 @@
-{% if is_granted("ROLE_ADMIN") == false %}
-	{%  set display = 'none' %}
-{% endif %}
 {{ form_start(form) }}
 	{{ form_row(form.email) }}
 	{{ form_row(form.phoneNumber) }}
-	<div style="display: {{ display }}">
+	<div style="display: {{ is_granted("ROLE_ADMIN") ? '' : 'none' }}">
 		{{ form_row(form.firstName) }}
 		{{ form_row(form.lastName) }}
 		{{ form_row(form.birthDate) }}
@@ -14,6 +11,6 @@
 	<div style="display: none">
 		{{ form_row(form.password) }}
 	</div>
-	<button class="btn">{{ button_label|default('Save') }}</button>
+	<button class="btn_common btn_border margin10 border_radius" >{{ button_label|default('Sauvegarder') }}</button>
 {{ form_end(form) }}
 

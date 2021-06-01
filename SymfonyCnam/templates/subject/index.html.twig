@@ -1,37 +1,54 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Subject index{% endblock %}
+{% block title %}Unités d'enseignement{% endblock %}
 
 {% block body %}
-    <h1>Subject index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Code</th>
-                <th>Label</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for subject in subjects %}
-            <tr>
-                <td>{{ subject.id }}</td>
-                <td>{{ subject.code }}</td>
-                <td>{{ subject.label }}</td>
-                <td>
-                    <a href="{{ path('subject_show', {'id': subject.id}) }}">show</a>
-                    <a href="{{ path('subject_edit', {'id': subject.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('subject_new') }}">Create new</a>
+	<section id="about" class="padding">
+		<div class="container aboutus">
+			<div class="row">
+				<div class="col-md-7 wow fadeInLeft" data-wow-delay="300ms">
+					<h2 class="heading heading_space"><span>Liste des </span>unités d'enseignement <span class="divider-left"></span></h2>
+				</div>
+			</div>
+			<div class="margin10">
+				<div class="widget heading_space">
+					<table class="table table-hover table-striped text-left">
+						<thead>
+						<tr>
+							<th>#</th>
+							<th>Code</th>
+							<th>Libellé</th>
+							<th>Action</th>
+						</tr>
+						</thead>
+						<tbody>
+						{% for subject in subjects %}
+							<tr>
+								<td>{{ subject.id }}</td>
+								<td>{{ subject.code }}</td>
+								<td>{{ subject.label }}</td>
+								<td>
+									<a href="{{ path('subject_show', {'id': subject.id}) }}"><i class="fas fa-eye"></i> </a>
+									<a href="{{ path('subject_edit', {'id': subject.id}) }}"><i class="fas fa-edit"></i> </a>
+								</td>
+							</tr>
+						{% else %}
+							<tr>
+								<td colspan="12">aucune donnée trouvée</td>
+							</tr>
+						{% endfor %}
+						</tbody>
+					</table>
+					<div class="row" style="column-gap: 10px">
+						<a class="btn_common btn_border margin10 border_radius" href="{{ path('subject_new') }}">
+							Ajouter une UE
+						</a>
+						<a class="btn_common btn_border margin10 border_radius" href="{{ path('home') }}">
+							Retour
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 {% endblock %}

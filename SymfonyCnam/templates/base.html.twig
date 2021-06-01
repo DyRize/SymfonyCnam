@@ -89,25 +89,23 @@
 			<div class="navbar navbar-btn" id="navbar-menu">
 				<ul class="nav">
 					{% if is_granted("ROLE_ADMIN") %}
-						<li class="nav-item">
-							<a class="nav-link" href="{{ path('promotion_index') }}">Promotions</a>
+						<li class="dropdown clearfix">
+							<a href="#" class="dropdown">Gestion <i class="fas fa-angle-down"></i></a>
+							<ul class="dropdown-menu">
+								<li><a href="{{ path('promotion_index') }}">Promotions</a></li>
+								<li><a href="{{ path('teacher_index') }}">Intervenants</a></li>
+								<li><a href="{{ path('bde_index') }}">BDE</a></li>
+							</ul>
 						</li>
 
 						<li class="nav-item">
-							<a class="nav-link" href="{{ path('student_index') }}">Étudiants</a>
+							<a class="nav-link" href="{{ path('user_index') }}">Utilisateurs</a>
 						</li>
 
 						<li class="nav-item">
-							<a class="nav-link" href="{{ path('teacher_index') }}">Intervenants</a>
+							<a class="nav-link" href="{{ path('subject_index') }}">Unités d'enseignement</a>
 						</li>
 
-						<li class="nav-item">
-							<a class="nav-link" href="{{ path('bde_index') }}">Membres BDE</a>
-						</li>
-
-						<li class="nav-item">
-							<a class="nav-link" href="#">Contenu</a>
-						</li>
 					{% elseif is_granted("ROLE_SPEAKER") %}
 						<li class="nav-item">
 							<a class="nav-link" href="#">Événements</a>
@@ -123,18 +121,16 @@
 							</li>
 
 							<li class="nav-item">
-								<a class="nav-link" href="#">Informations</a>
+								<a class="nav-link" href="{{ path('article_index') }}">Articles</a>
 							</li>
-						{% endif %}
-
-						{% if is_granted("ROLE_BDE") %}
+						{% elseif is_granted("ROLE_BDE") %}
 							<li class="nav-item">
 								<a class="nav-link" href="{{ path('article_index') }}">Articles</a>
 							</li>
 						{% endif %}
 
 						<li class="nav-item">
-							<a class="nav-link" href="#">Compte</a>
+							<a class="nav-link" href="{{ path('user_show', {'id': app.user.id}) }}">Compte</a>
 						</li>
 
 						<li class="nav-item">
