@@ -126,9 +126,7 @@
 							<li class="nav-item">
 								<a class="nav-link" href="{{ path('article_index') }}">Articles</a>
 							</li>
-						{% endif %}
-
-						{% if is_granted("ROLE_BDE") %}
+						{% elseif is_granted("ROLE_BDE") %}
 							<li class="nav-item">
 								<a class="nav-link" href="{{ path('article_index') }}">Articles</a>
 							</li>
