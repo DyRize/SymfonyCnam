@@ -3,11 +3,26 @@
 {% block title %}Nouvel utilisateur{% endblock %}
 
 {% block body %}
-    <h1>Créer un nouvel utilisateur</h1>
-
-	{{ form_start(form) }}
-		{{ form_widget(form) }}
-		<button class="btn">{{ button_label|default('Sauvegarder') }}</button>
-	{{ form_end(form) }}
-    <a href="{{ path('user_index') }}">Retour à la liste</a>
+	<section id="faq" class="padding">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h2 class="heading heading_space wow fadeInDown"><span>Ajout</span> d'un nouvel utilisateur<span class="divider-left"></span></h2>
+					<div class="faq_content wow fadeIn" data-wow-delay="400ms">
+						<div class="form group">
+							<div class="item">
+								{{ form_start(form) }}
+								{{ form_widget(form) }}
+									<button class="btn_common btn_border margin10 border_radius">{{ button_label|default('Sauvegarder') }}</button>
+								{{ form_end(form) }}
+							</div>
+							<div class="item">
+								<a class=" btn_common btn_border margin10 border_radius" href="{{ path('user_index') }}">Retour</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 {% endblock %}

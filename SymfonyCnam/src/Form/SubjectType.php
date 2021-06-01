@@ -23,15 +23,21 @@ class SubjectType extends AbstractType
             ])
             ->add('teachers', EntityType::class, [
                 'class' => Teacher::class,
-                'label' => 'Enseignants'
+                'label' => 'Enseignants',
+                'expanded' => true,
+                'multiple' => true
             ])
             ->add('students', EntityType::class, [
                 'class' => Student::class,
-                'label' => 'Étudiants'
+                'label' => 'Étudiants',
+                'expanded' => true,
+                'multiple' => true
             ])
             ->add('projects', EntityType::class, [
                 'class' => Project::class,
-                'label' => 'Projets associés'
+                'label' => 'Projets associés',
+                'expanded' => true,
+                'multiple' => true
             ])
         ;
     }

@@ -3,10 +3,24 @@
 {% block title %}Modifier l'utilisateur{% endblock %}
 
 {% block body %}
-    <h1>Edition of {{ user.firstName }} {{ user.lastName }}</h1>
-	{{ include('user/_form.html.twig') }}
-	{% if is_granted('ROLE_ADMIN') %}
-		<a href="{{ path('user_index') }}">Retour à la liste</a>
-		{{ include('user/_delete_form.html.twig') }}
-	{% endif %}
+	<!--SERVICE SECTION-->
+	<section id="faq" class="padding">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h2 class="heading heading_space wow fadeInDown"><span>Éditer</span> {{ user.firstName }} {{ user.lastName }}<span class="divider-left"></span></h2>
+					<div class="faq_content wow fadeIn" data-wow-delay="400ms">
+						<div class="form group">
+							<div class="item">{{ include('user/_form.html.twig', {'button_label': 'Enregistrer'}) }}</div>
+							<div class="item">
+								{% if is_granted('ROLE_ADMIN') %}
+								<a class=" btn_common btn_border margin10 border_radius" href="{{ path('user_index')}}">Retour</a>
+								{% endif %}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 {% endblock %}

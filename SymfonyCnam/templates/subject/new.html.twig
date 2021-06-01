@@ -1,11 +1,23 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Nouvelle matière{% endblock %}
+{% block title %}Nouvelle UE{% endblock %}
 
 {% block body %}
-    <h1>Créer une nouvelle matière</h1>
-
-    {{ include('subject/_form.html.twig') }}
-
-    <a href="{{ path('subject_index') }}">Retour à la liste</a>
+	<section id="faq" class="padding">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h2 class="heading heading_space wow fadeInDown"><span>Créer</span> une unité d'enseignement<span class="divider-left"></span></h2>
+					<div class="faq_content wow fadeIn" data-wow-delay="400ms">
+						<div class="form group">
+							<div class="item">{{ include('subject/_form.html.twig', {'button_label': 'Sauvegarder'}) }}</div>
+							<div class="item">
+								<a class=" btn_common btn_border margin10 border_radius" href="{{ path('subject_index') }}">Retour</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 {% endblock %}
