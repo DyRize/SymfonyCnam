@@ -9,6 +9,8 @@ Il se base sur le Board mis en place sur Github : https://github.com/DyRize/Symf
 * Ficher de répartition des tâches
 
 ##Ludovic Genevois :
+* Accès Super Admin :
+  * Création d'un utilisateur
 * Accès BDE :
     * Gestion des Articles d'informations
 * Gestion de son propre compte :
@@ -33,6 +35,7 @@ Il se base sur le Board mis en place sur Github : https://github.com/DyRize/Symf
     * Ajout d'un projet lié à 1 ou n étudiants
 * Création du fichier des accès par compte (Personas)
 * Mise en production du site sur AlwaysData
+* Traduction en Français de l'ensemble de l'application
 
 ##Corentin Maugez :
 * Création du Modèle Entité Association et refonte de celui-ci `avec Ludovic`
