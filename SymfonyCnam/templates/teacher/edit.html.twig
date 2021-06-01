@@ -3,22 +3,17 @@
 {% block title %}Edition de l'intervenant {{ teacher.relatedUser }}{% endblock %}
 
 {% block body %}
-	<h1>Edition de la l'intervenant <strong>{{ teacher.relatedUser }}</strong></h1>
-	<a href="#teacher" class="btn btn-danger">Allons y !</a>
-{% endblock %}
-
-{% block section %}
-	<section id="teacher">
-		<div class="row">
-			<div class="col-sm-12">
-				<div class="card">
-					<div class="card-body">
-						<div class="row">
-							{{ include('teacher/_form.html.twig', {'button_label': 'Mise à jour'}) }}
-
-							<a href="{{ path('teacher_index') }}">Retour à la liste</a>
-
-							{{ include('teacher/_delete_form.html.twig') }}
+	<section id="faq" class="padding">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h2 class="heading heading_space wow fadeInDown"><span>Éditer</span> l'intervenant {{ teacher.relatedUser }}<span class="divider-left"></span></h2>
+					<div class="faq_content wow fadeIn" data-wow-delay="400ms">
+						<div class="form group">
+							<div class="item">{{ include('teacher/_form.html.twig', {'button_label': 'Enregistrer'}) }}</div>
+							<div class="item">
+								<a class=" btn_common btn_border margin10 border_radius" href="{{ path('teacher_index')}}">Retour</a>
+							</div>
 						</div>
 					</div>
 				</div>

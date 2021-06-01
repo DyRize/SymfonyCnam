@@ -3,45 +3,41 @@
 {% block title %}{{ teacher.relatedUser }}{% endblock %}
 
 {% block body %}
-	<div class="row">
-		<div class="col-sm-6 col-md-offset-3">
-			<div class="card">
-				<div class="card-body">
-					<h5 class="card-title">{{ teacher.relatedUser }}</h5>
-					<div class="table-responsive">
-						<table class="table table-hover table-striped text-left">
-							<tbody>
-							<tr>
-								<th>Id</th>
-								<td>{{ teacher.id }}</td>
-							</tr>
-							<tr>
-								<th>Nom</th>
-								<td>{{ teacher.relatedUser }}</td>
-							</tr>
-							<tr>
-								<th>Responsable de</th>
-								<td>{{ teacher.promotions | join(', ')  }}</td>
-							</tr>
-							<tr>
-								<th>Matières enseignées</th>
-								<td>{{ teacher.subjects | join(', ') }}</td>
-							</tr>
-							</tbody>
-						</table>
+	<section id="about" class="padding">
+		<div class="container aboutus">
+			<div class="row">
+				<div class="col-md-7 wow fadeInLeft" data-wow-delay="300ms">
+					<h2 class="heading heading_space"><span>{{ teacher.relatedUser.firstName}} </span>{{ teacher.relatedUser.lastName}} <span class="divider-left"></span></h2>
+				</div>
+				<div class="col-md-5 wow fadeInRight" data-wow-delay="300ms">
+					<div class="image">
+						<img src="{{ asset('assets/images/about-us.jpg') }}" alt="Xwin">
 					</div>
-
-					<a href="{{ path('teacher_index') }}" class="btn btn-danger margin10">
-						<i class="fas fa-undo"></i>
-					</a>
-
-					<a href="{{ path('teacher_edit', {'id': teacher.id}) }}" class="btn btn-danger margin10">
-						<i class="fas fa-edit"></i>
-					</a>
-
-					{{ include('teacher/_delete_form.html.twig') }}
 				</div>
 			</div>
+			<div class="margin10">
+				<div class="widget heading_space">
+					<h3 class="bottom15">Responsable de promotion</h3>
+					<ul class="tags">
+						{% for promotion in teacher.promotions %}
+							<li><a>{{ promotion }}</a></li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+			<div class="margin10">
+				<div class="widget heading_space">
+					<h3 class="bottom15">Matières dispensées</h3>
+					<ul class="tags">
+						{% for subject in teacher.subjects %}
+							<li><a>{{ subject }}</a></li>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+			<a class="btn_common btn_border margin10 border_radius" href="{{ path('teacher_index')}}">
+				Retour
+			</a>
 		</div>
-	</div>
+	</section>
 {% endblock %}
