@@ -1,30 +1,38 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Subject{% endblock %}
+{% block title %}{{ subject.label }}{% endblock %}
 
 {% block body %}
-    <h1>Subject</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ subject.id }}</td>
-            </tr>
-            <tr>
-                <th>Code</th>
-                <td>{{ subject.code }}</td>
-            </tr>
-            <tr>
-                <th>Label</th>
-                <td>{{ subject.label }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('subject_index') }}">back to list</a>
-
-    <a href="{{ path('subject_edit', {'id': subject.id}) }}">edit</a>
-
-    {{ include('subject/_delete_form.html.twig') }}
+	<section id="about" class="padding">
+		<div class="container aboutus">
+			<div class="row">
+				<div class="col-md-7 wow fadeInLeft" data-wow-delay="300ms">
+					<h2 class="heading heading_space"><span>Unité </span>{{ subject.label}} <span class="divider-left"></span></h2>
+					<h5 class="bottom25"><strong>Id : </strong>{{ subject.id }}</h5>
+					<h5 class="bottom25"><strong>Code : </strong>{{ subject.code }}</h5>
+					<h5 class="bottom25"><strong>Label : </strong>{{ subject.label }}</h5>
+					<div class="widget heading_space">
+						<h3 class="bottom15">Intervenants</h3>
+						<ul class="tags">
+							{% for teacher in subject.teachers %}
+								<li><a>{{ teacher }}</a></li>
+							{% endfor %}
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="row" style="column-gap: 0.5em">
+				<col>
+				<a class="btn_common btn_border margin10 border_radius" href="{{ path('subject_index') }}">
+					Retour
+				</a>
+				</col>
+				<col>
+				<a class="btn_common btn_border margin10 border_radius" href="{{ path('subject_edit', {'id': subject.id}) }}">Modifier</a>
+				</col>
+					{{ include('subject/_delete_form.html.twig') }}
+			</div>
+		</div>
+	</section>
 {% endblock %}

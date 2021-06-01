@@ -1,41 +1,60 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}User{% endblock %}
+{% block title %}Mon compte{% endblock %}
 
 {% block body %}
-    <h1>{{ user.firstName }} {{ user.lastName }}</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>FirstName</th>
-                <td>{{ user.firstName }}</td>
-            </tr>
-            <tr>
-                <th>LastName</th>
-                <td>{{ user.lastName }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ user.email }}</td>
-            </tr>
-            <tr>
-                <th>BirthDate</th>
-                <td>{{ user.birthDate ? user.birthDate|date('d/m/Y') : '' }}</td>
-            </tr>
-            <tr>
-                <th>PhoneNumber</th>
-                <td>{{ user.phoneNumber }}</td>
-            </tr>
-        </tbody>
-    </table>
-	{% if user.id == app.user.id %}
-		<a class="btn btn-danger" href="{{ path('user_password', {'id': user.id}) }}">Reset Password</a>
-	{% endif %}
-	<a class="btn btn-info" href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
-
-	{% if is_granted('ROLE_ADMIN') %}
-		<a href="{{ path('user_index') }}">back to list</a>
-    	{{ include('user/_delete_form.html.twig') }}
-	{% endif %}
+	<section id="about" class="padding">
+		<div class="container aboutus">
+			<div class="row">
+				<div class="col-md-7 wow fadeInLeft" data-wow-delay="300ms">
+					<h2 class="heading heading_space"><span>{{ user.firstName}} </span>{{ user.lastName}} <span class="divider-left"></span></h2>
+					<h5 class="bottom25"><strong>Email : </strong>{{ user.email }}</h5>
+					<h5 class="bottom25"><strong>Date de naissance : </strong>{{ user.birthDate ? user.birthDate|date('d-m-Y') : '' }}</h5>
+					<h5 class="bottom25"><strong>Numéro de téléphone : </strong>{{ user.phoneNumber }}</h5>
+				</div>
+				<div class="col-md-5 wow fadeInRight" data-wow-delay="300ms">
+					<div class="image">
+						<img src="{{ asset('assets/images/about-us.jpg') }}" alt="Xwin">
+					</div>
+				</div>
+				<div class="margin10">
+					<div class="widget heading_space">
+						<h3 class="bottom15">Rôles</h3>
+						<ul class="tags">
+							{% for role in user.roles %}
+								<li><a>{{ role }}</a></li>
+							{% endfor %}
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="row" style="column-gap: 0.5em">
+				{% if is_granted('ROLE_ADMIN') %}
+					<col>
+						<a class="btn_common btn_border margin10 border_radius" href="{{ path('user_index') }}">
+							Retour
+						</a>
+					</col>
+				{% else %}
+					<col>
+						<a class="btn_common btn_border margin10 border_radius" href="{{ path('home') }}">
+							Retour
+						</a>
+					</col>
+				{% endif %}
+				{% if user.id == app.user.id %}
+					<col>
+							<a class="btn_common btn_border margin10 border_radius" href="{{ path('user_password', {'id': user.id}) }}">Réinitialiser le mot de passe</a>
+					</col>
+				{% endif %}
+					<col>
+						<a class="btn_common btn_border margin10 border_radius" href="{{ path('user_edit', {'id': user.id}) }}">Modifier</a>
+					</col>
+				{% if is_granted('ROLE_ADMIN') %}
+					{{ include('user/_delete_form.html.twig') }}
+				{% endif %}
+			</div>
+		</div>
+	</section>
 {% endblock %}
