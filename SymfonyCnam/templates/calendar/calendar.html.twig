@@ -3,9 +3,30 @@
 {% block title %}Calendrier{% endblock %}
 
 {% block body %}
-	<div class="container">
-		<div id="calendrier"></div>
-	</div>
+	<section id="about" class="padding">
+		<div class="container aboutus">
+			<div class="row">
+				<div class="col-md-7 wow fadeInLeft" data-wow-delay="300ms">
+					<h2 class="heading heading_space"><span>Calendrier des </span>évènements <span class="divider-left"></span></h2>
+				</div>
+			</div>
+			<div class="margin10">
+				<div class="widget heading_space">
+					<div class="container">
+						<div id="calendrier"></div>
+					</div>
+					<div class="row" style="column-gap: 10px">
+						<a class="btn_common btn_border margin10 border_radius" href="{{ path('calendar_new') }}">
+							Créer un évènement
+						</a>
+						<a class="btn_common btn_border margin10 border_radius" href="{{ path('home') }}">
+							Retour
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 {% endblock %}
 {% block javascripts %}
 	<script>
