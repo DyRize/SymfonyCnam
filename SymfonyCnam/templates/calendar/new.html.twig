@@ -3,9 +3,22 @@
 {% block title %}New Calendar{% endblock %}
 
 {% block body %}
-    <h1>Create new Calendar</h1>
-
-    {{ include('calendar/_form.html.twig') }}
-
-    <a href="{{ path('calendar_index') }}">back to list</a>
+	<!--SERVICE SECTION-->
+	<section id="faq" class="padding">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h2 class="heading heading_space wow fadeInDown"><span>Créer</span> un évènement<span class="divider-left"></span></h2>
+					<div class="faq_content wow fadeIn" data-wow-delay="400ms">
+						<div class="form group">
+							<div class="item">{{ include('calendar/_form.html.twig', {'button_label': 'Enregistrer'}) }}</div>
+							<div class="item">
+								<a class=" btn_common btn_border margin10 border_radius" href="{{ path('calendar_index') }}">Retour</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 {% endblock %}
