@@ -31,6 +31,7 @@ class CalendarFixtures extends Fixture
             $heureFIn = $faker->unique(true)->numberBetween(12,19);
             $str_DateDeb = "";
             $str_DateFin = "";
+			$allDay = false;
             if($i < 10){
                 if($heureDeb < 10){
                     $str_DateDeb = "2021-06-0$i 0$heureDeb:00:00";
@@ -42,12 +43,14 @@ class CalendarFixtures extends Fixture
                 $str_DateFin = "2021-06-$i $heureFIn:00:00";
             }
 
-
+			if($heureDeb == 7 && $heureFIn == 19){
+				$allDay = true;
+			}
             $event->setTitle("Evènement n°$i")
                 ->setStart(new \DateTime($str_DateDeb))
                 ->setEnd(new \DateTime($str_DateFin))
                 ->setDescription("Description de l'évènement n°$i")
-                ->setAllDay(false)
+                ->setAllDay($allDay)
                 ->setBackgroundColor("#0080c0")
                 ->setBorderColor("#ff0000")
                 ->setTextColor("#ffffff")
