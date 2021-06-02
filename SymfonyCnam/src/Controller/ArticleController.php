@@ -7,7 +7,7 @@ use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
 use App\Repository\ArticleTypeRepository;
 use App\Repository\UserRepository;
-use Doctrine\Common\Collections\Criteria;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -63,6 +63,7 @@ class ArticleController extends AbstractController
 
     /**
      * @Route("/new", name="article_new", methods={"GET","POST"})
+     * @Security("is_granted('ROLE_BDE') or is_granted('ROLE_DELEGATE')")
      */
     public function new(Request $request, UserRepository $userRepository): Response
     {
@@ -99,6 +100,7 @@ class ArticleController extends AbstractController
 
     /**
      * @Route("/{id}", name="article_show", methods={"GET"})
+     * @Security("is_granted('ROLE_BDE') or is_granted('ROLE_DELEGATE')")
      */
     public function show(Article $article, Request $request, UserRepository $userRepository): Response
     {
@@ -120,6 +122,7 @@ class ArticleController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="article_edit", methods={"GET","POST"})
+     * @Security("is_granted('ROLE_BDE') or is_granted('ROLE_DELEGATE')")
      */
     public function edit(Request $request, Article $article, UserRepository $userRepository): Response
     {

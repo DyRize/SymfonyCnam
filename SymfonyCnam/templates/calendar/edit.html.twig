@@ -1,13 +1,24 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Calendar{% endblock %}
+{% block title %}Modification de l'évènement n°{{ calendar.id }}{% endblock %}
 
 {% block body %}
-    <h1>Edit Calendar</h1>
-
-    {{ include('calendar/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('calendar_index') }}">back to list</a>
-
-    {{ include('calendar/_delete_form.html.twig') }}
+	<section id="faq" class="padding">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h2 class="heading heading_space wow fadeInDown"><span>Édition de l'évènement : </span>"{{ calendar.title }}"<span class="divider-left"></span></h2>
+					<div class="faq_content wow fadeIn" data-wow-delay="400ms">
+						<div class="form group">
+							<div class="item">{{ include('calendar/_form.html.twig', {'button_label': 'Enregistrer'}) }}</div>
+							<div class="item">
+								<a class=" btn_common btn_border margin10 border_radius" href="{{ path('calendar_index') }}">Retour</a>
+								{{ include('calendar/_delete_form.html.twig') }}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 {% endblock %}
