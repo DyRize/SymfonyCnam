@@ -31,10 +31,10 @@ class CalendarController extends AbstractController
                 'start' => $event->getStart()->format('Y-m-d H:i:s'),
                 'end' => $event->getEnd() === null ? $event->getStart()->format('Y-m-d 23:59:59') : $event->getEnd()->format('Y-m-d H:i:s') ,
                 'description' => $event->getDescription(),
-                'all_day' => $event->getAllDay(),
-                'background_color' => $event->getBackgroundColor(),
-                'border_color' => $event->getBorderColor(),
-                'text_color' => $event->getTextColor(),
+                'allDay' => $event->getAllDay(),
+                'backgroundColor' => $event->getBackgroundColor(),
+                'borderColor' => $event->getBorderColor(),
+                'textColor' => $event->getTextColor(),
             ];
         }
         $data = json_encode($rdvs);

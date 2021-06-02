@@ -32,8 +32,8 @@
 {% endblock %}
 {% block javascripts %}
 	<script>
-		window.onload = () => {
-			let calendarElt = document.querySelector("#calendrier");
+		document.addEventListener('DOMContentLoaded', function() {
+			let calendarElt = document.getElementById('calendrier');
 			let xhr = new XMLHttpRequest();
 
 			let calendar = new FullCalendar.Calendar(calendarElt, {
@@ -46,7 +46,6 @@
 					center: 'title',
 					end: 'dayGridMonth,timeGridWeek'
 				},
-				allDay: false,
 				events: {{ data|raw }},
 				{% if is_granted('ROLE_DELEGATE') or  is_granted('ROLE_SPEAKER') %}
 					editable: true,
@@ -86,6 +85,6 @@
 			});
 
 			calendar.render();
-		}
+		});
 	</script>
 {% endblock %}
