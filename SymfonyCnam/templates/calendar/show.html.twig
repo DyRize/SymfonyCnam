@@ -3,52 +3,27 @@
 {% block title %}Calendar{% endblock %}
 
 {% block body %}
-    <h1>Calendar</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ calendar.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ calendar.title }}</td>
-            </tr>
-            <tr>
-                <th>Start</th>
-                <td>{{ calendar.start ? calendar.start|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>End</th>
-                <td>{{ calendar.end ? calendar.end|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ calendar.description }}</td>
-            </tr>
-            <tr>
-                <th>All_day</th>
-                <td>{{ calendar.allDay ? 'Yes' : 'No' }}</td>
-            </tr>
-            <tr>
-                <th>Background_color</th>
-                <td>{{ calendar.backgroundColor }}</td>
-            </tr>
-            <tr>
-                <th>Border_color</th>
-                <td>{{ calendar.borderColor }}</td>
-            </tr>
-            <tr>
-                <th>Text_color</th>
-                <td>{{ calendar.textColor }}</td>
-            </tr>
-        </tbody>
-    </table>
+	<section id="about" class="padding">
+		<div class="container aboutus">
+			<div class="row">
+				<div class="col-md-7 wow fadeInLeft" data-wow-delay="300ms">
+					<h2 class="heading heading_space"><span>{{ calendar.title}} </span><span class="divider-left"></span></h2>
+					<h5 class="bottom25"><strong>Titre : </strong>{{ calendar.title }}</h5>
+					<h5 class="bottom25"><strong>Date de début : </strong>{{ calendar.start ? calendar.start|date('Y-m-d H:i:s') : '' }}</h5>
+					<h5 class="bottom25"><strong>Date de fin : </strong>{{ calendar.end ? calendar.end|date('Y-m-d H:i:s') : '' }}</h5>
+					<h5 class="bottom25"><strong>Description : </strong>{{ calendar.description }}</h5>
+					<h5 class="bottom25"><strong>Toute la journée ? : </strong>{{ calendar.allDay ? 'Oui' : 'Non' }}</h5>
+				</div>
+			</div>
+		</div>
+	</section>
 
-    <a href="{{ path('calendar_index') }}">back to list</a>
+	{% if is_granted("ROLE_BDE") or is_granted("ROLE_SPEAKER") %}
+		<a href="{{ path('calendar_edit', {'id': calendar.id}) }}">edit</a>
+		{{ include('calendar/_delete_form.html.twig') }}
+	{% else %}
+		<a href="{{ path('calendar_index') }}">Retour</a>
+	{% endif %}
 
-    <a href="{{ path('calendar_edit', {'id': calendar.id}) }}">edit</a>
-
-    {{ include('calendar/_delete_form.html.twig') }}
 {% endblock %}
