@@ -118,15 +118,10 @@
 							<a class="nav-link" href="{{ path('project_index') }}">Projets</a>
 						</li>
 					{% elseif is_granted("ROLE_STUDENT") %}
-						{% if is_granted("ROLE_DELEGATE") %}
 							<li class="nav-item">
 								<a class="nav-link" href="{{ path('calendar_index') }}">Événements</a>
 							</li>
-
-							<li class="nav-item">
-								<a class="nav-link" href="{{ path('article_index') }}">Articles</a>
-							</li>
-						{% elseif is_granted("ROLE_BDE") %}
+						{% if is_granted("ROLE_BDE") or is_granted("ROLE_DELEGATE") %}
 							<li class="nav-item">
 								<a class="nav-link" href="{{ path('article_index') }}">Articles</a>
 							</li>

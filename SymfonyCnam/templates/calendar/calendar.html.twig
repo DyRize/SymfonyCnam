@@ -15,7 +15,7 @@
 
 			let calendar = new FullCalendar.Calendar(calendarElt, {
 				themeSystem: 'bootstrap',
-				initialView: 'dayGridMonth',
+				initialView: 'timeGridWeek',
 				locale: 'fr',
 				timeZone : 'Europe/Paris',
 				headerToolbar: {
@@ -23,6 +23,7 @@
 					center: 'title',
 					end: 'dayGridMonth,timeGridWeek'
 				},
+				allDay: false,
 				events: {{ data|raw }},
 				{% if is_granted('ROLE_DELEGATE') or  is_granted('ROLE_SPEAKER') %}
 					editable: true,

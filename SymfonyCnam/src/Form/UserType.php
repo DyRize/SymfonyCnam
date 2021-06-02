@@ -39,7 +39,8 @@ class UserType extends AbstractType
                 'label' => 'Mot de passe'
             ])
             ->add('birthDate', DateTimeType::class, [
-                'label' => 'Date de naissance'
+                'label' => 'Date de naissance',
+                'date_widget' => 'single_text'
             ])
             ->add('phoneNumber', TextType::class, [
                 'label' => 'Numéro de téléphone'

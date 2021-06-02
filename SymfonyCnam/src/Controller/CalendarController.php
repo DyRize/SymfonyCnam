@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Calendar;
 use App\Form\CalendarType;
 use App\Repository\CalendarRepository;
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,13 +24,12 @@ class CalendarController extends AbstractController
         $events = $calendarRepository->findAll();
 
         $rdvs = [];
-
         foreach($events as $event){
             $rdvs[] = [
                 'id' => $event->getId(),
                 'title' => $event->getTitle(),
                 'start' => $event->getStart()->format('Y-m-d H:i:s'),
-                'end' => $event->getEnd()->format('Y-m-d H:i:s'),
+                'end' => $event->getEnd() === null ? $event->getStart()->format('Y-m-d 23:59:59') : $event->getEnd()->format('Y-m-d H:i:s') ,
                 'description' => $event->getDescription(),
                 'all_day' => $event->getAllDay(),
                 'background_color' => $event->getBackgroundColor(),
@@ -83,10 +83,8 @@ class CalendarController extends AbstractController
     {
         $form = $this->createForm(CalendarType::class, $calendar);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
             return $this->redirectToRoute('calendar_index');
         }
 
@@ -112,8 +110,9 @@ class CalendarController extends AbstractController
 
     /**
      * @Route("/event/{id}/edit", name="calendar_edit_event", methods={"PUT"})
+     * @throws Exception
      */
-    public function updateEvent(?Calendar $calendar, Request $request)
+    public function updateEvent(?Calendar $calendar, Request $request): Response
     {
         $data = json_decode($request->getContent());
         if(
@@ -132,7 +131,7 @@ class CalendarController extends AbstractController
 
             $calendar->setTitle($data->title);
             $calendar->setStart(new \DateTime($data->start));
-            $data->allDay === true ? new \DateTime($data->start) : new \DateTime($data->end);
+            $calendar->setEnd(new \DateTime($data->end));
             $calendar->setAllDay($data->allDay);
             $calendar->setDescription($data->description);
             $calendar->setBackgroundColor($data->backgroundColor);
