@@ -5,7 +5,7 @@ namespace App\Controller;
 use App\Entity\Calendar;
 use App\Form\CalendarType;
 use App\Repository\CalendarRepository;
-use Exception;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -45,6 +45,7 @@ class CalendarController extends AbstractController
 
     /**
      * @Route("/new", name="calendar_new", methods={"GET","POST"})
+     * @Security("is_granted('ROLE_SPEAKER') or is_granted('ROLE_DELEGATE')")
      */
     public function new(Request $request): Response
     {
@@ -78,6 +79,7 @@ class CalendarController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="calendar_edit", methods={"GET","POST"})
+     * @Security("is_granted('ROLE_SPEAKER') or is_granted('ROLE_DELEGATE')")
      */
     public function edit(Request $request, Calendar $calendar): Response
     {
@@ -96,6 +98,7 @@ class CalendarController extends AbstractController
 
     /**
      * @Route("/{id}", name="calendar_delete", methods={"POST"})
+     * @Security("is_granted('ROLE_SPEAKER') or is_granted('ROLE_DELEGATE')")
      */
     public function delete(Request $request, Calendar $calendar): Response
     {

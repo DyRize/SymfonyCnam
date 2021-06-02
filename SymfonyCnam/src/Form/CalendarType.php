@@ -28,9 +28,7 @@ class CalendarType extends AbstractType
                 'label' => 'Date de fin'
             ])
             ->add('description')
-            ->add('all_day', CheckboxType::class, [
-                'label' => 'Toute la journée ?'
-            ])
+            ->add('all_day')
             ->add('background_color', ColorType::class, [
                 'label' => 'Couleur de fond'
             ])
