@@ -16,9 +16,11 @@
 						<div id="calendrier"></div>
 					</div>
 					<div class="row" style="column-gap: 10px">
+						{% if is_granted("ROLE_DELEGATE") or is_granted("ROLE_SPEAKER") %}
 						<a class="btn_common btn_border margin10 border_radius" href="{{ path('calendar_new') }}">
 							Créer un évènement
 						</a>
+						{% endif %}
 						<a class="btn_common btn_border margin10 border_radius" href="{{ path('home') }}">
 							Retour
 						</a>

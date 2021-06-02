@@ -6,6 +6,7 @@ use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
 use Doctrine\DBAL\Types\TextType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,6 +32,7 @@ class UserController extends AbstractController
 
     /**
      * @Route("/new", name="user_new", methods={"GET","POST"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function new(Request $request,  UserPasswordEncoderInterface $passwordEncoder): Response
     {
@@ -91,6 +93,7 @@ class UserController extends AbstractController
 
     /**
      * @Route("/{id}", name="user_delete", methods={"POST"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function delete(Request $request, User $user): Response
     {
