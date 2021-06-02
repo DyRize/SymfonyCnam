@@ -50,6 +50,8 @@
 					center: 'title',
 					end: 'dayGridMonth,timeGridWeek'
 				},
+				slotMinTime: "07:00:00",
+				slotMaxTime: "19:00:00",
 				events: {{ data|raw }},
 				{% if is_granted('ROLE_DELEGATE') or  is_granted('ROLE_SPEAKER') %}
 					editable: true,
