@@ -1925,17 +1925,17 @@ body.pushmenu-push-toleft  nav.navbar.bootsnav.sticked, body.pushmenu-push-tolef
 
 /* ----- Paralax  ----- */
 #parallax{
-	background:url(../images/partenaires.png) no-repeat;
+	background:url(../images/partenaires.webp) no-repeat;
 	padding:10% 0;
 }
 #experts{
-	background:url(../images/ggj2020.png) no-repeat;
+	background:url(../images/ggj2020.webp) no-repeat;
 }
 .page_header{
-	background:url(../images/page-tittle.jpg) no-repeat;
+	background:url(../images/page-tittle.webp) no-repeat;
 }
 #counter{
-	background:url(../images/counter.jpg) no-repeat;
+	background:url(../images/counter.webp) no-repeat;
 }
 #experts , #parallax, .page_header, #counter{
 	-webkit-background-size:cover;
