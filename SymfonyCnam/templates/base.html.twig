@@ -78,6 +78,11 @@
 	<nav class="navbar navbar-default navbar-sticky bootsnav">
 	{% endif %}
 		<div class="container">
+			<div id="menu_bars" class="right burger">
+				<span class="t1"></span>
+				<span class="t2"></span>
+				<span class="t3"></span>
+			</div>
 			<div class="navbar-header">
 				<a class="navbar-brand" href="/">
 					{%  if app.request.attributes.get('_route') == 'home' %}
@@ -86,7 +91,7 @@
 					<img src="{{ asset('assets/images/logo.png') }}" alt="logo" class="logo logo-scrolled">
 				</a>
 			</div>
-			<div class="navbar navbar-btn" id="navbar-menu">
+			<div class="navbar navbar-btn collapsed navbar-collapsed" id="navbar-menu">
 				<ul class="nav">
 					{% if is_granted("ROLE_ADMIN") %}
 						<li class="dropdown clearfix">
@@ -158,6 +163,80 @@
 				</ul>
 			</div>
 		</div>
+		<div class="sidebar_menu">
+			<nav class="pushmenu pushmenu-right">
+				<a class="push-logo" href="{{ path('home') }}"><img src="{{ asset('assets/images/logo.png') }}" alt="logo"></a>
+				<ul class="push_nav">
+					{% if is_granted("ROLE_ADMIN") %}
+						<li class="dropdown clearfix">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Gestion</a>
+							<ul class="dropdown-menu">
+								<li><a href="{{ path('promotion_index') }}">Promotions</a></li>
+								<li><a href="{{ path('teacher_index') }}">Intervenants</a></li>
+								<li><a href="{{ path('bde_index') }}">BDE</a></li>
+							</ul>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('user_index') }}">Utilisateurs</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('subject_index') }}">Unités d'enseignement</a>
+						</li>
+
+					{% elseif is_granted("ROLE_SPEAKER") %}
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('calendar_index') }}">Événements</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('project_index') }}">Projets</a>
+						</li>
+					{% elseif is_granted("ROLE_STUDENT") %}
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('calendar_index') }}">Événements</a>
+						</li>
+						{% if is_granted("ROLE_BDE") or is_granted("ROLE_DELEGATE") %}
+							<li class="nav-item">
+								<a class="nav-link" href="{{ path('article_index') }}">Articles</a>
+							</li>
+						{% endif %}
+
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('user_show', {'id': app.user.id}) }}">Compte</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('project_index') }}">Projets</a>
+						</li>
+					{% else %}
+						<li class="nav-item">
+							<a class="nav-link" href="#">Présentation de la formation</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="#">Voir les CV</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('project_index') }}">Voir les projets</a>
+						</li>
+					{% endif %}
+
+					{% if not app.user %}
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('app_login') }}"><i class="fas fa-sign-in-alt"></i> Se connecter</a>
+						</li>
+					{% else %}
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('app_logout') }}"><i class="fas fa-sign-out-alt"></i> Se déconnecter</a>
+						</li>
+					{% endif %}
+				</ul>
+				<div class="clearfix"></div>
+			</nav>
+		</div>
 	</nav>
 </header>
 
@@ -189,7 +268,7 @@
 					<li><a href="#."><i class="icon-chevron-small-right"></i>Brochure</a></li>
 					<li><a href="#."><i class="icon-chevron-small-right"></i>Plan du Site</a></li>
 					<li><a href="#."><i class="icon-chevron-small-right"></i>Mentions Légales</a></li>
-					<li><a href="#."><i class="icon-chevron-small-right"></i>NContacts</a></li>
+					<li><a href="#."><i class="icon-chevron-small-right"></i>Contacts</a></li>
 				</ul>
 			</div>
 			<div class="col-md-4 col-sm-4 footer_panel bottom25">
