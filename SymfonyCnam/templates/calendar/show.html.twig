@@ -16,14 +16,15 @@
 					<h5 class="bottom25"><strong>Toute la journée ? : </strong>{{ calendar.allDay ? 'Oui' : 'Non' }}</h5>
 				</div>
 			</div>
+			<div class="row" style="column-gap: 0.5em">
+				{% if is_granted("ROLE_BDE") or is_granted("ROLE_SPEAKER") %}
+					<a class=" btn_common btn_border margin10 border_radius" href="{{ path('calendar_edit', {'id': calendar.id}) }}">Modifier</a>
+					{{ include('calendar/_delete_form.html.twig') }}
+				{% endif %}
+				<a class=" btn_common btn_border margin10 border_radius" href="{{ path('calendar_index') }}">Retour</a>
+			</div>
 		</div>
 	</section>
 
-	{% if is_granted("ROLE_BDE") or is_granted("ROLE_SPEAKER") %}
-		<a href="{{ path('calendar_edit', {'id': calendar.id}) }}">edit</a>
-		{{ include('calendar/_delete_form.html.twig') }}
-	{% else %}
-		<a href="{{ path('calendar_index') }}">Retour</a>
-	{% endif %}
 
 {% endblock %}

@@ -48,9 +48,11 @@
 							<a class="btn_common btn_border margin10 border_radius" href="{{ path('user_password', {'id': user.id}) }}">Réinitialiser le mot de passe</a>
 					</col>
 				{% endif %}
+				{% if user.id == app.user.id or is_granted('ROLE_ADMIN') %}
 					<col>
 						<a class="btn_common btn_border margin10 border_radius" href="{{ path('user_edit', {'id': user.id}) }}">Modifier</a>
 					</col>
+				{% endif %}
 				{% if is_granted('ROLE_ADMIN') %}
 					{{ include('user/_delete_form.html.twig') }}
 				{% endif %}
