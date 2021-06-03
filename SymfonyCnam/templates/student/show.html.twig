@@ -9,7 +9,7 @@
 				<div class="col-md-7 wow fadeInLeft" data-wow-delay="300ms">
 					<h2 class="heading heading_space"><span>{{ student.relatedUser.firstName}} </span>{{ student.relatedUser.lastName}} <span class="divider-left"></span></h2>
 					<h4 class="bottom25">Promotion : {{ student.promotion }}</h4>
-					<h5 class="bottom25">Ce étudiant est entré dans la formation le {{ student.arrivedAt ? student.arrivedAt|date('d-m-Y') : '' }} {% if student.graduatedAt != null %} et a été diplômé le {{ student.graduatedAt ? student.graduatedAt('d-m-Y') : '' }}{% endif %}</h5>
+					<h5 class="bottom25">Ce étudiant est entré dans la formation le {{ student.arrivedAt ? student.arrivedAt|date('d-m-Y') : '' }} {% if student.graduatedAt != null %} et a été diplômé le {{ student.graduatedAt ? student.graduatedAt|date('d-m-Y') : '' }}{% endif %}</h5>
 				</div>
 				<div class="col-md-5 wow fadeInRight" data-wow-delay="300ms">
 					<div class="image">
